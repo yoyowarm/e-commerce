@@ -24,6 +24,10 @@ h3{
 h4{
     font-size: 18px;
     font-weight: 400;
+    &.line{
+        border-left: 7px solid var(--color-brown);
+        padding-left: 10px;
+    }
 }
 h5{
 
@@ -40,7 +44,7 @@ ul, li{
     list-style: none;
 }
 img{
-    //width: 100%;
+    width: 100%;
 }
 *{
     -webkit-box-sizing: border-box;
@@ -76,13 +80,87 @@ body,html{
         line-height: 63px;
     }
 }
+.side-bar{
+    height: 63px;
+    z-index: 8;
+    background: #fff;
+    border-bottom: 1px solid var(--color-gray);
+    position: fixed;
+    top: 63px;
+    overflow: hidden;
+    overflow-x: auto;
+    width: 100%;
+    .content{
+        height: 63px;
+        width: 650px;
+        display: flex;
+        @media(min-width: 768px){
+            text-align: center;
+        }
+    }
+    a{
+        cursor: pointer;
+        margin: 0 10px 0;
+        width: 65px;
+        text-align: center;
+        height: 63px;
+        line-height: 63px;
+        display: block;
+        &.active{
+            border-bottom: 4px solid var(--color-yellow);
+        }
+    }
+
+}
+.shadow-line{
+    background: #eee;
+    height: 10px;
+    margin: 20px -20px;
+    box-shadow:0 0 3px #00000030 inset ;
+}
 .mainBlock{
-    padding-top: 63px;
+    padding-top: 136px;
+    margin-bottom: 50px;
+}
+.phone-btn{
+    display: block;
+    margin-bottom: 10px;
+    img{
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        border: 1px solid var(--color-green);
+        padding: 4px;
+    }
+}
+.location-btn{
+    display: block;
+    img{
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        border: 1px solid var(--color-blue);
+        padding: 4px;
+    }
+}
+.clock-btn{
+    width: 25px;
+    background: url("../assets/images/clock_gray.svg") center no-repeat;
+    &.active{
+        background-image: url("../assets/images/clock_red.svg");
+    }
 }
 .list-style{
     display: flex;
     padding: 20px 0;
     border-bottom: 1px solid var(--color-gray);
+    .router{
+        flex: 1;
+        display: flex;
+        &:hover{
+            opacity: .6;
+        }
+    }
     .pic{
         width: 130px;
         height: 130px;
@@ -124,15 +202,12 @@ body,html{
             -webkit-box-orient: vertical;
         }
     }
-    .clock{
-        width: 25px;
-        background: url("../assets/images/clock_gray.svg") center no-repeat;
-        &.active{
-            background-image: url("../assets/images/clock_red.svg");
-        }
-    }
+
 }
-.home{
+.EventsList{
+    .mainBlock{
+        padding-top: 63px;
+    }
     .position{
         padding: 10px 0 0;
         display: block;
@@ -144,4 +219,11 @@ body,html{
         }
     }
 }
-
+.Home{
+    .clock-btn{
+        background-position: center top;
+    }
+    h4{
+        line-height: 1.5em;
+    }
+}
