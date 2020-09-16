@@ -1,8 +1,6 @@
 <template>
     <div class="Map container">
-
-
-
+        <img src="@/assets/images/test3.jpg">
     </div>
 </template>
 

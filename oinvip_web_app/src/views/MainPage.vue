@@ -5,7 +5,7 @@
             <div class="logo">
                 <router-link  :to="{ name: 'EventsList'}" ><img src="../assets/images/top_bar_back.svg"></router-link>
             </div>
-            <div class="menRecommendCodeu-Box">
+            <div>
                 <a>
                     <img src="../assets/images/top_bar_search.svg">
                 </a>
@@ -16,6 +16,7 @@
         </nav>
         <nav class="side-bar">
             <div class="content">
+                <!--TODO 點下的項目增加class="active"-->
                 <router-link  :to="{ name: 'Home'}" class="active">首頁</router-link>
                 <router-link  :to="{ name: 'Map'}">友善地圖</router-link>
                 <router-link  :to="{ name: 'Store'}">參與店家</router-link>

@@ -25,7 +25,7 @@
                         <div class="content">
                             <span class="city">台南市</span>
                             <h4>愛在南國有你真好</h4>
-                            <p class="date">2020.07.07~2020.10.10</p>
+                            <p class="date">2020-07-07~2020-10-10</p>
                             <p class="detail">活動內容文字活動內容文字活動內容文字活動內容文字活動文文字活動內容文字活動文</p>
                         </div>
                     </router-link>
@@ -38,7 +38,7 @@
                         <div class="content">
                             <span class="city">縣市名</span>
                             <h4>標題</h4>
-                            <p class="date">2020.07.07~2020.10.10</p>
+                            <p class="date">2020-07-07~2020-10-10</p>
                             <p class="detail">活動內容文字活動內容文字活動內容文字活動內容文字活動文文字活動內容文字活動文</p>
                         </div>
                     </router-link>
