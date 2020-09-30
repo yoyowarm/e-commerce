@@ -1,24 +1,24 @@
 <template>
     <div class="Home container">
-        <img src="@/assets/images/test2.jpg">
+        <img :src="contentImage">
         <div class="input-group mt-4 pl-3">
-            <h4 style="flex: 1">活動名稱活動名稱活動名稱活動名動 名稱活活動名稱活動名稱活</h4>
+            <h4 style="flex: 1">{{name}}</h4>
             <!--TODO 開啟提醒狀態-->
             <a class="clock-btn" @click="remindModel = true"></a>
         </div>
         <a href="tel:062983377" class="phone-btn ml-3">
             <img src="@/assets/images/phone.svg">
-            06 298 3377
+            {{phone}}
         </a>
         <a href="#" class="location-btn ml-3">
             <img src="@/assets/images/location_blue.svg">
-            台南市安平區府前路二段630號
+            {{cityName}}{{townName}}{{address}}
         </a>
         <div class="shadow-line"></div>
-        <h4 class="line mb-4">2020.07.07~2020.10.10</h4>
+        <h4 class="line mb-4">{{showStartAt}}~{{showEndAt}}</h4>
         <h4 class="line mb-3">標題/介紹</h4>
         <div class="ml-3 mr-3">
-            文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容。
+            {{content}}
         </div>
 
 
@@ -40,12 +40,44 @@
 
 <script>
 
-export default {
-    name: 'Home',
-    data() {
-        return {
-            remindModel: false,
+    export default {
+        name: 'Home',
+        data() {
+            return {
+                id: this.$route.query.id,
+                remindModel: false,
+
+                name: '',
+                content: '',
+                address: '',
+                phone: '',
+                contentImage: '',
+                showStartAt: '',
+                showEndAt: '',
+                townName: '',
+                cityName: '',
+            }
+        },
+        created() {
+            this.setupData();
+        },
+        methods: {
+            setupData: function () {
+                this.$http.fetchWithAuth`GetOinActivityInfo${{
+                    'id': parseInt(this.id),
+                }}
+                ${json => {
+                    this.name = json.name;
+                    this.content = json.content;
+                    this.address = json.address;
+                    this.phone = json.phone;
+                    this.contentImage = json.contentImage;
+                    this.showStartAt = json.showStartAt;
+                    this.showEndAt = json.showEndAt;
+                    this.townName = json.townName;
+                    this.cityName = json.cityName;
+                }}`;
+            }
         }
-    },
-}
+    }
 </script>
