@@ -2,7 +2,7 @@
 :root{
     --color-red:#E37E84;
     --color-yellow:#F0D870;
-    --color-dark:#5F5E5E;
+    --color-dark:#888;
     --color-gray:#E6E3E0;
     --color-blue:#6C9FCB;
     --color-brown:#B29D98;
@@ -46,11 +46,11 @@ ul, li{
 img{
     width: 100%;
 }
-*{
+/**{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-}
+}*/
 body,html{
     padding: 0;
     margin: 0;
@@ -181,10 +181,11 @@ body,html{
         border: 1px solid var(--color-gray);
         margin-right: 5%;
         margin-top: 20px;
-        /*@media(min-width: 768px){
-            width: 200px;
-            height: 200px;
-        }*/
+    }
+    .pic3{
+        width: 96px;
+        height: 96px;
+        margin-right: 5%;
     }
     .phone-btn,.location-btn{
         display: flex;
@@ -247,6 +248,10 @@ body,html{
             font-size: 14px;
             margin-bottom: 0;
         }
+        .date2{
+            font-size: 12px;
+            line-height: 18px;
+        }
         .detail{
             font-size: 14px;
             line-height: 18px;
@@ -258,6 +263,7 @@ body,html{
             -webkit-box-orient: vertical;
         }
     }
+
 
 }
 .EventsList{
@@ -281,5 +287,47 @@ body,html{
     }
     h4{
         line-height: 1.5em;
+    }
+}
+.NewsFunction.function-list{
+    width: 100%;
+    display: flex;
+    margin: 10px 0 -20px;
+    img{
+        height: 25px;
+        width: inherit;
+        margin-right: 5px;
+    }
+    button{
+        color: var(--color-dark);
+        margin-right: 8px;
+        &:focus{
+            outline: none;
+        }
+    }
+    .heart{
+        i{
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            vertical-align: middle;
+            background: url("../assets/images/heart.svg") no-repeat;
+            background-size: 25px;
+        }
+        &.active{
+            i{
+                background-image: url("../assets/images/heart_red.svg");
+            }
+            color: var(--color-red);
+        }
+    }
+    .text-right{
+        flex: 1;
+        font-size: 14px;
+    }
+}
+.NewsDetail{
+    .content{
+        text-align: justify;
     }
 }

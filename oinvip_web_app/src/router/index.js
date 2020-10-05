@@ -18,6 +18,7 @@ let routes = [
       {path: 'map', name: 'Map', component: () => import( /* webpackChunkName: "activity/Map" */ "@/views/activity/Map"), meta: {title: '友善地圖'}},
       {path: 'store', name: 'Store', component: () => import( /* webpackChunkName: "activity/Store" */ "@/views/activity/Store"), meta: {title: '參與店家'}},
       {path: 'news', name: 'News', component: () => import( /* webpackChunkName: "activity/News" */ "@/views/activity/News"), meta: {title: '活動公告'}},
+      {path: 'news-detail', name: 'NewsDetail', component: () => import( /* webpackChunkName: "activity/NewsDetail" */ "@/views/activity/NewsDetail"), meta: {title: '活動公告詳細'}},
       {path: 'coupon', name: 'Coupon', component: () => import( /* webpackChunkName: "activity/Coupon" */ "@/views/activity/Coupon"), meta: {title: '優惠領取'}},
       {path: 'traffic', name: 'Traffic', component: () => import( /* webpackChunkName: "activity/Traffic" */ "@/views/activity/Traffic"), meta: {title: '交通資訊'}},
       {path: 'code', name: 'RecommendCode', component: () => import( /* webpackChunkName: "activity/RecommendCode" */ "@/views/activity/RecommendCode"), meta: {title: '我的推薦碼'}},
