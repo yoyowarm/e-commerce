@@ -1,9 +1,9 @@
 <template>
-    <div class="BigPage" >
+    <div class="BigPage">
 
         <nav class="navBarTop">
             <div class="logo">
-                <router-link  :to="{ name: 'EventsList'}" ><img src="../assets/images/top_bar_back.svg"></router-link>
+                <router-link :to="{ name: 'EventsList'}"><img src="../assets/images/top_bar_back.svg"></router-link>
             </div>
             <div>
                 <a>
@@ -16,14 +16,29 @@
         </nav>
         <nav class="side-bar">
             <div class="content">
-                <!--TODO 點下的項目增加class="active"-->
-                <router-link  :to="{ name: 'Home'}" class="active">首頁</router-link>
-                <router-link  :to="{ name: 'Map'}">友善地圖</router-link>
-                <router-link  :to="{ name: 'Store'}">參與店家</router-link>
-                <router-link  :to="{ name: 'News'}">活動公告</router-link>
-                <router-link  :to="{ name: 'Coupon'}">優惠領取</router-link>
-                <router-link  :to="{ name: 'Traffic'}">交通資訊</router-link>
-                <router-link  :to="{ name: 'RecommendCode'}">My推薦碼</router-link>
+                <router-link :to="{ name: 'Home', query:{id: id}}" v-bind:class="{'active': $route.name ==='Home'}">
+                    首頁
+                </router-link>
+                <router-link :to="{ name: 'Map', query:{id: id}}" v-bind:class="{'active': $route.name ==='Map'}">
+                    友善地圖
+                </router-link>
+                <router-link :to="{ name: 'Store', query:{id: id}}" v-bind:class="{'active': $route.name ==='Store'}">
+                    參與店家
+                </router-link>
+                <router-link :to="{ name: 'News', query:{id: id}}" v-bind:class="{'active': $route.name ==='News'}">
+                    活動公告
+                </router-link>
+                <router-link :to="{ name: 'Coupon', query:{id: id}}" v-bind:class="{'active': $route.name ==='Coupon'}">
+                    優惠領取
+                </router-link>
+                <router-link :to="{ name: 'Traffic', query:{id: id}}"
+                             v-bind:class="{'active': $route.name ==='Traffic'}">
+                    交通資訊
+                </router-link>
+                <router-link :to="{ name: 'RecommendCode', query:{id: id}}"
+                             v-bind:class="{'active': $route.name ==='RecommendCode'}">
+                    My推薦碼
+                </router-link>
             </div>
         </nav>
 
@@ -40,16 +55,15 @@
         name: "MainPage",
         data() {
             return {
-
+                id: this.$route.query.id,
             }
         },
-        mounted () {
-
+        created() {
         },
         methods: {
             scrollToTop() {
                 //跳轉頁面時捲動至最上
-                window.scrollTo(0,0);
+                window.scrollTo(0, 0);
             },
         },
     }
