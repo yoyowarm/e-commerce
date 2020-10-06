@@ -29,6 +29,10 @@ h4{
         border-left: 7px solid var(--color-brown);
         padding-left: 10px;
     }
+    img{
+        height: 25px;
+        width: inherit;
+    }
 }
 h5{
     font-size: 13px;
@@ -359,6 +363,70 @@ body,html{
         margin-top: -9px;
     }
 }
+/*領取優惠列表*/
+.list-coupon{
+    margin-bottom: 30px;
+    position: relative;
+    .router{
+        &:hover{
+            opacity: .6;
+        }
+    }
+    .tag{
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        z-index: 9;
+        top: 16vw;
+        right: 20px;
+        @media (min-width: 576px){
+            top: 90px;
+            width: 40px;
+            height: 40px
+        }
+        @media (min-width: 768px){
+            top: 160px;
+        }
+        @media (min-width: 1200px){
+            top: 110px;
+        }
+    }
+    .el-image{
+        border-radius: 8px;
+        width: 100%;
+        height: 25vw;
+        @media (min-width: 576px){
+            height: 140px;
+        }
+        @media (min-width: 768px){
+            height: 210px;
+        }
+        @media (min-width: 1200px){
+            height: 160px;
+        }
+    }
+    .content{
+        h3{
+            font-size: 14px;
+            color: var(--color-brown);
+            margin: 5px 0 2px;
+        }
+        h4{
+            font-size: 14px;
+            margin: 0 0 10px;
+        }
+        .detail{
+            color: #3E3A39;
+            line-height: 20px;
+            margin-bottom: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+    }
+}
 /*彈跳框樣式*/
 .lg .el-dialog{
     max-width: 800px;
@@ -498,5 +566,23 @@ body,html{
 .NewsDetail{
     .content{
         text-align: justify;
+    }
+}
+.Coupon{
+    .w-100{
+        overflow: auto;
+    }
+    .input-group{
+        flex-wrap: nowrap;
+        .el-image{
+            flex: none;
+            width: 80vw;
+            height: 50vw;
+            max-width: 550px;
+            max-height: 350px;
+
+            margin: 0 10px 0 0;
+            border-radius: 8px;
+        }
     }
 }
