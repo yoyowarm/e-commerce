@@ -2,7 +2,7 @@
 :root{
     --color-red:#E37E84;
     --color-yellow:#F0D870;
-    --color-dark:#888;
+    --color-dark:#8E8E8F;
     --color-gray:#E6E3E0;
     --color-blue:#6C9FCB;
     --color-brown:#B29D98;
@@ -15,7 +15,7 @@
     color:var(--color-dark);
     font-size: 16px;
     font-weight: 400;
-    line-height: 2.2em;
+    line-height: 2em;
     margin: 0 auto;
 }
 h3{
@@ -24,13 +24,18 @@ h3{
 h4{
     font-size: 18px;
     font-weight: 400;
+    color: #5F5E5E;
     &.line{
         border-left: 7px solid var(--color-brown);
         padding-left: 10px;
     }
 }
 h5{
-
+    font-size: 13px;
+    &.line{
+        padding:10px 15px;
+        background: #f5f5f5;
+    }
 }
 a, a:hover{
     text-decoration: none;
@@ -46,11 +51,6 @@ ul, li{
 img{
     width: 100%;
 }
-/**{
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}*/
 body,html{
     padding: 0;
     margin: 0;
@@ -248,10 +248,7 @@ body,html{
             font-size: 14px;
             margin-bottom: 0;
         }
-        .date2{
-            font-size: 12px;
-            line-height: 18px;
-        }
+
         .detail{
             font-size: 14px;
             line-height: 18px;
@@ -263,8 +260,180 @@ body,html{
             -webkit-box-orient: vertical;
         }
     }
+}
+.date2{
+    font-size: 12px;
+    line-height: 18px;
+    color: #A6A7A7;
+}
+.el-textarea{
+    .el-input__count{
+        bottom: -43px;
+        right: 70px;
+    }
+}
+/*第三方分享*/
+.share-block{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    .icon{
+        margin: 8px 10px;
+        text-align: center;
+        cursor: pointer;
+        width: 65px;
+    }
+    img{
+        width: 48px;
+        height: 48px;
+        padding: 5px;
+        background: #EEE;
+        border-radius: 36px;
+        &:hover{
+            background: #E4DFDD;
+        }
+    }
+    span{
+        display: block;
+        font-size: 12px;
+    }
+}
+/*留言列表*/
+.list-message{
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-gray);
+    /*會員狀態*/
+    .member-form{
+        display: flex;
+        //flex-wrap: wrap;
+        margin-bottom: 10px;
+        .right-block{
+            line-height: 1.2em;
+            margin-left: 8px;
+        }
+        .name{
+            display: block;
+            margin: 5px 0 0;
+            font-size: 15px;
+            line-height: 15px;
+        }
+        .el-avatar{
+            background: #E4DFDD;
+        }
+    }
+    .con{
+        font-size: 15px;
+        line-height: 1.8em;
+    }
+    /*回饋的區塊*/
+    .reply-block{
+        margin: 0 0 10px 15px;
+        padding: 10px;
+        position: relative;
+        background: #ffffff;
+        border: 1px solid var(--color-gray);
+        border-radius: 4px;
+    }
+    .reply-block:after, .reply-block:before {
+        right: 100%;
+        top: 15%;
+        border: solid transparent;
+        content: "";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
 
-
+    .reply-block:after {
+        border-color: rgba(255, 255, 255, 0);
+        border-right-color: #ffffff;
+        border-width: 8px;
+        margin-top: -8px;
+    }
+    .reply-block:before {
+        border-color: rgba(230, 227, 224, 0);
+        border-right-color: #ebebeb;
+        border-width: 9px;
+        margin-top: -9px;
+    }
+}
+/*彈跳框樣式*/
+.lg .el-dialog{
+    max-width: 800px;
+}
+.md .el-dialog{
+    max-width: 500px;
+}
+.el-dialog{
+    margin-top: 1.75rem !important;
+    border-radius: 8px;
+    width: 95vw!important;
+    /*.el-dialog__header{
+        text-align: center;
+        box-shadow: 0 2px 3px 0 rgba(0,0,0,.1);
+        .el-dialog__title{
+            color: var(--oin-dark3);
+            font-size: 18px;
+        }
+        .el-dialog__headerbtn{
+            width: 54px;
+            height: 54px;
+            line-height: 54px;
+            top: 0;
+            right: 0;
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+    .el-dialog__body{
+        color: var(--oin-dark2);
+        padding: 30px 50px;
+        h3{
+            .H3-STYLE();
+            font-weight: 500;
+            color: var(--oin-dark3);
+            &:before{
+                content: "";
+                width: 30px;
+                height: 17px;
+                border-radius: 4px;
+                background: var(--oin-yellow2);
+                display: inline-block;
+                margin-right: 10px;
+                vertical-align: -8%;
+            }
+        }
+    }*/
+    /*.dialog-footer{
+        width: 100%;
+        display: flex;
+        margin-top: 1.5rem;
+        margin-bottom: 10px;
+        justify-content:center;
+        .el-button{
+            border-radius: 20px;
+            height: 46px;
+            line-height: 40px;
+            box-shadow: 3px 3px 10px 0 #D8D8D8;
+            span{
+                font-size: 16px ;
+            }
+        }
+    }*/
+}
+/*沒有數據預設狀態*/
+.no-data{
+    text-align: center;
+    color: #ccc;
+    width: 100%;
+    padding: 80px 0;
+    i{
+        font-size: 80px;
+        margin-bottom: 18px;
+    }
 }
 .EventsList{
     .mainBlock{
