@@ -119,7 +119,7 @@
 
         <h3 class="line">優惠券進行式 <router-link :to="{ name: 'Coupon'}" class="more">查看更多 ></router-link></h3>
         <div class="list-coupon-store">
-            <router-link :to="{ name: 'StoreCoupon'}" class="router">
+            <router-link :to="{ name: 'CouponDetail'}" class="router">
                 <el-image
                         fit="cover"
                         :src="require('@/assets/images/test1.jpg')">
@@ -130,7 +130,7 @@
                     <img src="@/assets/images/tag_3.svg" class="tag">
                 </div>
             </router-link>
-            <router-link :to="{ name: 'StoreCoupon'}" class="router">
+            <router-link :to="{ name: 'CouponDetail'}" class="router">
                 <el-image
                         fit="cover"
                         :src="require('@/assets/images/test3.jpg')">
@@ -141,7 +141,7 @@
                     <img src="@/assets/images/tag_3.svg" class="tag">
                 </div>
             </router-link>
-            <router-link :to="{ name: 'StoreCoupon'}" class="router">
+            <router-link :to="{ name: 'CouponDetail'}" class="router">
                 <el-image
                         fit="cover"
                         :src="require('@/assets/images/test3.jpg')">

@@ -15,7 +15,7 @@
         <h4 class="mb-3 mt-5">來喲~領取優惠 <img src="../../assets/images/title_coupon.svg"></h4>
         <div class="row">
             <div class="list-coupon col-4 col-lg-3 col-xl-2">
-                <router-link :to="{ name: ''}" class="router">
+                <router-link :to="{ name: 'CouponDetail'}" class="router">
                     <img src="@/assets/images/tag_2.svg" class="tag">
                     <el-image :src="require('@/assets/images/test1.jpg')" fit="cover"></el-image>
                     <div class="content">
@@ -26,7 +26,7 @@
                 </router-link>
             </div>
             <div class="list-coupon col-4 col-lg-3 col-xl-2">
-                <router-link :to="{ name: ''}" class="router">
+                <router-link :to="{ name: 'CouponDetail'}" class="router">
                     <img src="@/assets/images/tag_2.svg" class="tag">
                     <el-image :src="require('@/assets/images/test2.jpg')" fit="cover"></el-image>
                     <div class="content">
@@ -37,7 +37,7 @@
                 </router-link>
             </div>
             <div class="list-coupon col-4 col-lg-3 col-xl-2">
-                <router-link :to="{ name: ''}" class="router">
+                <router-link :to="{ name: 'CouponDetail'}" class="router">
                     <img src="@/assets/images/tag_2.svg" class="tag">
                     <el-image :src="require('@/assets/images/test3.jpg')" fit="cover"></el-image>
                     <div class="content">
@@ -48,7 +48,7 @@
                 </router-link>
             </div>
             <div class="list-coupon col-4 col-lg-3 col-xl-2">
-                <router-link :to="{ name: ''}" class="router">
+                <router-link :to="{ name: 'CouponDetail'}" class="router">
                     <img src="@/assets/images/tag_2.svg" class="tag">
                     <el-image :src="require('@/assets/images/test1.jpg')" fit="cover"></el-image>
                     <div class="content">
@@ -59,7 +59,7 @@
                 </router-link>
             </div>
             <div class="list-coupon col-4 col-lg-3 col-xl-2">
-                <router-link :to="{ name: ''}" class="router">
+                <router-link :to="{ name: 'CouponDetail'}" class="router">
                     <img src="@/assets/images/tag_2.svg" class="tag">
                     <el-image :src="require('@/assets/images/test1.jpg')" fit="cover"></el-image>
                     <div class="content">
