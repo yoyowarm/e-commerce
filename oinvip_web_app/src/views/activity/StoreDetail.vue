@@ -98,12 +98,80 @@
         <div class="shadow-line"></div>
 
         <h3 class="line">MENU</h3>
+        <div class="image-preview">
+            <el-image
+                    fit="cover"
+                    :src="require('@/assets/images/test2.jpg')"
+                    :preview-src-list="srcList">
+            </el-image>
+            <el-image
+                    fit="cover"
+                    :src="require('@/assets/images/test1.jpg')"
+                    :preview-src-list="srcList">
+            </el-image>
+            <el-image
+                    fit="cover"
+                    :src="require('@/assets/images/test3.jpg')"
+                    :preview-src-list="srcList">
+            </el-image>
+        </div>
         <el-divider></el-divider>
 
-        <h3 class="line">優惠券進行式 <router-link :to="{ name: ''}" class="more">查看更多 ></router-link></h3>
+        <h3 class="line">優惠券進行式 <router-link :to="{ name: 'Coupon'}" class="more">查看更多 ></router-link></h3>
+        <div class="list-coupon-store">
+            <router-link :to="{ name: 'StoreCoupon'}" class="router">
+                <el-image
+                        fit="cover"
+                        :src="require('@/assets/images/test1.jpg')">
+                </el-image>
+                <div class="info">
+                    <h6>週一分享日八折</h6>
+                    <p>乾拌麵三兄弟套餐套餐套餐</p>
+                    <img src="@/assets/images/tag_3.svg" class="tag">
+                </div>
+            </router-link>
+            <router-link :to="{ name: 'StoreCoupon'}" class="router">
+                <el-image
+                        fit="cover"
+                        :src="require('@/assets/images/test3.jpg')">
+                </el-image>
+                <div class="info">
+                    <h6>週一分享日八折</h6>
+                    <p>乾拌麵三兄弟套餐套餐套餐</p>
+                    <img src="@/assets/images/tag_3.svg" class="tag">
+                </div>
+            </router-link>
+            <router-link :to="{ name: 'StoreCoupon'}" class="router">
+                <el-image
+                        fit="cover"
+                        :src="require('@/assets/images/test3.jpg')">
+                </el-image>
+                <div class="info">
+                    <h6>週一分享日八折</h6>
+                    <p>乾拌麵三兄弟套餐套餐套餐</p>
+                    <img src="@/assets/images/tag_3.svg" class="tag">
+                </div>
+            </router-link>
+        </div>
         <el-divider></el-divider>
 
         <h3 class="line">餐點推薦區 <router-link :to="{ name: ''}" class="more">查看更多 ></router-link></h3>
+        <div class="list-meal-store">
+            <router-link :to="{ name: ''}" class="router">
+                <el-image
+                        fit="cover"
+                        :src="require('@/assets/images/test1.jpg')">
+                </el-image>
+                <p>餐點名稱</p>
+            </router-link>
+            <router-link :to="{ name: ''}" class="router">
+                <el-image
+                        fit="cover"
+                        :src="require('@/assets/images/test1.jpg')">
+                </el-image>
+                <p>餐點名稱</p>
+            </router-link>
+        </div>
 
     </div>
 </template>
@@ -121,6 +189,12 @@
             return {
                 open:false,
                 businessTime:false,
+                //菜單大圖預覽
+                srcList: [
+                    'https://placem.at/places',
+                    'https://placem.at/things?w=500&h=800',
+                    'https://placem.at/places?w=800&h=800'
+                ]
             }
         },
         methods:{
