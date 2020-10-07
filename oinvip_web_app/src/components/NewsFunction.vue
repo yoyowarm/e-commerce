@@ -1,6 +1,6 @@
 <template>
     <div class="w-100">
-        <div  class="function-list NewsFunction">
+        <div  class="btn-function-list">
             <!--TODO 按喜歡後增加樣式 active-->
             <el-button type="text" class="heart"><i/>888</el-button>
 
