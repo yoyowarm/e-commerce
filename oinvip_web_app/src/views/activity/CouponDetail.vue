@@ -7,7 +7,7 @@
                 剩餘 <span class="red">89</span> 張
             </div>
         </div>
-        <h3 class="mt-2 mr-3 ml-3">振興有感乾拌麵三兄弟</h3>
+        <h4 class="mt-2 mr-3 ml-3">振興有感乾拌麵三兄弟</h4>
         <div class="input-group mr-3 ml-3" id="branch">
             <h6 class="mt-2">適用分店</h6>
             <div class="branch-list">

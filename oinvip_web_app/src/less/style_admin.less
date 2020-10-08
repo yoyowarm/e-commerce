@@ -26,11 +26,15 @@ body,html{
 }
 h3{
     font-size: 18px;
-    color: #5F5E5E;
+    color: var(--color-brown);
     font-weight: 400;
     &.line{
         border-left: 7px solid var(--color-brown);
         padding-left: 10px;
+    }
+    img{
+        height: 25px;
+        width: inherit;
     }
     .more{
         font-size: 12px;
@@ -51,6 +55,14 @@ h4{
     img{
         height: 25px;
         width: inherit;
+        vertical-align: -30%;
+    }
+    .more{
+        font-size: 12px;
+        font-weight: 400;
+        float: right;
+        margin: 5px 0 0;
+        color: var(--color-dark);
     }
 }
 h5{
@@ -939,6 +951,34 @@ button:focus{
 
             margin: 0 10px 0 0;
             border-radius: 8px;
+        }
+    }
+}
+/*交通路線*/
+.Traffic{
+    .text-content{
+        font-size: 14px;
+        line-height: 1.8em;
+        margin: 20px 0 0;
+    }
+    h4{
+        img{
+            margin-right: 5px;
+        }
+    }
+    .bus-number{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 10px 0 0;
+        span{
+            border-radius: 36px;
+            border: 1px solid var(--color-gray);
+            width: 48px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            font-size: 15px;
+            margin: 0 7px 10px 0;
         }
     }
 }

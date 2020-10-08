@@ -90,14 +90,14 @@
             </router-link>
 
         </div>
-        <h3 class="line">關於我們</h3>
+        <h4 class="line">關於我們</h4>
         <div class="text-content mb-4">
             用心意煮出新意 ‧ 用美味留下回味 府前店輕奢雅緻顛滅傳統麵攤形式，以現代新時尚為您編寫壓軸好戲，詮釋出每一碗麵工藝的視覺系精品，將心意昇華為您味蕾上扣人心弦的回憶。
         </div>
 
         <div class="shadow-line"></div>
 
-        <h3 class="line">MENU</h3>
+        <h4 class="line">MENU</h4>
         <div class="image-preview">
             <el-image
                     fit="cover"
@@ -117,7 +117,7 @@
         </div>
         <el-divider></el-divider>
 
-        <h3 class="line">優惠券進行式 <router-link :to="{ name: 'Coupon'}" class="more">查看更多 ></router-link></h3>
+        <h4 class="line">優惠券進行式 <router-link :to="{ name: 'Coupon'}" class="more">查看更多 ></router-link></h4>
         <div class="list-coupon-store">
             <router-link :to="{ name: 'CouponDetail'}" class="router">
                 <el-image
@@ -155,7 +155,7 @@
         </div>
         <el-divider></el-divider>
 
-        <h3 class="line">餐點推薦區 <router-link :to="{ name: ''}" class="more">查看更多 ></router-link></h3>
+        <h4 class="line">餐點推薦區 <router-link :to="{ name: ''}" class="more">查看更多 ></router-link></h4>
         <div class="list-meal-store">
             <router-link :to="{ name: ''}" class="router">
                 <el-image
