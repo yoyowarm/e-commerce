@@ -3,7 +3,7 @@
 
         <nav class="navBarTop">
             <div class="logo">
-                <router-link :to="{ name: 'EventsList'}"><img src="../assets/images/top_bar_back.svg"></router-link>
+                <router-link :to="{ name: ''}"><img src="../assets/images/top_bar_back.svg"></router-link>
             </div>
             <div>
                 <a>

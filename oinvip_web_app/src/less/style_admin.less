@@ -72,6 +72,9 @@ h5{
         background: #f5f5f5;
     }
 }
+h6{
+    font-size: 14px;
+}
 a, a:hover{
     text-decoration: none;
     cursor: pointer;
@@ -88,6 +91,9 @@ img{
 }
 .red{
     color: var(--color-red);
+}
+.blue{
+    color: var(--color-blue);
 }
 /*-----------捲軸樣式-----------*/
 @media(min-width: 1200px){
@@ -979,6 +985,76 @@ button:focus{
             text-align: center;
             font-size: 15px;
             margin: 0 7px 10px 0;
+        }
+    }
+}
+/*我的推薦*/
+.RecommendCode{
+    .code-list{
+        display: flex;
+        border: 1px solid var(--color-gray);
+        border-radius: 18px;
+        padding: 8px 0 8px 10px;
+        margin: 0 0 30px;
+        .block{
+            flex: 1;
+            border-right: 1px solid var(--color-gray);
+            margin-right: 10px;
+            &:last-child{
+                border-right: none;
+                margin-right: 0;
+            }
+        }
+        span{
+            font-size: 13px;
+        }
+        .num{
+            font-size: 22px;
+            margin: 5px 0 10px;
+        }
+    }
+    .text-content{
+        font-size: 14px;
+        line-height: 1.8em;
+    }
+    .push{
+        flex-wrap: nowrap;
+        margin: 0 0 20px;
+        h3{
+            width: 120px;
+            min-width: 120px;
+            margin: 5px 0 0;
+        }
+        .info{
+            background: var(--color-gray);
+            color: #fff;
+            text-align: center;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            display: inline-block;
+            border-radius: 30px;
+        }
+        .num1{
+            border: 1px solid var(--color-gray);
+            flex: 1;
+            border-radius: 4px;
+            padding:  0 10px;
+        }
+        .num2{
+            padding:  0 10px;
+        }
+        .el-button{
+            padding: 5px 10px;
+        }
+        img{
+            width: 20px;
+        }
+    }
+    .bottom-btn{
+        margin: 30px 0 0;
+        .el-button{
+            width: 140px;
         }
     }
 }
