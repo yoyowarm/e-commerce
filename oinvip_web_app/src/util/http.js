@@ -57,8 +57,9 @@ export default {
                 'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json',
                 'Csrf-Token': this.csrfToken === '' || typeof csrfToken === 'undefined' ? process.env.VUE_APP_CSRF_TOKEN : this.csrfToken,
-                'Auth-Token': authPath === '/auth' ? auth.getAdminToken() : '',
+                'Auth-Token': authPath === '/auth' ? auth.getAdminToken() : 'tyogxQrnHvFKa26zKXN4jIUJ+jkrKqyGdcA2WzFxWj7Bg8xTrEob8Omr9UH4I5KJ',
                 // 'appName': authPath === '/auth' ? auth.getStoreToken() : ''
+                // 'Auth-Token': 'tyogxQrnHvFKa26zKXN4jIUJ+jkrKqyGdcA2WzFxWj7Bg8xTrEob8Omr9UH4I5KJ',
                 'appName': 'com.lifelink.oin'
             }),
             method: 'POST'

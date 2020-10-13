@@ -63,7 +63,7 @@
         },
         methods: {
             setupData: function () {
-                this.$http.fetchWithAuth`GetOinActivityInfo${{
+                this.$http.fetch`GetOinActivityInfo${{
                     'id': parseInt(this.id),
                 }}
                 ${json => {

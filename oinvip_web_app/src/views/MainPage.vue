@@ -3,7 +3,7 @@
 
         <nav class="navBarTop">
             <div class="logo">
-                <router-link :to="{ name: ''}"><img src="../assets/images/top_bar_back.svg"></router-link>
+                <a><img src="../assets/images/top_bar_back.svg" @click="$router.go(-1)"></a>
             </div>
             <div>
                 <a>
@@ -28,17 +28,17 @@
                 <router-link :to="{ name: 'News', query:{id: id}}" v-bind:class="{'active': $route.name ==='News'}">
                     活動公告
                 </router-link>
-                <router-link :to="{ name: 'Coupon', query:{id: id}}" v-bind:class="{'active': $route.name ==='Coupon'}">
-                    優惠領取
-                </router-link>
-                <router-link :to="{ name: 'Traffic', query:{id: id}}"
-                             v-bind:class="{'active': $route.name ==='Traffic'}">
-                    交通資訊
-                </router-link>
-                <router-link :to="{ name: 'RecommendCode', query:{id: id}}"
-                             v-bind:class="{'active': $route.name ==='RecommendCode'}">
-                    My推薦碼
-                </router-link>
+<!--                <router-link :to="{ name: 'Coupon', query:{id: id}}" v-bind:class="{'active': $route.name ==='Coupon'}">-->
+<!--                    優惠領取-->
+<!--                </router-link>-->
+<!--                <router-link :to="{ name: 'Traffic', query:{id: id}}"-->
+<!--                             v-bind:class="{'active': $route.name ==='Traffic'}">-->
+<!--                    交通資訊-->
+<!--                </router-link>-->
+<!--                <router-link :to="{ name: 'RecommendCode', query:{id: id}}"-->
+<!--                             v-bind:class="{'active': $route.name ==='RecommendCode'}">-->
+<!--                    My推薦碼-->
+<!--                </router-link>-->
             </div>
         </nav>
 
@@ -64,6 +64,8 @@
             scrollToTop() {
                 //跳轉頁面時捲動至最上
                 window.scrollTo(0, 0);
+            },
+            goBack() {
             },
         },
     }

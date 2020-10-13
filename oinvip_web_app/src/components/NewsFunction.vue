@@ -1,21 +1,21 @@
 <template>
     <div class="w-100">
         <div  class="btn-function-list">
-            <!--TODO 按喜歡後增加樣式 active-->
-            <el-button type="text" class="heart"><i/>888</el-button>
+<!--            &lt;!&ndash;TODO 按喜歡後增加樣式 active&ndash;&gt;-->
+<!--            <el-button type="text" class="heart"><i/>888</el-button>-->
 
-            <!--TODO 分享-->
-            <el-button type="text" class="share" @click="ShareModal = true">
-                <img src="@/assets/images/share.svg">888
-            </el-button>
+<!--            &lt;!&ndash;TODO 分享&ndash;&gt;-->
+<!--            <el-button type="text" class="share" @click="ShareModal = true">-->
+<!--                <img src="@/assets/images/share.svg">888-->
+<!--            </el-button>-->
 
             <div class="text-right">
                 <!--TODO 留言-->
                 <el-button type="text" class="message" >
-                    <img src="@/assets/images/message.svg">888
+                    <img src="@/assets/images/message.svg">{{messageCount}}
                 </el-button>
 
-                <span class="ml-2 pageviews">瀏覽 180</span>
+                <span class="ml-2 pageviews">瀏覽 {{viewCount}}</span>
             </div>
 
         </div>
@@ -66,6 +66,7 @@
 <script>
     export default {
         name: "NewsFunction",
+        props: ['viewCount', 'messageCount'],
         data() {
             return {
                 ShareModal: false,//分享文章彈框

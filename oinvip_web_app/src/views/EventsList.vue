@@ -64,7 +64,7 @@
         },
         methods: {
             setupData: function () {
-                this.$http.fetchWithAuth`GetOinActivityList${{
+                this.$http.fetch`GetOinActivityList${{
                     'id': this.id,
                 }}
                 ${json => {

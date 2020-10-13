@@ -19,7 +19,7 @@ export default {
     },
     methods: {
         setupData: function () {
-            this.$http.fetchWithAuth`GetOinActivityMap${{
+            this.$http.fetch`GetOinActivityMap${{
                 'id': parseInt(this.id),
             }}
                 ${json => {

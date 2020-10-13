@@ -21,6 +21,13 @@ Http.install = function (Vue) {
 };
 Vue.use(Http);
 
+import Public from './util/public'
+
+Public.install = function (Vue) {
+  Vue.prototype.$public = Public;
+};
+Vue.use(Public);
+
 new Vue({
   router,
   render: h => h(App)
