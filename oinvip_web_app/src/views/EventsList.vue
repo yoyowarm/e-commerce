@@ -3,7 +3,7 @@
 
         <nav class="navBarTop">
             <div class="logo">
-                <router-link :to="{ name: 'EventsList'}"><img src="../assets/images/top_bar_back.svg"></router-link>
+                <a @click="goBackApp"><img src="../assets/images/top_bar_back.svg"></a>
             </div>
             <div class="title">主題活動</div>
             <div class="menu-Box">
@@ -50,6 +50,7 @@
 </template>
 
 <script>
+    import auth from '../util/auth'
 
     export default {
         name: 'EventsList',
@@ -62,6 +63,19 @@
         created() {
             this.setupData();
         },
+        mounted() {
+            window.getUserToken = this.getUserToken
+
+            let u = navigator.userAgent.toLowerCase();
+            let isApple = /iphone|ipad|ipod|ios/i.test(u);
+            let isAndroid = /android/i.test(u);
+
+            if (isApple) {
+                window.webkit.messageHandlers.ToApp.postMessage("getToken");//呼叫app的function取得登入者token
+            }else if(isAndroid) {
+                window.jsCallAndroid.jsNoToken();//若toke沒有值，沒有則出現登入頁
+            }
+        },
         methods: {
             setupData: function () {
                 this.$http.fetch`GetOinActivityList${{
@@ -70,7 +84,21 @@
                 ${json => {
                     this.dataList = json;
                 }}`;
-            }
+            },
+            goBackApp: function () {
+
+                let u = navigator.userAgent.toLowerCase();
+                let isApple = /iphone|ipad|ipod|ios/i.test(u);
+                // let isAndroid = /android/i.test(u);
+
+                if(isApple){
+                    window.webkit.messageHandlers.ToApp.postMessage("back")
+                }
+
+            },
+            getUserToken: function (token) {
+                auth.setUserToken(token);
+            },
         }
     }
 </script>

@@ -32,8 +32,8 @@
             </div>
             <div class="btn-function-list m-0">
                 <!--TODO 按喜歡後增加樣式 active-->
-                <el-button type="text" class="heart"><i/>88</el-button>
-                <el-button type="text" @click="ReportModal = true">檢舉</el-button>
+<!--                <el-button type="text" class="heart"><i/>88</el-button>-->
+<!--                <el-button type="text" @click="ReportModal = true">檢舉</el-button>-->
                 <el-button type="text" @click="reply(item)">回覆 {{item.replyCount}}</el-button>
             </div>
 
@@ -112,6 +112,7 @@
             },
             messageConfirm() {
                 this.$emit('message-confirm', this.message)
+                this.message = '';
             },
         },
     }

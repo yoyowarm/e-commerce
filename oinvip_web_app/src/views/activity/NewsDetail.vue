@@ -18,6 +18,7 @@
 <script>
     import NewsFunction from '@/components/NewsFunction.vue'
     import Message from '@/components/Message.vue'
+    // import auth from '../../util/auth'
 
     export default {
         name: 'NewsDetail',
@@ -40,6 +41,9 @@
         created() {
             this.setupData();
         },
+        mounted() {
+
+        },
         methods: {
             setupData: function () {
                 this.$http.fetch`GetOinActivityAnnouncementInfo${{
@@ -54,8 +58,11 @@
                     this.messageList = json.messageList;
                 }}`;
             },
+            // getIosUserToken: function (token) {
+            //     auth.setUserToken(token);
+            // },
             messageReply: function (arg) {
-                this.$http.fetch`ReplyOinActivityAnnouncementListMessage${{
+                this.$http.fetchWithAuth`ReplyOinActivityAnnouncementListMessage${{
                     'id': parseInt(arg.id),
                     'content': arg.message,
                 }}
@@ -67,14 +74,13 @@
                 }}`;
             },
             messageConfirm: function (message) {
-                this.$http.fetch`ReplyOinActivityAnnouncementList${{
+                this.$http.fetchWithAuth`ReplyOinActivityAnnouncementList${{
                     'id': parseInt(this.id),
                     'content': message,
                 }}
                 ${json => {
                     this.$public.showNotify(json.message, json.status);
                     if (json.status) {
-                        this.content = '';
                         this.setupData();
                     }
                 }}`;
