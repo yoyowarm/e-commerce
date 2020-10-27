@@ -10,7 +10,7 @@
             <img src="@/assets/images/phone.svg">
             {{phone}}
         </a>
-        <a href="#" class="location-btn ml-3">
+        <a class="location-btn ml-3">
             <img src="@/assets/images/location_blue.svg">
             {{cityName}}{{townName}}{{address}}
         </a>

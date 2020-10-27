@@ -20,7 +20,7 @@
                 <a class="position"><img src="../assets/images/location_red.svg">重新定位</a>
                 <div class="list-style" v-for="(item, index) in dataList" :key="index">
                     <router-link :to="{ name: 'Home', query:{id: item.id}}" class="router">
-                        <el-image :src="item.titleImage" fit="cover" class="pic"></el-image>
+                        <el-image :src="item.imgUrl" fit="cover" class="pic"></el-image>
                         <div class="content">
                             <span class="city">{{item.city}}</span>
                             <h4>{{item.name}}</h4>
@@ -28,20 +28,20 @@
                             <!--                            <p class="detail">{{item.content}}</p>-->
                         </div>
                     </router-link>
-                    <a class="clock-btn" @click="remindModel = true"></a>
+<!--                    <a class="clock-btn" @click="remindModel = true"></a>-->
                 </div>
-                <el-dialog
-                        title="設置鬧鐘提醒"
-                        :visible.sync="remindModel"
-                        width="90%"
-                        center>
-                    <p class="text-center">我要設置鬧鐘提醒，絕不錯過「活動」</p>
-                    <span slot="footer" class="dialog-footer">
-                        <el-button @click="remindModel = false">取消</el-button>
-                        <!--TODO 然後連到手機鬧鐘(這邊就看使用者自己要怎麼設置提醒)APP的行事曆也會連動記錄這天有活動-->
-                        <el-button @click="remindModel = false">前往設置鬧鐘</el-button>
-                    </span>
-                </el-dialog>
+<!--                <el-dialog-->
+<!--                        title="設置鬧鐘提醒"-->
+<!--                        :visible.sync="remindModel"-->
+<!--                        width="90%"-->
+<!--                        center>-->
+<!--                    <p class="text-center">我要設置鬧鐘提醒，絕不錯過「活動」</p>-->
+<!--                    <span slot="footer" class="dialog-footer">-->
+<!--                        <el-button @click="remindModel = false">取消</el-button>-->
+<!--                        &lt;!&ndash;TODO 然後連到手機鬧鐘(這邊就看使用者自己要怎麼設置提醒)APP的行事曆也會連動記錄這天有活動&ndash;&gt;-->
+<!--                        <el-button @click="remindModel = false">前往設置鬧鐘</el-button>-->
+<!--                    </span>-->
+<!--                </el-dialog>-->
 
             </div>
         </div>
@@ -80,6 +80,7 @@
             setupData: function () {
                 this.$http.fetch`GetOinActivityList${{
                     'id': this.id,
+                    'offset': -1
                 }}
                 ${json => {
                     this.dataList = json;
@@ -93,6 +94,8 @@
 
                 if(isApple){
                     window.webkit.messageHandlers.ToApp.postMessage("back")
+                }else{
+                    window.history.back();return false;
                 }
 
             },

@@ -3,7 +3,7 @@
 
         <nav class="navBarTop">
             <div class="logo">
-                <a><img src="../assets/images/top_bar_back.svg" @click="$router.go(-1)"></a>
+                <a href="#" οnclick="javascript:window.history.back();return false;"><img src="../assets/images/top_bar_back.svg"></a>
             </div>
             <div>
                 <a>

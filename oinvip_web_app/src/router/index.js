@@ -21,7 +21,7 @@ let routes = [
     component: () => import(/* webpackChunkName: "EventsList" */ "@/views/EventsList")
   },
   {
-    path: '/',
+    path: '/mainPage',
     name: 'MainPage',
     component: MainPage,
     children: [
