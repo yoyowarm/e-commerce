@@ -5,6 +5,7 @@ const fs = require('fs');
 module.exports = {
     // publicPath: prod ? "/" : "./",
     // productionSourceMap: !prod,
+    // outputDir: 'app/www',
 
     publicPath: './',
     outputDir: 'app/www',

@@ -17,8 +17,8 @@
         <div class="shadow-line"></div>
         <h4 class="line mb-4">{{showStartAt}}~{{showEndAt}}</h4>
         <h4 class="line mb-3">標題/介紹</h4>
-        <div class="ml-3 mr-3">
-            {{content}}
+        <div class="ml-3 mr-3" v-html="content">
+<!--            {{content}}-->
         </div>
 
 
