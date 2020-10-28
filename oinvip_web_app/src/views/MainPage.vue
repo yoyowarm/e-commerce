@@ -3,7 +3,7 @@
 
         <nav class="navBarTop">
             <div class="logo">
-                <a href="#" οnclick="javascript:window.history.back();return false;"><img src="../assets/images/top_bar_back.svg"></a>
+                <a href="#" @click="goBack"><img src="../assets/images/top_bar_back.svg"></a>
             </div>
             <div>
                 <a>
@@ -66,6 +66,16 @@
                 window.scrollTo(0, 0);
             },
             goBack() {
+
+                let u = navigator.userAgent.toLowerCase();
+                let isApple = /iphone|ipad|ipod|ios/i.test(u);
+                let isAndroid = /android/i.test(u);
+
+                if(isApple){
+                    window.history.back();return false;
+                }else if(isAndroid){
+                    this.$router.go(-1)
+                }
             },
         },
     }

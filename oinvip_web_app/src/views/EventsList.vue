@@ -87,15 +87,14 @@
                 }}`;
             },
             goBackApp: function () {
-
                 let u = navigator.userAgent.toLowerCase();
                 let isApple = /iphone|ipad|ipod|ios/i.test(u);
-                // let isAndroid = /android/i.test(u);
+                let isAndroid = /android/i.test(u);
 
                 if(isApple){
                     window.webkit.messageHandlers.ToApp.postMessage("back")
-                }else{
-                    window.history.back();return false;
+                }else if(isAndroid){
+                    window.jsCallAndroid.jsBackPrevious();//若toke沒有值，沒有則出現登入頁
                 }
 
             },
