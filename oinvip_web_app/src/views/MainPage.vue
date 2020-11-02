@@ -6,9 +6,9 @@
                 <a href="#" @click="goBack"><img src="../assets/images/top_bar_back.svg"></a>
             </div>
             <div>
-                <a>
+                <!--<a>
                     <img src="../assets/images/top_bar_search.svg">
-                </a>
+                </a>-->
                 <a>
                     <img src="../assets/images/top_bar_bell.svg">
                 </a>
