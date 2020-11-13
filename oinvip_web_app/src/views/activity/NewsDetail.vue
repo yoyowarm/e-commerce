@@ -17,7 +17,6 @@
 <script>
     import NewsFunction from '@/components/NewsFunction.vue'
     import Message from '@/components/Message.vue'
-    // import auth from '../../util/auth'
 
     export default {
         name: 'NewsDetail',
@@ -57,9 +56,6 @@
                     this.messageList = json.messageList;
                 }}`;
             },
-            // getIosUserToken: function (token) {
-            //     auth.setUserToken(token);
-            // },
             messageReply: function (arg) {
                 this.$http.fetchWithAuth`ReplyOinActivityAnnouncementListMessage${{
                     'id': parseInt(arg.id),

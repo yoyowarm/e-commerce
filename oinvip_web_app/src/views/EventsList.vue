@@ -10,14 +10,14 @@
                 <!--<a>
                     <img src="../assets/images/top_bar_search.svg">
                 </a>-->
-                <a>
-                    <img src="../assets/images/top_bar_bell.svg">
-                </a>
+<!--                <a>-->
+<!--                    <img src="../assets/images/top_bar_bell.svg">-->
+<!--                </a>-->
             </div>
         </nav>
         <div class="mainBlock">
             <div class="container">
-                <a class="position"><img src="../assets/images/location_red.svg">重新定位</a>
+<!--                <a class="position"><img src="../assets/images/location_red.svg">重新定位</a>-->
                 <div class="list-style" v-for="(item, index) in dataList" :key="index">
                     <router-link :to="{ name: 'Home', query:{id: item.id}}" class="router">
                         <el-image :src="item.imgUrl" fit="cover" class="pic"></el-image>

@@ -5,13 +5,15 @@
             <div class="logo">
                 <a href="#" @click="goBack"><img src="../assets/images/top_bar_back.svg"></a>
             </div>
+            <div class="title">主題活動</div>
             <div>
+
                 <!--<a>
                     <img src="../assets/images/top_bar_search.svg">
                 </a>-->
-                <a>
-                    <img src="../assets/images/top_bar_bell.svg">
-                </a>
+<!--                <a>-->
+<!--                    <img src="../assets/images/top_bar_bell.svg">-->
+<!--                </a>-->
             </div>
         </nav>
         <nav class="side-bar">
