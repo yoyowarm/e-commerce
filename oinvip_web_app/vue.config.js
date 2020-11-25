@@ -6,7 +6,9 @@ module.exports = {
     // publicPath: prod ? "/" : "./",
     // productionSourceMap: !prod,
 
-    publicPath: './',
+    assetsDir: '',
+    publicPath: '',
+    // publicPath: './',
     outputDir: 'app/www',
     productionSourceMap: false,
 
