@@ -12,7 +12,6 @@ import NewsDetail from '@/views/activity/NewsDetail'
 import Coupon from '@/views/activity/Coupon'
 import Traffic from '@/views/activity/Traffic'
 import RecommendCode from '@/views/activity/RecommendCode'
-import Test from '@/views/Test'
 Vue.use(VueRouter)
 
 let routes = [
@@ -22,12 +21,7 @@ let routes = [
     component: () => import(/* webpackChunkName: "EventsList" */ "@/views/EventsList")
   },
   {
-    path: 'test',
-    name: 'Test',
-    component: Test
-  },
-  {
-    path: '/',
+    path: '/mainPage',
     name: 'MainPage',
     component: MainPage,
     children: [

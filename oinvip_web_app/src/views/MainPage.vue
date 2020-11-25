@@ -3,15 +3,17 @@
 
         <nav class="navBarTop">
             <div class="logo">
-                <a><img src="../assets/images/top_bar_back.svg" @click="$router.go(-1)"></a>
+                <a href="#" @click="goBack"><img src="../assets/images/top_bar_back.svg"></a>
             </div>
+            <div class="title">主題活動</div>
             <div>
-                <a>
+
+                <!--<a>
                     <img src="../assets/images/top_bar_search.svg">
-                </a>
-                <a>
-                    <img src="../assets/images/top_bar_bell.svg">
-                </a>
+                </a>-->
+<!--                <a>-->
+<!--                    <img src="../assets/images/top_bar_bell.svg">-->
+<!--                </a>-->
             </div>
         </nav>
         <nav class="side-bar">
@@ -66,6 +68,16 @@
                 window.scrollTo(0, 0);
             },
             goBack() {
+
+                let u = navigator.userAgent.toLowerCase();
+                let isApple = /iphone|ipad|ipod|ios/i.test(u);
+                let isAndroid = /android/i.test(u);
+
+                if(isApple){
+                    window.history.back();return false;
+                }else if(isAndroid){
+                    this.$router.go(-1)
+                }
             },
         },
     }

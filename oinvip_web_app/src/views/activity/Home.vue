@@ -4,21 +4,20 @@
         <div class="input-group mt-4 pl-3">
             <h4 style="flex: 1">{{name}}</h4>
             <!--TODO 開啟提醒狀態-->
-            <a class="clock-btn" @click="remindModel = true"></a>
+<!--            <a class="clock-btn" @click="remindModel = true"></a>-->
         </div>
         <a href="tel:062983377" class="phone-btn ml-3">
             <img src="@/assets/images/phone.svg">
             {{phone}}
         </a>
-        <a href="#" class="location-btn ml-3">
+        <a class="location-btn ml-3">
             <img src="@/assets/images/location_blue.svg">
             {{cityName}}{{townName}}{{address}}
         </a>
         <div class="shadow-line"></div>
         <h4 class="line mb-4">{{showStartAt}}~{{showEndAt}}</h4>
         <h4 class="line mb-3">標題/介紹</h4>
-        <div class="ml-3 mr-3">
-            {{content}}
+        <div class="ml-3 mr-3" v-html="content">
         </div>
 
 
@@ -60,6 +59,13 @@
         },
         created() {
             this.setupData();
+
+            this.$nextTick(() => {
+                // 禁用右鍵
+                // document.oncontextmenu = new Function("event.returnValue=false");
+                // 禁用選擇
+                document.onselectstart = new Function("event.returnValue=false");
+            });
         },
         methods: {
             setupData: function () {

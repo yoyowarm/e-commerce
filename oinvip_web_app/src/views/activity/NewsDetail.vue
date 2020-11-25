@@ -2,8 +2,7 @@
     <div class="NewsDetail container">
         <h4 class="line mb-3 mt-3">{{title}}</h4>
         <p class="date2 ml-3">2020-11-15</p>
-        <div class="ml-3 mr-3 text-content">
-            {{content}}
+        <div class="ml-3 mr-3 text-content" v-html="content">
         </div>
         <NewsFunction :viewCount="viewCount" :messageCount="messageList.length"/>
         <el-divider></el-divider>
@@ -18,7 +17,6 @@
 <script>
     import NewsFunction from '@/components/NewsFunction.vue'
     import Message from '@/components/Message.vue'
-    // import auth from '../../util/auth'
 
     export default {
         name: 'NewsDetail',
@@ -58,9 +56,6 @@
                     this.messageList = json.messageList;
                 }}`;
             },
-            // getIosUserToken: function (token) {
-            //     auth.setUserToken(token);
-            // },
             messageReply: function (arg) {
                 this.$http.fetchWithAuth`ReplyOinActivityAnnouncementListMessage${{
                     'id': parseInt(arg.id),
