@@ -1059,3 +1059,136 @@ button:focus{
         }
     }
 }
+/*-----------手機版下方固定選單-----------*/
+.footerMenu{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    border-top: 1px solid rgb(224, 224, 224);
+    background: #FFFFFF;
+    display: flex;
+    a{
+        flex: 1;
+        text-align: center;
+        padding: 4px 0;
+        background-size: 30px;
+        background-repeat: no-repeat;
+        background-position: center 4px;
+    }
+    .home{
+        background-image: url("../assets/images/wallet_line.svg");
+        &.router-link-active{
+            background-image: url("../assets/images/wallet.svg");
+        }
+    }
+    .setup{
+        background-image: url("../assets/images/setup_line.svg");
+        &.router-link-active{
+            background-image: url("../assets/images/setup.svg");
+        }
+    }
+    .coin{
+        background-image: url("../assets/images/coin_line.svg");
+        &.router-link-active{
+            background-image: url("../assets/images/coin.svg");
+        }
+    }
+    .member{
+        background-image: url("../assets/images/member_line.svg");
+        &.router-link-active{
+            background-image: url("../assets/images/member.svg");
+        }
+    }
+    .ticket{
+        background-image: url("../assets/images/ticket_line.svg");
+        &.router-link-active{
+            background-image: url("../assets/images/ticket.svg");
+        }
+    }
+    .QRcode{
+        background-image: url("../assets/images/QRcode_line.svg");
+        &.router-link-active{
+            background-image: url("../assets/images/QRcode2.svg");
+        }
+    }
+    .scanner{
+        background-image: url("../assets/images/scanner_line.svg");
+        &.router-link-active{
+            background-image: url("../assets/images/scanner2.svg");
+        }
+    }
+    span{
+        display: block;
+        margin-top: 30px;
+    }
+    .router-link-active{
+        color: var(--color-red1);
+    }
+}
+/*-----------登入-註冊-忘記密碼-重置密碼-----------*/
+.login{
+    width: 100%;
+    min-height: 100vh;
+    background: var(--linear);
+    overflow: hidden;
+    .main-content{
+        max-width: 400px;
+        margin: 10vh auto;
+        padding: 20px 35px;
+        @media(min-width: 768px){
+            border: 3px double rgb(255,255,255);
+        }
+    }
+    a{
+        color: var(--color-dark3);
+    }
+    .logo{
+        width: 100%;
+        text-align: center;
+        font-size: 1.25rem;
+        padding: 2rem 0 1rem;
+        font-weight: 600;
+        img{
+            vertical-align: baseline;
+            max-height: 50px;
+        }
+    }
+    .top_nav{
+        width: 100%;
+        padding: 1rem 0 2rem 0;
+        margin-bottom: 2rem;
+    }
+    .top_nav li{
+        width: 50%;
+        float: left;
+        list-style: none;
+        color: #fff;
+        text-align: center;
+    }
+    .top_nav li a{
+        padding: .5rem .3rem;
+    }
+    .top_nav li.now a{
+        color: var(--color-dark3);
+        border-bottom: 2px solid var(--color-dark3);
+    }
+    .textBox{
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    .textBox li{
+        width: 100%;
+        list-style: none;
+        margin-bottom: 1rem;
+        position: relative;
+    }
+    .btn_box{
+        padding-top: 0;
+        text-align: center;
+        p+p{
+            margin-top: 50px;
+        }
+    }
+}

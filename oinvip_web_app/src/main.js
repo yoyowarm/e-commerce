@@ -9,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 //---- ElementUI
 import ElementUI from 'element-ui';
-//import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/element_style/theme/index.css'
 
 Vue.use(ElementUI);
