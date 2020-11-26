@@ -17,6 +17,7 @@ import Traffic from '@/views/activity/Traffic'
 import RecommendCode from '@/views/activity/RecommendCode'
 /*會員登入相關*/
 import Login from '@/views/auth/Login'
+import ForgetPwd from '@/views/auth/ForgetPwd'
 Vue.use(VueRouter)
 
 let routes = [
@@ -30,6 +31,12 @@ let routes = [
         path: '/login',
         name: 'Login',
         component: Login
+    },
+    //忘記密碼
+    {
+        path: '/forget-pwd',
+        name: 'ForgetPwd',
+        component: ForgetPwd
     },
     //內頁加這
     {
