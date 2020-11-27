@@ -1,30 +1,30 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import MainPage from '@/views/MainPage'
-import MainPageActivity from '@/views/MainPageActivity'
+import EmptyLayout from '@/components/emptyLayout'
 import Index from '@/views/Home'
+import MyPage from '@/views/MyPage'
 /*以下是活動*/
 import EventsList from '@/views/EventsList'
-import Home from '@/views/activity/Home'
-import Map from '@/views/activity/Map'
-import Store from '@/views/activity/Store'
-import StoreDetail from '@/views/activity/StoreDetail'
-import CouponDetail from '@/views/activity/CouponDetail'
-import News from '@/views/activity/News'
-import NewsDetail from '@/views/activity/NewsDetail'
-import Coupon from '@/views/activity/Coupon'
-import Traffic from '@/views/activity/Traffic'
-import RecommendCode from '@/views/activity/RecommendCode'
 /*會員登入相關*/
 import Login from '@/views/auth/Login'
 import ForgetPwd from '@/views/auth/ForgetPwd'
+
+/* 個人中心相關頁面 */
+import BusinessCard from '@/views/MyPage/businessCard/index.vue'
+import Message from '@/views/MyPage/message/index.vue'
+import News from '@/views/MyPage/news/index.vue'
+import PrivacyPolicy from '@/views/MyPage/privacyPolicy/index.vue'
+import PrivacySettings from '@/views/MyPage/privacySettings/index.vue'
+import Problems from '@/views/MyPage/problems/index.vue'
+import QrCode from '@/views/MyPage/qrCode/index.vue'
+import ResetPassword from '@/views/MyPage/resetPassword/index.vue'
 Vue.use(VueRouter)
 
-let routes = [
-    {
+let routes = [{
         path: '*',
-        name: 'EventsList',
-        component: () => import(/* webpackChunkName: "EventsList" */ "@/views/EventsList")
+        component: () =>
+            import ( /* webpackChunkName: "EventsList" */ "@/views/EventsList")
     },
     //登入
     {
@@ -41,35 +41,32 @@ let routes = [
     //內頁加這
     {
         path: '/',
-        name: 'MainPage',
         component: MainPage,
         children: [
-            {path: 'index', name: 'Index', component: Index, meta: {title: '首頁'}},
-            {path: 'eventsList', name: 'EventsList', component: EventsList, meta: {title: '主題活動列表頁'}},
+            { path: '/', name: 'Home', component: Index, meta: { title: '首頁' } },
+            { path: 'eventsList', name: 'EventsList', component: EventsList, meta: { title: '主題活動列表頁' } },
+            { path: 'my-page', name: 'MyPage', component: MyPage, meta: { title: '個人中心' } },
 
         ]
     },
     {
-        path: '/mainPageActivity',
-        name: 'MainPageActivity',
-        component: MainPageActivity,
+        path: '/my-page',
+        component: EmptyLayout,
         children: [
-            {path: 'home', name: 'Home', component: Home, meta: {title: '首頁'}},
-            {path: 'map', name: 'Map', component: Map, meta: {title: '友善地圖'}},
-            {path: 'store', name: 'Store', component: Store, meta: {title: '參與店家'}},
-            {path: 'store-detail', name: 'StoreDetail', component: StoreDetail, meta: {title: '店家詳細'}},
-            {path: 'coupon-store', name: 'CouponDetail', component: CouponDetail, meta: {title: '我要搶卷'}},
-            {path: 'news', name: 'News', component: News, meta: {title: '活動公告'}},
-            {path: 'news-detail', name: 'NewsDetail', component: NewsDetail, meta: {title: '活動公告詳細'}},
-            {path: 'coupon', name: 'Coupon', component: Coupon, meta: {title: '優惠領取'}},
-            {path: 'traffic', name: 'Traffic', component: Traffic, meta: {title: '交通資訊'}},
-            {path: 'code', name: 'RecommendCode', component: RecommendCode, meta: {title: '我的推薦碼'}},
+            { path: 'business-card', name: 'BusinessCard', component: BusinessCard },
+            { path: 'message', name: 'Message', component: Message },
+            { path: 'news', name: 'News', component: News },
+            { path: 'privacy-policy', name: 'PrivacyPolicy', component: PrivacyPolicy },
+            { path: 'privacy-settings', name: 'PrivacySettings', component: PrivacySettings },
+            { path: 'problems', name: 'Problems', component: Problems },
+            { path: 'qr-code', name: 'QrCode', component: QrCode },
+            { path: 'reset-password', name: 'ResetPassword', component: ResetPassword }
         ]
     }
 ];
 
 const router = new VueRouter({
-    mode: 'history',
+    mode: 'hash',
     base: process.env.BASE_URL,
     routes
 })
