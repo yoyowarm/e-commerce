@@ -1,5 +1,8 @@
 <template>
     <div class="login">
+      <div class="back">
+        <img src="@/assets//images/close.svg" alt="">
+      </div>
         <div class="main-content">
             <div class="logo"><img :src="require('@/assets/images/login_logo.svg')"></div>
             <div class="tab">
@@ -7,30 +10,32 @@
               <button class="tablinks" @click="selected = 'registered'" :class="{selected: selected === 'registered'}">註冊</button>
             </div>
             <div class="tabs-login" v-if="selected === 'login'">
-              <el-form class="textBox" :model="login" :rules="rules" ref="loginForm" >
-                <el-form-item prop="phone">
-                  <el-input type="tel" placeholder="輸入手機" v-model="login.tel" autocomplete="off"/>
+              <el-form class="textBox" :model="loginform" ref="loginForm" >
+                <el-form-item>
+                  <el-input type="tel" placeholder="輸入手機" v-model="loginform.tel" autocomplete="off"/>
                 </el-form-item>
-                <el-form-item prop="password">
-                  <el-input placeholder="輸入密碼" v-model="login.password" show-password autocomplete="off" />
+                <el-form-item>
+                  <el-input placeholder="輸入密碼" v-model="loginform.password" show-password autocomplete="off" />
                 </el-form-item>
               </el-form>
               <div class="btn_box">
                 <p><router-link :to="{ name: 'ForgetPwd'}"><a>忘記密碼?</a></router-link></p>
-                <p><el-button round>登入</el-button></p>
+                <p><el-button round @click="login">登入</el-button></p>
               </div>
             </div>
             <div class="tabs-registered" v-else>
-              <el-form class="textBox" :model="registered" :rules="rules" ref="registeredForm">
-                <el-form-item prop="phone">
-                  <el-input type="tel" placeholder="輸入手機" v-model="registered.tel" autocomplete="off" />
+              <el-form class="textBox" :model="registeredForm" ref="registeredForm">
+                <el-form-item>
+                  <el-input type="tel" placeholder="輸入手機" v-model="registeredForm.tel" autocomplete="off" />
                 </el-form-item>
               </el-form>
               <div class="btn_box">
-                <p><el-button round>註冊</el-button></p>
+                <p><el-button round @click="registered">註冊</el-button></p>
               </div>
             </div>
         </div>
+        <div class="error-message" v-if="error.phone">手機號碼必須是10位數</div>
+        <div class="error-message" v-if="error.password">密碼必須為6-12英文數字混合</div>
         <div class="brand">
           <span>LIFE LINK 品牌服務系統</span>
         </div>
@@ -38,23 +43,36 @@
 </template>
 
 <script>
+import { checkPhone, checkPassword } from '@/util/validators'
 export default {
   name: "Login",
   data() {
     return {
         selected: 'login',
-        login: {
+        loginform: {
           tel: null,
-          password: ''
+          password: '',
         },
-        registered: {
+        registeredForm: {
           tel: null
         },
-        rules: {
-          phone: [{ required: true, message: '必填欄位', trigger: 'blur'  }],
-          password: [{ required: true, message: '必填欄位', trigger: 'blur'  }]
+        error: {
+          phone: false,
+          password: false,
+          timer: null
         }
     };
+  },
+  methods: {
+    login () {
+      clearTimeout(this.error.timer)
+      if(!checkPhone(this.loginform.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
+      if(!checkPassword(this.loginform.password)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
+    },
+    registered () {
+      clearTimeout(this.error.timer)
+      if(!checkPassword(this.registered.tel)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
+    }
   }
 }
 </script>
@@ -118,6 +136,31 @@ p {
       left: 0px;
       background: #F0D870
     }
+  }
+}
+.error-message {
+  position: fixed;
+  background: #666;
+  color: #fff;
+  border-radius: 50px;
+  height: 48px;
+  width: 210px;
+  text-align: center;
+  line-height: 48px;
+  left: 0px;
+  right: 0px;
+  bottom: 120px;
+  margin: 0 auto;
+  animation-name:oxxo;
+  animation-delay:2s;
+  animation-duration:2s;
+}
+@keyframes oxxo {
+  form {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 </style>
