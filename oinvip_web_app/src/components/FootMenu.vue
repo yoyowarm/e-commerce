@@ -1,5 +1,5 @@
 <template>
-    <div class="footerMenu">
+    <el-footer class="footerMenu">
         <router-link :to="{ name: 'Home'}" class="home">
             <span class="small">首頁</span>
         </router-link>
@@ -21,7 +21,7 @@
         <router-link :to="{ name: 'MyPage'}" class="setup">
             <span class="small">個人中心</span>
         </router-link>
-    </div>
+    </el-footer>
 </template>
 
 <script>

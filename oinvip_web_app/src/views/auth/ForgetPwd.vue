@@ -1,7 +1,7 @@
 <template>
     <div class="login">
       <div class="back">
-        <img src="@/assets//images/close.svg" alt="">
+        <img @click="$router.back()" src="@/assets//images/close.svg" alt="">
       </div>
         <div class="main-content">
             <div class="logo"><img :src="require('@/assets/images/login_logo.svg')"></div>
