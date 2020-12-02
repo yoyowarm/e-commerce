@@ -1,11 +1,14 @@
+/* eslint-disable no-prototype-builtins */
 import crypto from "../util/crypto"
 import auth from "../util/auth"
-// import Vue from 'vue'
-// import router from '../router'
+import sqlite from "../util/sqlite"
+import { inject } from 'vue';
+import router from '../router'
 
 export default {
     csrfToken: process.env.VUE_APP_CSRF_TOKEN,
     FileHost: process.env.VUE_APP_FILE_HOST + '/api',
+    notSaveArray: ['SignIn'],
     initCsrfToken() {
         let req = new XMLHttpRequest();
         req.open('GET', document.location, false);
@@ -17,6 +20,66 @@ export default {
                 return false;
             }
         });
+    },
+    getOS() {
+        if(window.hasOwnProperty("cordova")){
+            // eslint-disable-next-line no-console
+            console.log('sdsdsdsdsd');
+        }
+
+        let userAgent = window.navigator.userAgent,
+            platform = window.navigator.platform,
+            macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+            windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+            iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+            os = null;
+
+        if (macosPlatforms.indexOf(platform) !== -1) {
+          os = 'Mac OS';
+        } else if (iosPlatforms.indexOf(platform) !== -1) {
+          os = 'iOS';
+        } else if (windowsPlatforms.indexOf(platform) !== -1) {
+          os = 'Windows';
+        } else if (/Android/.test(userAgent)) {
+          os = 'Android';
+        } else if (!os && /Linux/.test(platform)) {
+          os = 'Linux';
+        }
+        return os;
+    },
+    post(action, parameter, authPath, funcSuccess){
+        if(window.hasOwnProperty("cordova")){
+            // eslint-disable-next-line no-console
+            console.log('sdsdsdsdsd');
+            sqlite.query('select json from offline_data where action like ?', [action], function(resultSet){
+                let jsonStr = resultSet.rows.item(0).json;
+                let json = JSON.parse(jsonStr);
+                funcSuccess(json);
+            });
+        } else {
+            this.send(action, parameter, authPath, funcSuccess);
+        }
+    },
+    postWithAuthEncrypt() {  /* 需要驗證的api都必須呼叫此方法含加密 */
+        const args = Array.prototype.slice.call(arguments);
+        const action = args[0][0];
+        const parameter = crypto.encryptText(JSON.stringify(args[1]));
+        const funcSuccess = args[2];
+        this.post(action, parameter, '/auth', funcSuccess);
+    },
+    postWithAuth() {  /* 需要驗證的api都必須呼叫此方法 */
+        const args = Array.prototype.slice.call(arguments);
+        const action = args[0][0];
+        const parameter = JSON.stringify(args[1]);
+        const funcSuccess = args[2];
+        this.post(action, parameter, '/auth', funcSuccess);
+    },
+    postWithEncrypt() { /* 整個參數json 轉成 string 再進行加密 */
+        const args = Array.prototype.slice.call(arguments);
+        const action = args[0][0];
+        const parameter = crypto.encryptText(JSON.stringify(args[1]));
+        const funcSuccess = args[2];
+        this.post(action, parameter,'', funcSuccess);
     },
     fetchWithAuthEncrypt() {  /* 需要驗證的api都必須呼叫此方法含加密 */
         const args = Array.prototype.slice.call(arguments);
@@ -47,30 +110,42 @@ export default {
         this.send(action, parameter,'', funcSuccess);
     },
     async send(action, parameter,authPath, funcSuccess) {
-        await fetch(process.env.VUE_APP_API_HOST  +authPath, {
-        // await fetch("http://192.168.50.96:9112" + "/admin-api" + authPath, {
-            body: JSON.stringify({
-                'action': action,
-                'parameters': parameter,
-            }),
+        const paramJsonStr = JSON.stringify({
+            'action': action,
+            'parameters': parameter,
+        });
+
+        await fetch(process.env.VUE_APP_API_HOST  + authPath, {
+            body: paramJsonStr,
             headers: new Headers({
                 'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json',
                 'Csrf-Token': this.csrfToken === '' || typeof csrfToken === 'undefined' ? process.env.VUE_APP_CSRF_TOKEN : this.csrfToken,
-                'Auth-Token': authPath === '/auth' ? auth.getUsersToken() : '',
-                // 'Auth-Token': authPath === '/auth' ? auth.getAdminToken() : 'tyogxQrnHvFKa26zKXN4jIUJ+jkrKqyGdcA2WzFxWj7Bg8xTrEob8Omr9UH4I5KJ',
-                // 'appName': authPath === '/auth' ? auth.getStoreToken() : ''
-                'appName': 'com.lifelink.oin'
+                'Auth-Token': authPath === '/auth' ? auth.getAdminToken() : '',
+                'Store-Token': authPath === '/auth' ? auth.getStoreToken() : ''
             }),
             method: 'POST'
         }).then(response => {
             return response.text();
+        }).catch(() => {
+            if(this.notSaveArray.indexOf(action) === -1 && this.method === 'post'){
+                sqlite.insert("insert into upload_data(action, json) values (?, ?)", [action, paramJsonStr])
+            }
         }).then(text => {
             // JSON Hijacking while(1);
-            let json = JSON.parse(text.replace('while(1);', ''));
+            let jsonStr = text.replace('while(1);', '');
+            let json = JSON.parse(jsonStr);
+
+            // sqlite.insert("insert into offline_data(action, json) values (?, ?)", [action, paramJsonStr])
+            // if(this.notSaveArray.indexOf(action) === -1 && method === ''){
+            //     sqlite.insert("insert delete api(action, json) values (?, ?)", [action, jsonStr])
+            //     sqlite.insert("insert into api(action, json) values (?, ?)", [action, jsonStr])
+            // }
+
             if (!json.status && json.message === "logout") {
-                // Vue.prototype.auth.clearToken();
-                // router.push({path: '/'});
+                const auth = inject('auth')
+                auth.clearToken();
+                router.push({path: '/'});
                 return;
             }
             funcSuccess(json);
@@ -128,8 +203,9 @@ export default {
             // JSON Hijacking while(1);
             let json = JSON.parse(text.replace('while(1);', ''));
             if (!json.status && json.message === "logout") {
-                // Vue.prototype.auth.clearToken();
-                // router.push({path: '/'});
+                const auth = inject('auth')
+                auth.clearToken();
+                router.push({path: '/'});
                 return;
             }
             funcSuccess(json);
@@ -147,8 +223,6 @@ export default {
         const funcFail = args[3];
         await this.uploadSend(parameter.file, parameter.folder, funcSuccess, funcFail);
     }
-
-
 }
 
 

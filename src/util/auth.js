@@ -8,7 +8,6 @@ let number = window.localStorage.getItem('account');
 let loginEventType = window.localStorage.getItem('loginEventType');
 let waitingCallBookmark = window.localStorage.getItem('waiting_call_bookmark');
 let waitingCallPageMode = window.localStorage.getItem('waiting_call_pageMode');
-let user_token = window.localStorage.getItem('user_token');
 
 export default {
     isAdminLogin() {
@@ -20,37 +19,6 @@ export default {
     },
     getAdminToken() {
         return admin_token;
-    },
-    isUserLogin() {
-        return user_token !== null && user_token !== '' && user_token !== undefined && user_token !== 'undefined';
-    },
-    setUserToken(t) {
-        window.localStorage.setItem('user_token', t + '');
-        user_token = t;
-    },
-    getUsersToken() {
-        if (this.isUserLogin()) {
-            return user_token;
-        } else {
-            let u = navigator.userAgent.toLowerCase();
-            let isApple = /iphone|ipad|ipod|ios/i.test(u);
-            let isAndroid = /android/i.test(u);
-
-            window.getUserToken = this.getUserToken//設全域function給iOS呼叫
-
-            //判斷目前是何種載具
-            if (isApple) {
-                window.webkit.messageHandlers.ToApp.postMessage("login");//若toke沒有值，沒有則出現登入頁
-            }else if(isAndroid) {
-                window.jsCallAndroid.jsNoToken();//若toke沒有值，沒有則出現登入頁
-            }
-
-            return user_token;
-        }
-    },
-    getUserToken: function (token) {
-        window.localStorage.setItem('user_token', token + '');
-        user_token = token;
     },
     setNumber(t) {
         window.localStorage.setItem('account', t + '');
