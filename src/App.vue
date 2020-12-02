@@ -4,6 +4,16 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
+
+   <el-input
+              id="exampleFormControlTextarea1"
+              type="textarea"
+              placeholder="請輸入問題內容"
+              v-model="detail"
+              :autosize="{ minRows: 6}"
+      >
+  </el-input>
+
     <router-view/>
   </div>
 </template>
@@ -14,7 +24,9 @@ import User from './model/user';
 
 @Component
 export default class HelloWorld extends Vue {
-  // @Prop() private msg!: string;
+
+  public detail = "";
+
   created(){
     (new User()).signIn({
         countryCode: '+886',
