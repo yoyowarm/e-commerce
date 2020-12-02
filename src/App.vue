@@ -1,30 +1,32 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div id="app">
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view/>
   </div>
-  <router-view/>
 </template>
-<script>
-  export default {
-    data() {
-        return {
-            dataList: []
-        }
-    },
-    created() {
-      console.log('dfdfdfdf');
-      this.http.fetchWithEncrypt`SignIn${{
-          'code': '',
-          'account': '',
-          'password': '',
-      }}
-      ${json => {
-          console.log(json);
-      }}`;
-    },
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import User from './model/user';
+
+@Component
+export default class HelloWorld extends Vue {
+  // @Prop() private msg!: string;
+  created(){
+    (new User()).signIn({
+        countryCode: '+886',
+        phone: '0900000001',
+        password: 'a11111111'
+    }, (user: User) => {
+        console.log(user.getToken());
+    });
   }
+}
 </script>
+
 <style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
