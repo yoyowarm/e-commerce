@@ -1,19 +1,36 @@
 <template>
 <transition name="slide">
-    <div class="slidein">
+    <el-container class="slidIn is-vertical">
+      <mp-Header :title="title">
+        <template slot="left">
+          <div class="el-col el-col-5">
+            <el-button type="text" @click="$router.back()" class="back">
+              <img src="@/assets/images/top_bar_back.svg" alt="">
+            </el-button>
+          </div>
+        </template>
+      </mp-Header>
       <router-view/>
-    </div>
+    </el-container>
 </transition>
 </template>
 
 <script>
+import mpHeader from './header'
 export default {
-
+  components: {
+    mpHeader
+  },
+  computed: {
+		title () {
+			return this.$route.meta.title
+		}
+	},
 }
 </script>
 
 <style scoped>
-.slidein {
+.slidIn {
   width: 100%;
   height: 100vh;
   position: fixed;
@@ -24,7 +41,6 @@ export default {
   animation-name:oxxo;
   animation-duration:0.5s;
   animation-timing-function: cubic-bezier(.03,.98,.87,1);
-  background: #ddd
 }
 
 /* before the element is shown, start off the screen to the right */
@@ -39,5 +55,8 @@ export default {
   to{
       top: 0%;
   }
+}
+.back {
+  width: 20px
 }
 </style>

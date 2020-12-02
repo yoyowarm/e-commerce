@@ -3,23 +3,17 @@
         <router-link :to="{ name: 'Home'}" class="home">
             <span class="small">首頁</span>
         </router-link>
-        <router-link :to="{ name: 'BonusList'}" class="coin">
-            <span class="small">回饋獎勵</span>
+        <router-link :to="{ name: 'Gifts'}" class="coin">
+            <span class="small">禮物</span>
         </router-link>
-        <router-link :to="{ name: 'PointScan'}" class="scanner">
-            <span class="small">掃描</span>
+        <router-link :to="{ name: 'ScanCode'}" class="scanner">
+            <span class="small">掃碼</span>
         </router-link>
-        <router-link :to="{ name: 'TicketInfo'}" class="ticket">
-            <span class="small">我的卡片</span>
+        <router-link :to="{ name: 'Nearby'}" class="ticket">
+            <span class="small">附近</span>
         </router-link>
-        <!--<router-link :to="{ name: 'PointList'}" class="ticket">
-            <span class="small">消費點數</span>
-        </router-link>-->
-        <!--<router-link :to="{ name: 'ConsumptionList'}" class="ticket">
-            <span class="small">消費記錄</span>
-        </router-link>--> 
         <router-link :to="{ name: 'MyPage'}" class="setup">
-            <span class="small">個人中心</span>
+            <span class="small">個人</span>
         </router-link>
     </el-footer>
 </template>
