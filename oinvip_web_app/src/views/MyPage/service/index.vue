@@ -1,5 +1,5 @@
 <template>
-  <div>隱私權設定</div>
+  <div>客服中心</div>
 </template>
 
 <script>

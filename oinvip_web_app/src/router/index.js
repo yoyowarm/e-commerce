@@ -12,13 +12,15 @@ import ForgetPwd from '@/views/auth/ForgetPwd'
 
 /* 個人中心相關頁面 */
 import BusinessCard from '@/views/MyPage/businessCard/index.vue'
-import Message from '@/views/MyPage/message/index.vue'
-import News from '@/views/MyPage/news/index.vue'
 import PrivacyPolicy from '@/views/MyPage/privacyPolicy/index.vue'
-import PrivacySettings from '@/views/MyPage/privacySettings/index.vue'
-import Problems from '@/views/MyPage/problems/index.vue'
+import Settings from '@/views/MyPage/settings/index.vue'
 import QrCode from '@/views/MyPage/qrCode/index.vue'
 import ResetPassword from '@/views/MyPage/resetPassword/index.vue'
+import Service from '@/views/MyPage/service/index.vue'
+import History from '@/views/MyPage/history/index.vue'
+// import Message from '@/views/MyPage/message/index.vue'
+// import News from '@/views/MyPage/news/index.vue'
+// import Problems from '@/views/MyPage/problems/index.vue'
 Vue.use(VueRouter)
 
 let routes = [{
@@ -53,14 +55,16 @@ let routes = [{
         path: '/my-page',
         component: EmptyLayout,
         children: [
-            { path: 'business-card', name: 'BusinessCard', component: BusinessCard },
-            { path: 'message', name: 'Message', component: Message },
-            { path: 'news', name: 'News', component: News },
-            { path: 'privacy-policy', name: 'PrivacyPolicy', component: PrivacyPolicy },
-            { path: 'privacy-settings', name: 'PrivacySettings', component: PrivacySettings },
-            { path: 'problems', name: 'Problems', component: Problems },
-            { path: 'qr-code', name: 'QrCode', component: QrCode },
-            { path: 'reset-password', name: 'ResetPassword', component: ResetPassword }
+            { path: 'business-card', name: 'BusinessCard', component: BusinessCard, meta: { title: '我的名片' } },
+            { path: 'privacy-policy', name: 'PrivacyPolicy', component: PrivacyPolicy, meta: { title: '隱私權條款' } },
+            { path: 'settings', name: 'Settings', component: Settings, meta: { title: 'APP設定' } },
+            { path: 'qr-code', name: 'QrCode', component: QrCode, meta: { title: 'QR通訊錄' } },
+            { path: 'reset-password', name: 'ResetPassword', component: ResetPassword, meta: { title: '變更密碼' } },
+            { path: 'service', name: 'Service', component: Service, meta: { title: '客服中心' } },
+            { path: 'history', name: 'History', component: History, meta: { title: '紀錄類' } }
+            // { path: 'problems', name: 'Problems', component: Problems, meta: { title: '常見問題' } },
+            // { path: 'message', name: 'Message', component: Message, meta: { title: '我要留言' } },
+            // { path: 'news', name: 'News', component: News, meta: { title: '最新消息' } },
         ]
     }
 ];
