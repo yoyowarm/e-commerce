@@ -1077,52 +1077,55 @@ button:focus {
   left: 0;
   z-index: 999;
   border-top: 1px solid rgb(224, 224, 224);
-  background: #ffffff;
+  background: #eee;
   display: flex;
   a {
     flex: 1;
     text-align: center;
     padding: 0px;
-    background-size: 22px;
+    background-size: 26px;
     background-repeat: no-repeat;
     background-position: center 14px;
+    position: relative;
   }
   .home {
     background-image: url("../assets/images/footer/home.png");
     &.router-link-exact-active {
-      background-size: 55px;
-      background-position: center 0px;
-      background-image: url("../assets/images/footer/active-home.png");
+      background-size: 26px, 55px;
+      background-position: center 15px, center;
+      background-image: url("../assets/images/footer/active-home.png"), url("../assets/images/footer/active.png");
     }
   }
-  .setup {
-    background-image: url("../assets/images/user-nav.svg");
+  .user {
+    background-image: url("../assets/images/footer/user.png");
     &.router-link-exact-active {
-      background-image: url("../assets/images/user-nav.svg");
+      background-size: 26px, 55px;
+      background-position: center 15px, center;
+      background-image: url("../assets/images/footer/active-user.png"), url("../assets/images/footer/active.png");;
     }
   }
-  .coin {
-    background-image: url("../assets/images/gift.svg");
+  .gift {
+    background-image: url("../assets/images/footer/gifts.png");
     &.router-link-exact-active {
-      background-image: url("../assets/images/gift.svg");
+      background-size: 26px, 55px;
+      background-position: center 15px, center;
+      background-image: url("../assets/images/footer/active-gifts.png"), url("../assets/images/footer/active.png");;
     }
   }
-  .ticket {
-    background-image: url("../assets/images/ticket_line.svg");
+  .landmark {
+    background-image: url("../assets/images/footer/landmark.png");
     &.router-link-exact-active {
-      background-image: url("../assets/images/ticket.svg");
-    }
-  }
-  .QRcode {
-    background-image: url("../assets/images/QRcode_line.svg");
-    &.router-link-exact-active {
-      background-image: url("../assets/images/QRcode2.svg");
+      background-size: 26px, 55px;
+      background-position: center 15px, center;
+      background-image: url("../assets/images/footer/active-landmark.png"), url("../assets/images/footer/active.png");;
     }
   }
   .scanner {
-    background-image: url("../assets/images/scan-code.svg");
+    background-image: url("../assets/images/footer/scan-code.png");
     &.router-link-exact-active {
-      background-image: url("../assets/images/scan-code.svg");
+      background-size: 26px, 55px;
+      background-position: center 15px, center;
+      background-image: url("../assets/images/footer/active-scan-code.png"), url("../assets/images/footer/active.png");;
     }
   }
   span {
