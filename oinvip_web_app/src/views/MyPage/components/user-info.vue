@@ -8,7 +8,7 @@
         <ul class="account">
           <li>User name</li>
           <li><span>會員：user1234</span></li>
-          <li><el-button class="edit" round>編輯我的資料</el-button></li>
+          <li><el-button class="edit" round>編輯我的資料 <img src="@/assets/images/edit.svg" alt=""></el-button></li>
         </ul>
       </el-col>
     </el-row>
@@ -39,6 +39,10 @@ export default {
       color: #fff;
       padding: 5px 12px;
       font-size: 14px;
+      img {
+        width: 12px;
+        margin-bottom: 2px
+      }
     }
   }
 }

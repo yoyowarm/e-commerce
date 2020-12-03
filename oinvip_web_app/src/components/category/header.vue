@@ -1,5 +1,5 @@
 <template>
-  <div class="list-header" :class="{ 'between' : to }">
+  <div class="list-header" :class="{ 'between':to }">
     <slot name="title">
       <span>{{ title }}</span>
     </slot>
@@ -7,7 +7,9 @@
       v-if="to"
       @click="() => $router.push(to)"
     >
-      <slot name="more">更多…</slot>
+      <slot name="more">
+        <img src="@/assets/images/more.svg" alt="">
+      </slot>
     </span>
   </div>
 </template>
@@ -32,7 +34,7 @@ props: {
   display: flex;
   align-items: center;
   justify-content: start;
-  & .between {
+  &.between {
     justify-content: space-between
   }
 }

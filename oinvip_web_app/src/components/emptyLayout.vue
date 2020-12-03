@@ -10,7 +10,9 @@
           </div>
         </template>
       </mp-Header>
-      <router-view/>
+      <div class="main">
+        <router-view/>
+      </div>
     </el-container>
 </transition>
 </template>
@@ -41,6 +43,7 @@ export default {
   animation-name:oxxo;
   animation-duration:0.5s;
   animation-timing-function: cubic-bezier(.03,.98,.87,1);
+  background: #fff
 }
 
 /* before the element is shown, start off the screen to the right */
@@ -58,5 +61,10 @@ export default {
 }
 .back {
   width: 20px
+}
+.main {
+  margin: 0px 20px;
+  padding: 10px 0px;
+  border-top: 1px solid #E6E3E0
 }
 </style>
