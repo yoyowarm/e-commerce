@@ -23,7 +23,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import User from './model/user';
 
 @Component
-export default class HelloWorld extends Vue {
+export default class App extends Vue {
 
   public detail = "";
 

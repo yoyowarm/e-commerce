@@ -1,7 +1,6 @@
 import router from '../router'
 import auth from './auth'
 import crypt from './crypt'
-// import { inject } from 'vue';
 
 export interface Responses {
     data: object;
