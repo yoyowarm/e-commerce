@@ -18,13 +18,17 @@ export default class Auth {
                   setUserCode(window.localStorage.getItem('userCode') || '');
     }
 
+    public isSignIn(): boolean{
+        return this.user.getToken() !== '';
+    }
+
     public clearToken(){
         this.user.setToken('').
                 setNickName('').
                 setUserCode('');
 
-        window.localStorage.setItem('token','');
-        window.localStorage.setItem('nickName','');
-        window.localStorage.setItem('userCode','');
+        window.localStorage.setItem('token', '');
+        window.localStorage.setItem('nickName', '');
+        window.localStorage.setItem('userCode', '');
     }
 }

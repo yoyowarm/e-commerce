@@ -9,6 +9,7 @@ Vue.config.productionTip = false
 
 Vue.use(ElementUI);
 
+
 Vue.prototype.$auth = Auth.Instance;
 
 declare module 'vue/types/vue' {
