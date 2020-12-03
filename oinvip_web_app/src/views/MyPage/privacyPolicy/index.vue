@@ -19,5 +19,6 @@ export default {
 
 <style lang="less" scoped>
 .policy {
+  padding: 20px
 }
 </style>

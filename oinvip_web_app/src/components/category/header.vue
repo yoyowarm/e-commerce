@@ -5,7 +5,7 @@
     </slot>
     <span
       v-if="to"
-      @click="() => $router.push(to)"
+      @click="$router.push(to)"
     >
       <slot name="more">
         <img src="@/assets/images/more.svg" alt="">
@@ -34,6 +34,7 @@ props: {
   display: flex;
   align-items: center;
   justify-content: start;
+  margin: 0 20px;
   &.between {
     justify-content: space-between
   }

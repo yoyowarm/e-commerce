@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-      <slot/>
+    <slot/>
   </div>
 </template>
 
@@ -13,6 +13,7 @@ export default {
 <style lang="less" scoped>
 .content {
     padding: 10px 0px;
+    padding-bottom: 20px;
     border-bottom: 2px solid #F6F5F4
 }
 </style>

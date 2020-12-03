@@ -1,7 +1,7 @@
 <template>
 	<el-container class="BigPage is-vertical">
 		<app-header :title="title"/>
-		<router-view/>
+		<router-view :key="$route.fullPath"/>
 			<!--TODO 總ＡＰＰ的底部-->
 		<foot-menu/>
 

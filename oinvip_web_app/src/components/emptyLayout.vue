@@ -1,5 +1,5 @@
 <template>
-<transition name="slide">
+<transition name="slide" mode="out-in">
     <el-container class="slidIn is-vertical">
       <mp-Header :title="title">
         <template slot="left">
@@ -11,7 +11,7 @@
         </template>
       </mp-Header>
       <div class="main">
-        <router-view/>
+        <router-view :key="$route.fullPath"/>
       </div>
     </el-container>
 </transition>
@@ -63,8 +63,8 @@ export default {
   width: 20px
 }
 .main {
-  margin: 0px 20px;
-  padding: 10px 0px;
-  border-top: 1px solid #E6E3E0
+  padding: 0px 0px 10px 0px;
+  border-top: 1px solid #E6E3E0;
+  overflow-x: auto
 }
 </style>
