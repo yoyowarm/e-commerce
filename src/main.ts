@@ -4,6 +4,7 @@ import router from './router/Index'
 import store from './store/Index'
 import Auth from './util/Auth'
 import ElementUI from 'element-ui';
+import {mountVue} from './start';
 import '@/assets/element_style/theme/index.css'
 import '@/less/style_admin.less'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -20,10 +21,4 @@ declare module 'vue/types/vue' {
   }
 }
 
-// document.addEventListener('deviceready', function () {
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
-// }, false);
+mountVue(router, store, App);
