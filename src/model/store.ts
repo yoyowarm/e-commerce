@@ -24,6 +24,7 @@ export default class Store extends Http {
     isColumn = false;
 
     public storeList(parameters: {}, funcSuccess: (store: Store) => void) {
+        
         this.fetch('StoreList', parameters, () => {
             funcSuccess(this);
         });
