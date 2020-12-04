@@ -43,57 +43,53 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-// import { CheckPhone, CheckPassword } from '@/util/validators'
+import { Vue, Component } from 'vue-property-decorator';
 
-interface Loginform {
-  tel: string;
-  password: string;
-}
-
-interface RegisteredForm {
-  tel: string;
-}
-
-interface Error {
-  phone: boolean;
-  password: boolean;
-  timer: number;
-}
 
 @Component
 export default class Login extends Vue {
-  public selected = 'login';
-  public loginform!: Loginform;
-  public registeredForm!: RegisteredForm;
-  public error!: Error;
+  selected = 'login';
+  loginform = {
+    tel: '',
+    password: ''
+  };
 
-  public login() {
+  registeredForm = {
+    tel: ''
+  };
 
+  error = {
+    phone: false,
+    password: false,
+    timer: 0
+  };
+
+  login() {
+      console.log('login');
   }
 
-  public registered() {
-
+  registered() {
+      console.log('registered');
   }
 }
-
+// import { checkPhone, checkPassword } from '@/util/validators'
 // export default {
 //   name: "Login",
 //   data() {
 //     return {
 //         selected: 'login',
-//         loginform: {
-//           tel: null,
-//           password: '',
-//         },
-//         registeredForm: {
-//           tel: null
-//         },
-//         error: {
-//           phone: false,
-//           password: false,
-//           timer: null
-//         }
+        // loginform: {
+        //   tel: null,
+        //   password: '',
+        // },
+        // registeredForm: {
+        //   tel: null
+        // },
+        // error: {
+        //   phone: false,
+        //   password: false,
+        //   timer: null
+        // }
 //     };
 //   },
 //   methods: {
