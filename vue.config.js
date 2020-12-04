@@ -1,0 +1,33 @@
+const prod = process.env.NODE_ENV === "production";
+const webpack = require('webpack');
+const fs = require('fs');
+
+module.exports = {
+    publicPath: './',
+    // publicPath: prod ? "./" : "/",
+    productionSourceMap:  !prod,
+    outputDir: 'app/www',
+    // configureWebpack:{
+    //     performance: {
+    //         hints: 'error',
+    //         maxEntrypointSize: 500000,
+    //         maxAssetSize: 300000
+    //     }
+    // }
+
+    // devServer: {
+    //     https: {
+    //         key: fs.readFileSync('./certs/example.com+6-key.pem'),
+    //         cert: fs.readFileSync('./certs/example.com+6.pem'),
+    //     },
+    //     public: 'https://192.168.50.37:8080/'
+    // }
+    // publicPath: './',
+    // outputDir: 'app/www',
+};
+
+// module.exports = {
+//     publicPath: './',
+//     outputDir: 'app/www',
+//     productionSourceMap: false,
+// };
