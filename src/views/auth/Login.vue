@@ -42,39 +42,72 @@
     </div>
 </template>
 
-<script>
-import { checkPhone, checkPassword } from '@/util/validators'
-export default {
-  name: "Login",
-  data() {
-    return {
-        selected: 'login',
-        loginform: {
-          tel: null,
-          password: '',
-        },
-        registeredForm: {
-          tel: null
-        },
-        error: {
-          phone: false,
-          password: false,
-          timer: null
-        }
-    };
-  },
-  methods: {
-    login () {
-      clearTimeout(this.error.timer)
-      if(!checkPhone(this.loginform.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
-      if(!checkPassword(this.loginform.password)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
-    },
-    registered () {
-      clearTimeout(this.error.timer)
-      if(!checkPassword(this.registered.tel)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
-    }
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+// import { CheckPhone, CheckPassword } from '@/util/validators'
+
+interface Loginform {
+  tel: string;
+  password: string;
+}
+
+interface RegisteredForm {
+  tel: string;
+}
+
+interface Error {
+  phone: boolean;
+  password: boolean;
+  timer: number;
+}
+
+@Component
+export default class Login extends Vue {
+  public selected = 'login';
+  public loginform!: Loginform;
+  public registeredForm!: RegisteredForm;
+  public error!: Error;
+
+  public login() {
+
+  }
+
+  public registered() {
+
   }
 }
+
+// export default {
+//   name: "Login",
+//   data() {
+//     return {
+//         selected: 'login',
+//         loginform: {
+//           tel: null,
+//           password: '',
+//         },
+//         registeredForm: {
+//           tel: null
+//         },
+//         error: {
+//           phone: false,
+//           password: false,
+//           timer: null
+//         }
+//     };
+//   },
+//   methods: {
+//     login () {
+//       clearTimeout(this.error.timer)
+//       if(!checkPhone(this.loginform.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
+//       if(!checkPassword(this.loginform.password)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
+//     },
+//     registered () {
+//       clearTimeout(this.error.timer)
+//       if(!checkPassword(this.registered.tel)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
+//     }
+//   }
+// }
 </script>
 
 <style lang="less" scoped>

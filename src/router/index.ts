@@ -1,28 +1,74 @@
-import Vue from 'vue'
-import VueRouter, { RouteConfig } from 'vue-router'
-import Home from '../views/Home.vue'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import MainPage from '@/views/MainPage.vue'
 
-Vue.use(VueRouter)
+import EmptyLayout from '@/components/emptyLayout'
+import Index from '@/views/Home'
+import Gifts from '@/views/gifts'
+import ScanCode from '@/views/scanCode'
+import Nearby from '@/views/nearby'
+import MyPage from '@/views/MyPage'
 
-const routes: Array<RouteConfig> = [
+/*主題活動*/
+// import EventsList from '@/views/EventsList'
+
+/*會員登入相關*/
+import Login from '@/views/auth/Login'
+import ForgetPwd from '@/views/auth/ForgetPwd'
+
+/* 個人中心相關頁面 */
+import BusinessCard from '@/views/MyPage/businessCard/index.vue'
+import PrivacyPolicy from '@/views/MyPage/privacyPolicy/index.vue'
+import Settings from '@/views/MyPage/settings/index.vue'
+import QrCode from '@/views/MyPage/qrCode/index.vue'
+import ResetPassword from '@/views/MyPage/resetPassword/index.vue'
+import Service from '@/views/MyPage/service/index.vue'
+import History from '@/views/MyPage/history/index.vue'
+import MyComment from '@/views/MyPage/myComment/index.vue'
+import EditProfile from '@/views/MyPage/editProfile/index.vue'
+import Profile from '@/views/MyPage/profile/index.vue'
+// import Message from '@/views/MyPage/message/index.vue'
+// import News from '@/views/MyPage/news/index.vue'
+// import Problems from '@/views/MyPage/problems/index.vue'
+const routes: Array<RouteRecordRaw> = [
+
+  {path: '/login', name: 'Login', component: Login}, //登入
+  {path: '/forget-pwd', name: 'ForgetPwd', component: ForgetPwd}, //忘記密碼
+
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    component: MainPage,
+    children: [
+        { path: '/', name: 'Home', component: Index, meta: { title: '首頁' } },
+        { path: 'gifts', name: 'Gifts', component: Gifts, meta: { title: '禮物' } },
+        { path: 'scan-code', name: 'ScanCode', component: ScanCode, meta: { title: '掃碼' } },
+        { path: 'nearby', name: 'Nearby', component: Nearby, meta: { title: '附近' } },
+        { path: 'my-page', name: 'MyPage', component: MyPage, meta: { title: '個人中心' } },
+
+    ]
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/my-page',
+    component: EmptyLayout,
+    children: [
+        { path: 'business-card', name: 'BusinessCard', component: BusinessCard, meta: { title: '我的名片' } },
+        { path: 'privacy-policy', name: 'PrivacyPolicy', component: PrivacyPolicy, meta: { title: '隱私權條款' } },
+        { path: 'settings', name: 'Settings', component: Settings, meta: { title: 'APP設定' } },
+        { path: 'qr-code', name: 'QrCode', component: QrCode, meta: { title: 'QR通訊錄' } },
+        { path: 'reset-password', name: 'ResetPassword', component: ResetPassword, meta: { title: '變更密碼' } },
+        { path: 'service', name: 'Service', component: Service, meta: { title: '客服中心' } },
+        { path: 'history', name: 'History', component: History, meta: { title: '紀錄類' } },
+        { path: 'my-comment', name: 'MyComment', component: MyComment, meta: { title: '我的評論' } },
+        { path: 'edit-profile', name: 'EditProfile', component: EditProfile, meta: { title: '編輯個人資料' } },
+        { path: 'profile', name: 'Profile', component: Profile, meta: { title: '編輯個人資料' } }
+        // { path: 'problems', name: 'Problems', component: Problems, meta: { title: '常見問題' } },
+        // { path: 'message', name: 'Message', component: Message, meta: { title: '我要留言' } },
+        // { path: 'news', name: 'News', component: News, meta: { title: '最新消息' } },
+    ]
   }
 ]
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
   routes
 })
 

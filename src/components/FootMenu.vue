@@ -13,21 +13,13 @@
     </el-footer>
 </template>
 
-<script>
-    export default {
-        name: "footMenu",
-        props: {
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 
-        },
-        data() {
-            return {
+@Component
+export default class FootMenu extends Vue {
 
-            }
-        },
-        methods:{
-
-        }
-    }
+}
 </script>
 
 <style scoped>
