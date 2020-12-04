@@ -10,12 +10,12 @@
               <button class="tablinks" @click="selected = 'registered'" :class="{selected: selected === 'registered'}">註冊</button>
             </div>
             <div class="tabs-login" v-if="selected === 'login'">
-              <el-form class="textBox" :model="loginform" ref="loginForm" >
+              <el-form class="textBox" :model="loginForm" ref="loginForm" >
                 <el-form-item>
-                  <el-input type="tel" placeholder="輸入手機" v-model="loginform.tel" autocomplete="off"/>
+                  <el-input type="tel" placeholder="輸入手機" v-model="loginForm.tel" autocomplete="off"/>
                 </el-form-item>
                 <el-form-item>
-                  <el-input placeholder="輸入密碼" v-model="loginform.password" show-password autocomplete="off" />
+                  <el-input placeholder="輸入密碼" v-model="loginForm.password" show-password autocomplete="off" />
                 </el-form-item>
               </el-form>
               <div class="btn_box">
@@ -49,7 +49,7 @@ import { checkPhone, checkPassword } from '@/util/Validators'
 @Component
 export default class Login extends Vue {
   selected = 'login';
-  loginform = {
+  loginForm = {
     tel: '',
     password: ''
   };
@@ -66,8 +66,8 @@ export default class Login extends Vue {
 
   login() {
     clearTimeout(this.error.timer)
-    if(!checkPhone(this.loginform.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
-    if(!checkPassword(this.loginform.password)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
+    if(!checkPhone(this.loginForm.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
+    if(!checkPassword(this.loginForm.password)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
   }
 
   registered() {

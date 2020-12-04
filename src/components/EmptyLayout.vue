@@ -1,7 +1,7 @@
 <template>
 <transition name="slide" mode="out-in">
     <el-container class="slidIn is-vertical">
-      <mp-Header :title="title">
+      <navigation-bar>
         <template slot="left">
           <div class="el-col el-col-5">
             <el-button type="text" @click="$router.back()" class="back">
@@ -9,7 +9,7 @@
             </el-button>
           </div>
         </template>
-      </mp-Header>
+      </navigation-bar>
       <div class="main">
         <router-view :key="$route.fullPath"/>
       </div>

@@ -9,7 +9,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class ItemGrid extends Vue {
-   @Prop({required: false, type: String, default: 'auto'}) height = 'auto';
+   @Prop({required: false, type: String, default: 'auto'}) height!: string;
 }
 </script>
 
