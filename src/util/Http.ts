@@ -1,6 +1,6 @@
-import router from '../router'
-import auth from './auth'
-import crypt from './crypt'
+import router from '../router/Index'
+import auth from './Auth'
+import crypt from './Crypt'
 
 export interface Responses {
     data: object;

@@ -1,4 +1,4 @@
-import { Http, Responses } from "@/util/http";
+import { Http, Responses } from "@/util/Http";
 
 interface StoreListParameters {
     searchType: number;

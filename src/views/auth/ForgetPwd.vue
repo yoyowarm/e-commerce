@@ -32,7 +32,7 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { checkPhone } from '@/util/validators'
+import { checkPhone } from '@/util/Validators'
 
 @Component
 export default class ForgetPwd extends Vue {
