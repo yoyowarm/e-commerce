@@ -28,7 +28,7 @@ export default class Head extends Vue {
 .list-header {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: start-flex;
   margin: 0 20px;
   &.between {
     justify-content: space-between
