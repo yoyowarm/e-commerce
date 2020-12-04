@@ -38,6 +38,7 @@ const routes: Array<RouteConfig> = [
   {path: '/forget-pwd', name: 'ForgetPwd', component: ForgetPwd}, //忘記密碼
 
   {
+    // path: '*',
     path: '/',
     component: MainPage,
     children: [
