@@ -44,7 +44,7 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { checkPhone, checkPassword } from '@/util/validators'
+import { checkPhone, checkPassword } from '@/util/Validators'
 
 @Component
 export default class Login extends Vue {

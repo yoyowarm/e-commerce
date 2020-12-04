@@ -1,4 +1,4 @@
-import User from "@/model/user";
+import User from "@/model/User";
 
 export default class Auth {
     private static _instance: Auth;

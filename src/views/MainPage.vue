@@ -12,8 +12,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import NavigationBar from '@/components/navigationBar.vue';
-import TabBar from '@/components/tabBar.vue';
+import NavigationBar from '@/components/NavigationBar.vue';
+import TabBar from '@/components/TabBar.vue';
 
 @Component({components:{ NavigationBar, TabBar }})
 export default class App extends Vue {

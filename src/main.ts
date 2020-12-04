@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
-import store from './store'
-import Auth from './util/auth'
+import router from './router/Index'
+import store from './store/Index'
+import Auth from './util/Auth'
 import ElementUI from 'element-ui';
 import '@/assets/element_style/theme/index.css'
 import '@/less/style_admin.less'

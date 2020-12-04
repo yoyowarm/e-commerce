@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import CustomCard from '@/components/customCard.vue';
+import CustomCard from '@/components/CustomCard.vue';
 
 @Component({components:{ CustomCard }})
 export default class EditProfile extends Vue {

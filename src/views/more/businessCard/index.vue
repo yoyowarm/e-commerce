@@ -64,12 +64,12 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import CategoryContent from '@/components/category/content.vue';
-import CategoryHeader from '@/components/category/header.vue';
-import CustomCard from '@/components/customCard.vue';
-import ItemGrid from '@/components/category/itemGrid.vue';
-import StoreItem from '@/components/category/storeItem.vue';
-import ArticleCard from '@/components/category/articleCard.vue';
+import CategoryContent from '@/components/category/Content.vue';
+import CategoryHeader from '@/components/category/Header.vue';
+import CustomCard from '@/components/CustomCard.vue';
+import ItemGrid from '@/components/category/ItemGrid.vue';
+import StoreItem from '@/components/category/StoreItem.vue';
+import ArticleCard from '@/components/category/ArticleCard.vue';
 
 @Component({components:{ 
   CategoryHeader,

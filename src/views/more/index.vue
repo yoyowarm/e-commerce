@@ -52,20 +52,14 @@
   </el-main>
 </template>
 
-<script>
-import userInfo from './components/user-info'
-import logout from './components/logout'
-export default {
-  components: {
-    userInfo,
-    logout
-  },
-  data () {
-    return {
-      logoutDialog: false
-    }
-  }
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator';
+import UserInfo from './components/UserInfo.vue';
+import Logout from './components/Logout.vue';
 
+@Component({components:{ UserInfo, Logout }})
+export default class More extends Vue {
+  logoutDialog = false;
 }
 </script>
 
