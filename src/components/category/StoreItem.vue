@@ -14,7 +14,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class StoreItem extends Vue {
-   @Prop({required: false, type: Object, default: null}) to = null;
+   @Prop({required: false, type: Object, default: null}) to!: null;
 }
 </script>
 

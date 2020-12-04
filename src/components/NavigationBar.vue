@@ -25,10 +25,12 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 
 @Component
 export default class NavigationBar extends Vue {
- @Prop({required: false, type: String, default: ''}) title = '';
- @Prop({required: false, type: Boolean, default: false}) noLeft = false;
- @Prop({required: false, type: Boolean, default: false}) noRight = false;
+ @Prop({required: false, type: Boolean, default: false}) noLeft!: boolean;
+ @Prop({required: false, type: Boolean, default: false}) noRight!: boolean;
 
+  get title () {
+    return this.$route.meta.title
+  }
  get flexType () {
     if (this.noLeft) {
       return 'end'

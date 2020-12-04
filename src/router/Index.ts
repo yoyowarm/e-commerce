@@ -45,7 +45,7 @@ const routes: Array<RouteConfig> = [
         { path: 'home', name: 'Home', component: Home, meta: { title: '首頁' } },
         { path: 'gift', name: 'Gift', component: Gift, meta: { title: '禮物盒' } },
         { path: 'scan', name: 'Scan', component: Scan, meta: { title: '掃碼' } },
-        { path: 'store', name: 'store', component: Store, meta: { title: '店家' } },
+        { path: 'store', name: 'Store', component: Store, meta: { title: '店家' } },
         { path: 'more', name: 'More', component: More, meta: { title: '個人中心' } },
     ]
   },
@@ -55,7 +55,7 @@ const routes: Array<RouteConfig> = [
     children: [
         { path: 'business-card', name: 'BusinessCard', component: BusinessCard, meta: { title: '我的名片' } },
         { path: 'privacy-policy', name: 'PrivacyPolicy', component: PrivacyPolicy, meta: { title: '隱私權條款' } },
-        { path: 'setting', name: 'Setting', component: Setting, meta: { title: 'APP設定' } },
+        { path: 'setting', name: 'Settings', component: Setting, meta: { title: 'APP設定' } },
         { path: 'qr-code', name: 'QrCode', component: QrCode, meta: { title: 'QR通訊錄' } },
         { path: 'reset-password', name: 'ResetPassword', component: ResetPassword, meta: { title: '變更密碼' } },
         { path: 'service', name: 'Service', component: Service, meta: { title: '客服中心' } },
