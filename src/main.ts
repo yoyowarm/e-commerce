@@ -12,7 +12,6 @@ Vue.config.productionTip = false
 
 Vue.use(ElementUI);
 
-
 Vue.prototype.$auth = Auth.Instance;
 
 declare module 'vue/types/vue' {
@@ -21,8 +20,10 @@ declare module 'vue/types/vue' {
   }
 }
 
+// document.addEventListener('deviceready', function () {
 new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
+// }, false);

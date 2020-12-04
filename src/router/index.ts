@@ -3,18 +3,18 @@ import VueRouter, { RouteConfig } from 'vue-router'
 import MainPage from '@/views/MainPage.vue'
 
 // import EmptyLayout from '@/components/emptyLayout'
-// import Index from '@/views/Home'
-// import Gifts from '@/views/gifts'
-// import ScanCode from '@/views/scanCode'
-// import Nearby from '@/views/nearby'
-// import MyPage from '@/views/MyPage'
+import Home from '@/views/home/index.vue'
+import Gifts from '@/views/gifts/index.vue'
+import ScanCode from '@/views/scanCode/index.vue'
+import Nearby from '@/views/nearby/index.vue'
+import More from '@/views/more/index.vue'
 
 /*主題活動*/
 // import EventsList from '@/views/EventsList'
 
 /*會員登入相關*/
-import Login from '../views/auth/Login.vue'
-// import ForgetPwd from '@/views/auth/ForgetPwd'
+import Login from '@/views/auth/Login.vue'
+import ForgetPwd from '@/views/auth/ForgetPwd.vue'
 
 /* 個人中心相關頁面 */
 // import BusinessCard from '@/views/MyPage/businessCard/index.vue'
@@ -34,21 +34,20 @@ import Login from '../views/auth/Login.vue'
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
-  {path: '/', name: 'Login', component: Login}, //登入
-  // {path: '/forget-pwd', name: 'ForgetPwd', component: ForgetPwd}, //忘記密碼
+  {path: '/login', name: 'Login', component: Login}, //登入
+  {path: '/forget-pwd', name: 'ForgetPwd', component: ForgetPwd}, //忘記密碼
 
-  // {
-  //   path: '/',
-  //   component: MainPage,
-  //   children: [
-  //       { path: '/', name: 'Home', component: Index, meta: { title: '首頁' } },
-  //       { path: 'gifts', name: 'Gifts', component: Gifts, meta: { title: '禮物' } },
-  //       { path: 'scan-code', name: 'ScanCode', component: ScanCode, meta: { title: '掃碼' } },
-  //       { path: 'nearby', name: 'Nearby', component: Nearby, meta: { title: '附近' } },
-  //       { path: 'my-page', name: 'MyPage', component: MyPage, meta: { title: '個人中心' } },
-
-  //   ]
-  // },
+  {
+    path: '/',
+    component: MainPage,
+    children: [
+        { path: '/', name: 'Home', component: Home, meta: { title: '首頁' } },
+        { path: 'gifts', name: 'Gifts', component: Gifts, meta: { title: '禮物' } },
+        { path: 'scan-code', name: 'ScanCode', component: ScanCode, meta: { title: '掃碼' } },
+        { path: 'nearby', name: 'Nearby', component: Nearby, meta: { title: '附近' } },
+        { path: 'more', name: 'More', component: More, meta: { title: '個人中心' } },
+    ]
+  },
   // {
   //   path: '/my-page',
   //   component: EmptyLayout,
