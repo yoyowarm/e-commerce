@@ -32,7 +32,7 @@ import Profile from '@/views/more/profile/Index.vue'
 // import Problems from '@/views/more/problems/index.vue'
 
 Vue.use(VueRouter)
-
+        
 const routes: Array<RouteConfig> = [
   {path: '/login', name: 'Login', component: Login}, //登入
   {path: '/forget-pwd', name: 'ForgetPwd', component: ForgetPwd}, //忘記密碼
