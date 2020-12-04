@@ -2,13 +2,13 @@
     <el-footer class="footerMenu">
         <router-link :to="{ name: 'Home'}" class="home">
         </router-link>
-        <router-link :to="{ name: 'Gifts'}" class="gift">
+        <router-link :to="{ name: 'Gift'}" class="gift">
         </router-link>
-        <router-link :to="{ name: 'ScanCode'}" class="scanner">
+        <router-link :to="{ name: 'Scan'}" class="scanner">
         </router-link>
-        <router-link :to="{ name: 'Nearby'}" class="landmark">
+        <router-link :to="{ name: 'Store'}" class="landmark">
         </router-link>
-        <router-link :to="{ name: 'MyPage'}" class="user">
+        <router-link :to="{ name: 'More'}" class="user">
         </router-link>
     </el-footer>
 </template>
@@ -17,7 +17,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class FootMenu extends Vue {
+export default class TabBar extends Vue {
 
 }
 </script>

@@ -1,12 +1,12 @@
 <template>
-  <div>我的評論</div>
+  <div>App設定</div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 
 @Component
-export default class MyComment extends Vue {
+export default class Setting extends Vue {
 
 }
 </script>

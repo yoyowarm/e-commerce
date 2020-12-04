@@ -39,37 +39,37 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator';
 import { checkPhone, checkPassword } from '@/util/validators'
-export default {
-  name: "Login",
-  data() {
-    return {
-        selected: 'login',
-        loginform: {
-          tel: null,
-          password: '',
-        },
-        registeredForm: {
-          tel: null
-        },
-        error: {
-          phone: false,
-          password: false,
-          timer: null
-        }
-    };
-  },
-  methods: {
-    login () {
-      clearTimeout(this.error.timer)
-      if(!checkPhone(this.loginform.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
-      if(!checkPassword(this.loginform.password)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
-    },
-    registered () {
-      clearTimeout(this.error.timer)
-      if(!checkPassword(this.registered.tel)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
-    }
+
+@Component
+export default class ResetPassword extends Vue {
+  selected = 'login';
+  loginform = {
+    tel: '',
+    password: '',
+  };
+  
+  registeredForm = {
+    tel: ''
+  };
+
+  error = {
+    phone: false,
+    password: false,
+    timer: 0
+  };
+
+  login () {
+    clearTimeout(this.error.timer)
+    if(!checkPhone(this.loginform.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
+    if(!checkPassword(this.loginform.password)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
+  }
+  
+  registered () {
+    clearTimeout(this.error.timer)
+    if(!checkPassword(this.registeredForm.tel)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
   }
 }
 </script>

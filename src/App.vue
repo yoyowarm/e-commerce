@@ -4,10 +4,11 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue } from 'vue-property-decorator';
+import { Vue, Component } from 'vue-property-decorator';
 // import User from './model/user';
 // import Store from './model/store'
 
+@Component
 export default class App extends Vue {
 
   public detail = "";

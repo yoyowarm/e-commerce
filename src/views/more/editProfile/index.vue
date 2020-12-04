@@ -16,12 +16,13 @@
   </div>
 </template>
 
-<script>
-import customCard from '@/components/custom-card'
-export default {
-  components: {
-    customCard
-  }
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator';
+import CustomCard from '@/components/customCard.vue';
+
+@Component({components:{ CustomCard }})
+export default class EditProfile extends Vue {
+
 }
 </script>
 

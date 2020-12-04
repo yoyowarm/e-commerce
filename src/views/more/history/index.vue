@@ -2,8 +2,11 @@
   <div>紀錄類</div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator';
+
+@Component
+export default class History extends Vue {
 
 }
 </script>

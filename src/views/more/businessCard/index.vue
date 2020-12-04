@@ -62,22 +62,24 @@
   </div>
 </template>
 
-<script>
-import categoryContent from '@/components/category/content'
-import categoryHeader from '@/components/category/header'
-import customCard from '@/components/custom-card'
-import itemGrid from '@/components/category/item-grid'
-import storeItem from '@/components/category/store-item'
-import articleCard from '@/components/category/article-card'
-export default {
-  components: {
-    categoryHeader,
-    categoryContent,
-    customCard,
-    storeItem,
-    itemGrid,
-    articleCard
-  }
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator';
+import CategoryContent from '@/components/category/content.vue';
+import CategoryHeader from '@/components/category/header.vue';
+import CustomCard from '@/components/customCard.vue';
+import ItemGrid from '@/components/category/itemGrid.vue';
+import StoreItem from '@/components/category/storeItem.vue';
+import ArticleCard from '@/components/category/articleCard.vue';
+
+@Component({components:{ 
+  CategoryHeader,
+  CategoryContent,
+  CustomCard,
+  StoreItem,
+  ItemGrid,
+  ArticleCard }})
+export default class BusinessCard extends Vue {
+
 }
 </script>
 
