@@ -23,6 +23,7 @@ import Service from '@/views/MyPage/service/index.vue'
 import History from '@/views/MyPage/history/index.vue'
 import MyComment from '@/views/MyPage/myComment/index.vue'
 import EditProfile from '@/views/MyPage/editProfile/index.vue'
+import Profile from '@/views/MyPage/profile/index.vue'
 // import Message from '@/views/MyPage/message/index.vue'
 // import News from '@/views/MyPage/news/index.vue'
 // import Problems from '@/views/MyPage/problems/index.vue'
@@ -70,7 +71,8 @@ let routes = [{
             { path: 'service', name: 'Service', component: Service, meta: { title: '客服中心' } },
             { path: 'history', name: 'History', component: History, meta: { title: '紀錄類' } },
             { path: 'my-comment', name: 'MyComment', component: MyComment, meta: { title: '我的評論' } },
-            { path: 'edit-profile', name: 'EditProfile', component: EditProfile, meta: { title: '編輯個人資料' } }
+            { path: 'edit-profile', name: 'EditProfile', component: EditProfile, meta: { title: '編輯個人資料' } },
+            { path: 'profile', name: 'Profile', component: Profile, meta: { title: '編輯個人資料' } }
             // { path: 'problems', name: 'Problems', component: Problems, meta: { title: '常見問題' } },
             // { path: 'message', name: 'Message', component: Message, meta: { title: '我要留言' } },
             // { path: 'news', name: 'News', component: News, meta: { title: '最新消息' } },

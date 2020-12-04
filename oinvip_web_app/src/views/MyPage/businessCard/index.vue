@@ -6,7 +6,7 @@
           <el-button type="text">分享 <img class="share-icon" src="@/assets/images/share.svg" alt=""></el-button>
         </el-col>
         <el-col class="text-right">
-          <el-button type="text"><img src="@/assets/images/edit_black.svg" alt=""></el-button>
+          <el-button @click="$router.push({name: 'EditProfile'})" type="text"><img src="@/assets/images/edit_black.svg" alt=""></el-button>
         </el-col>
       </el-row>
       <div class="avatar">

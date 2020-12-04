@@ -9,7 +9,7 @@
     <custom-card>
       <el-row type="flex" justify="end">
           <el-col :span="4" class="text-right">
-            <el-button @click="$router.back()" type="text" class="edit-btn"><img src="@/assets/images/edit-profile.svg" alt=""></el-button>
+            <el-button @click="$router.push({name: 'EditProfile'})" type="text"><img src="@/assets/images/edit_black.svg" alt=""></el-button>
           </el-col>
       </el-row>
     </custom-card>
@@ -48,16 +48,6 @@ export default {
       width: 100%;
       object-fit: cover;
     }
-  }
-}
-.edit-btn {
-  width: 40px;
-  height: 40px;
-  background: url("../../../assets/images/active-edit.svg")no-repeat;
-  background-size: 38px;
-  padding: 0px;
-  img {
-    width: 20px
   }
 }
 </style>
