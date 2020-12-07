@@ -27,6 +27,7 @@ import History from '@/views/more/history/Index.vue'
 import MyComment from '@/views/more/myComment/Index.vue'
 import EditProfile from '@/views/more/editProfile/Index.vue'
 import Profile from '@/views/more/profile/Index.vue'
+import EditQrCode from '@/views/more/qrCode/edit.vue'
 // import Message from '@/views/more/message/index.vue'
 // import News from '@/views/more/news/index.vue'
 // import Problems from '@/views/more/problems/index.vue'
@@ -56,6 +57,7 @@ const routes: Array<RouteConfig> = [
         { path: 'privacy-policy', name: 'PrivacyPolicy', component: PrivacyPolicy, meta: { title: '隱私權條款' } },
         { path: 'setting', name: 'Setting', component: Setting, meta: { title: 'APP設定' } },
         { path: 'qr-code', name: 'QrCode', component: QrCode, meta: { title: 'QR通訊錄' } },
+        { path: 'edit-qr-code', name: 'EditQrCode', component: EditQrCode},
         { path: 'reset-password', name: 'ResetPassword', component: ResetPassword, meta: { title: '變更密碼' } },
         { path: 'service', name: 'Service', component: Service, meta: { title: '客服中心' } },
         { path: 'history', name: 'History', component: History, meta: { title: '紀錄類' } },

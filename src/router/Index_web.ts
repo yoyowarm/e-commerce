@@ -28,6 +28,7 @@ const routes: Array<RouteConfig> = [
         { path: 'privacy-policy', name: 'PrivacyPolicy', component: () => import(/* webpackChunkName: "PrivacyPolicy" */ "@/views/more/privacyPolicy/Index.vue"), meta: { title: '隱私權條款' } },
         { path: 'setting', name: 'Setting', component: () => import(/* webpackChunkName: "Setting" */ "@/views/more/setting/Index.vue"), meta: { title: 'APP設定' } },
         { path: 'qr-code', name: 'QrCode', component: () => import(/* webpackChunkName: "QrCode" */ "@/views/more/qrCode/Index.vue"), meta: { title: 'QR通訊錄' } },
+        { path: 'edit-qr-code', name: 'EditQrCode', component: () => import(/* webpackChunkName: "EditQrCode" */ "@/views/more/qrCode/edit.vue")},
         { path: 'reset-password', name: 'ResetPassword', component: () => import(/* webpackChunkName: "ResetPassword" */ "@/views/more/resetPassword/Index.vue"), meta: { title: '變更密碼' } },
         { path: 'service', name: 'Service', component: () => import(/* webpackChunkName: "Service" */ "@/views/more/service/Index.vue"), meta: { title: '客服中心' } },
         { path: 'history', name: 'History', component: () => import(/* webpackChunkName: "History" */ "./views/more/history/Index.vue"), meta: { title: '紀錄類' } },
