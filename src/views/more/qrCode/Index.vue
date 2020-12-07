@@ -9,7 +9,12 @@
       <div class="avatar"></div>
       <div class="code">
         <p class="name">串門子user name</p>
-        <img src="@/assets/images/qrcode/mock-img.png" alt="">
+        <img v-if="agree" src="@/assets/images/qrcode/mock-img.png" alt="">
+        <div v-else class="disagree">
+          <img  src="@/assets/images/qrcode/no-allowed.svg" alt="">
+          <p>尚未同意使用條款<br>無法使用此功能喔</p>
+        </div>
+        
       </div>
       <p>掃描條碼分享個人聯絡資訊給他人</p>
       <p>
@@ -33,7 +38,7 @@ import { Vue, Component } from 'vue-property-decorator';
 
 @Component
 export default class QrCode extends Vue {
-  agree = false
+  agree = true
 }
 </script>
 
@@ -73,6 +78,13 @@ export default class QrCode extends Vue {
       }
       img {
         width: 70%;
+      }
+      .disagree {
+        line-height: 24px;
+        margin-top: 30%;
+        img {
+          width: 60px;
+        }
       }
     }
     
