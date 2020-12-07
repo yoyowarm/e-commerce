@@ -23,22 +23,27 @@
           <input type="checkbox"  v-model="agree" >
           <span class="checkmark"></span>
         </label>
-        <el-button class="rule" type="text">使用QR通訊錄功能暨使用條款</el-button>
+        <el-button class="rule" type="text" @click="openedPrivacy = true">使用QR通訊錄功能暨使用條款</el-button>
       </p>
       <div class="footer">
         <el-button class="confirm" round>分享</el-button>
         <el-button type="primary" round>保存</el-button>
       </div>
     </div>
+    <transition name="slide" mode="out-in">
+      <privacy v-show="openedPrivacy" :opened.sync="openedPrivacy"/>
+    </transition>
   </el-container>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import Privacy from './components/privacy.vue'
 
-@Component
+@Component({ components: { Privacy }})
 export default class QrCode extends Vue {
   agree = true
+  openedPrivacy = false
 }
 </script>
 
@@ -164,5 +169,35 @@ export default class QrCode extends Vue {
         font-size: 14px!important;
       }
     }
+}
+.slidIn {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 100;
+  top: 0%;
+  right: 0;
+  transition: all .5s ease-in-out;
+  animation-name:oxxo;
+  animation-duration:0.5s;
+  animation-timing-function: cubic-bezier(.03,.98,.87,1);
+  background: #fff
+}
+
+/* before the element is shown, start off the screen to the right */
+.slide-enter, .slide-leave-active {
+  top: 200%;
+}
+
+@keyframes oxxo{
+  from{
+      top: 200%;
+  }
+  to{
+      top: 0%;
+  }
+}
+.back {
+  width: 20px
 }
 </style>

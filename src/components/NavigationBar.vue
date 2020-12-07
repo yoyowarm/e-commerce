@@ -32,11 +32,14 @@ export default class NavigationBar extends Vue {
     return this.$route.meta.title
   }
  get flexType () {
+   if (this.noRight && this.noLeft) {
+      return 'center'
+    }
     if (this.noLeft) {
       return 'end'
     }
-    if (this.noRight && this.noLeft) {
-      return 'center'
+    if (this.noRight) {
+      return 'start'
     }
     return 'space-between'
   }
