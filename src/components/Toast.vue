@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="error-message" v-if="isShow">{{message}}</div>
+        <div :class="['toast-show', isShow ? '' : 'toast-hidden']" >{{message}}</div>
     </div>
 </template>
 
@@ -35,7 +35,7 @@ export default class Toast extends Vue {
 </script>
 
 <style lang="less" scoped>
-.error-message {
+.toast-show {
   position: fixed;
   background: #666;
   color: #fff;
@@ -51,5 +51,11 @@ export default class Toast extends Vue {
   animation-name:oxxo;
   animation-delay:2s;
   animation-duration:2s;
+}
+
+.toast-hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
 }
 </style>
