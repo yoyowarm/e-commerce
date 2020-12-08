@@ -12,6 +12,20 @@
             <el-button @click="$router.back()" type="text" class="edit-btn"><img src="@/assets/images/edit-profile.svg" alt=""></el-button>
           </el-col>
       </el-row>
+      <border-input labelText="姓名">
+      </border-input>
+      <border-input labelText="暱稱">
+      </border-input>
+      <border-input labelText="手機" >
+      </border-input>
+      <border-input labelText="生日" >
+      </border-input>
+      <border-input labelText="性別" >
+      </border-input>
+      <border-input labelText="信箱" >
+      </border-input>
+      <border-input labelText="聯絡地址">
+      </border-input>
     </custom-card>
   </div>
 </template>
@@ -19,8 +33,9 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import CustomCard from '@/components/CustomCard.vue';
+import BorderInput from '@/components/border-input.vue'
 
-@Component({components:{ CustomCard }})
+@Component({components:{ CustomCard, BorderInput }})
 export default class EditProfile extends Vue {
 
 }

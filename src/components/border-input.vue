@@ -4,18 +4,18 @@
       <el-col :span="4">
         <slot name="icon" />
       </el-col>
-      <el-col v-if="!noInput" :span="16">
+      <el-col v-if="!noInput" :span="flexSpan">
         <ul>
-          <li class="label-text">{{ labelText }}</li>
+          <li class="label-text"><slot name="label">{{ labelText }}</slot></li>
           <li>
             <slot name="input"/>
           </li>
         </ul>
       </el-col>
-      <el-col v-else :span="16" class="vertical-center">
+      <el-col v-else :span="flexSpan" class="vertical-center">
         <span class="no-input">{{ labelText }}</span>
       </el-col>
-      <el-col :span="4" class="right-icon">
+      <el-col :span="4" class="right-icon" v-if="$slots['right-icon']">
         <slot name="right-icon"/>
       </el-col>
     </el-row>
@@ -31,6 +31,12 @@ export default class BorderInput extends Vue {
   @Prop({type: String}) labelText!: ''
   @Prop({type: Boolean}) noBorder !: false
   @Prop({type: Boolean}) noInput !: false
+
+  get flexSpan () {
+    if (this.$slots['right-icon']) {
+      return 16
+    } else return 20
+  }
 }
 </script>
 

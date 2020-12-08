@@ -12,6 +12,28 @@
             <el-button @click="$router.push({name: 'EditProfile'})" type="text"><img src="@/assets/images/edit_black.svg" alt=""></el-button>
           </el-col>
       </el-row>
+      <border-input noBorder>
+        <el-row slot="label" type="flex" justify="space-between">
+          <el-col :span="8">姓名</el-col>
+          <el-col :span="16" class="text-right">核對身份用</el-col>
+        </el-row>
+      </border-input>
+      <border-input noBorder>
+        <el-row slot="label" type="flex" justify="space-between">
+          <el-col :span="8">暱稱</el-col>
+          <el-col :span="16" class="text-right">顯示於APP中</el-col>
+        </el-row>
+      </border-input>
+      <border-input labelText="手機" noBorder>
+      </border-input>
+      <border-input labelText="生日" noBorder>
+      </border-input>
+      <border-input labelText="性別" noBorder>
+      </border-input>
+      <border-input labelText="信箱" noBorder>
+      </border-input>
+      <border-input labelText="聯絡地址" noBorder>
+      </border-input>
     </custom-card>
   </div>
 </template>
@@ -19,8 +41,9 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import CustomCard from '@/components/CustomCard.vue';
+import BorderInput from '@/components/border-input.vue'
 
-@Component({components:{ CustomCard }})
+@Component({components:{ CustomCard, BorderInput }})
 export default class Profile extends Vue {
 
 }
