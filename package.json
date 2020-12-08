@@ -17,6 +17,8 @@
     "vuex": "^3.4.0"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.0.1",
+    "@types/node": "^14.14.10",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -26,16 +28,14 @@
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-typescript": "^5.0.2",
+    "crypto-js": "^4.0.0",
+    "element-ui": "^2.14.1",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "typescript": "~3.9.3",
-    "@types/node": "^14.14.10",
-    "@types/crypto-js": "^4.0.1",
-    "crypto-js": "^4.0.0",
-    "vue-template-compiler": "^2.6.11",
-    "element-ui": "^2.14.1"
+    "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
     "root": true,

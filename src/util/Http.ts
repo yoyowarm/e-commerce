@@ -8,6 +8,8 @@ export interface Responses {
     status: boolean;
 }
 
+export type ApiResponse = (success: boolean, message: string, json: Responses) => void
+
 export class Http {
     private csrfToken!: string;
     private fileHost!: string;
@@ -19,23 +21,23 @@ export class Http {
         this.notSaveArray = ['SignIn'];
     }
 
-    protected fetchWithEncrypt(action: string, parameter: {}, funcSuccess: (json: Responses) => void) {
+    protected fetchWithEncrypt(action: string, parameter: {}, funcSuccess: ApiResponse) {
         this.send(action, parameter, '', true, funcSuccess);
     }
 
-    protected fetchWithAuthEncrypt(action: string, parameter: {}, funcSuccess: (json: Responses) => void) {
+    protected fetchWithAuthEncrypt(action: string, parameter: {}, funcSuccess: ApiResponse) {
         this.send(action, parameter, '/auth', true, funcSuccess);
     }
 
-    protected fetchWithAuth(action: string, parameter: {}, funcSuccess: (json: Responses) => void) {
+    protected fetchWithAuth(action: string, parameter: {}, funcSuccess: ApiResponse) {
         this.send(action, parameter, '/auth', false, funcSuccess);
     }
 
-    protected fetch(action: string, parameter: {}, funcSuccess: (json: Responses) => void) {
+    protected fetch(action: string, parameter: {}, funcSuccess: ApiResponse) {
         this.send(action, parameter, '', false, funcSuccess);
     }
 
-    private async send(action: string, parameter: {}, authPath: string, isEncrypt: boolean, funcSuccess: (json: Responses) => void) {
+    private async send(action: string, parameter: {}, authPath: string, isEncrypt: boolean, funcSuccess: ApiResponse) {
         let parameterStr = JSON.stringify(parameter);
 
         if(isEncrypt){
@@ -74,6 +76,10 @@ export class Http {
                 }
 
                 if(!(json.data instanceof Array)) {
+                    if (json.data == null) {
+                        funcSuccess(json.status, json.message, json);
+                        return
+                    } 
                     const dataKeys = Object.keys(json.data);
                     for (const dataKey of dataKeys) {
                         if(Object.prototype.hasOwnProperty.call(this, dataKey)){
@@ -91,7 +97,7 @@ export class Http {
                     });
                 }
                 
-                funcSuccess(json);
+                funcSuccess(json.status, json.message, json);
             }
         });
     }

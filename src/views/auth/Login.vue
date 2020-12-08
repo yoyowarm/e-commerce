@@ -45,6 +45,8 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import { checkPhone, checkPassword } from '@/util/Validators'
+import User from '@/model/User';
+import Register from '@/model/Register';
 
 @Component
 export default class Login extends Vue {
@@ -68,11 +70,33 @@ export default class Login extends Vue {
     clearTimeout(this.error.timer)
     if(!checkPhone(this.loginform.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
     if(!checkPassword(this.loginform.password)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
+    (new User()).signIn({
+        countryCode: '+886',
+        phone: this.loginform.tel,
+        password: this.loginform.password
+    }, (success: boolean, message: string, user: User) => {
+      if (success) {
+        console.log(user.getToken);
+        this.$router.back();
+      }else {
+        console.log('fail to login')
+      }
+    });
   }
 
   registered() {
     clearTimeout(this.error.timer)
-    if(!checkPassword(this.registeredForm.tel)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
+    if(!checkPhone(this.registeredForm.tel)) { this.error.phone = true; return  this.error.timer = setTimeout(() => {this.error.phone = false},4000)}
+    (new Register()).checkRegister({
+        countryCode: '+886',
+        phone: this.registeredForm.tel,
+    }, (success, message, register) => {
+      if (success) {
+        console.log(register.getRegisterState());
+      }else {
+        console.log(message)
+      }
+    });
   }
 }
 

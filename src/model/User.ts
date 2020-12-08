@@ -1,4 +1,4 @@
-import {Http, Responses} from '../util/Http';
+import {ApiResponse, Http, Responses} from '../util/Http';
 
 export default class User extends Http {
     private token = "";
@@ -32,9 +32,9 @@ export default class User extends Http {
         return this;
     }
 
-    public signIn(parameters: {},  funcSuccess: (user: User) => void) {
-        this.fetchWithEncrypt('SignIn', parameters, (json: Responses) => {
-            funcSuccess(this);
+    public signIn(parameters: {},  funcSuccess: (success: boolean, message: string, user: User) => void) {
+        this.fetchWithEncrypt('SignIn', parameters, (success, message, json) => {
+            funcSuccess(success, message, this);
         });
     }
 }
