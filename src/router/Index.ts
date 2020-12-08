@@ -2,70 +2,41 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import MainPage from '@/views/MainPage.vue'
 
-import Home from '@/views/home/Index.vue'
-import Gift from '@/views/gift/Index.vue'
-import Scan from '@/views/scan/Index.vue'
-import Store from '@/views/store/Index.vue'
-import More from '@/views/more/Index.vue'
-
-/*主題活動*/
-// import EventsList from '@/views/EventsList'
-
-/*會員登入相關*/
-import Login from '@/views/auth/Login.vue'
-import ForgetPwd from '@/views/auth/ForgetPwd.vue'
-
-/* 個人中心相關頁面 */
-import EmptyLayout from '@/components/EmptyLayout.vue'
-import BusinessCard from '@/views/more/businessCard/Index.vue'
-import PrivacyPolicy from '@/views/more/privacyPolicy/Index.vue'
-import Setting from '@/views/more/setting/Index.vue'
-import QrCode from '@/views/more/qrCode/Index.vue'
-import ResetPassword from '@/views/more/resetPassword/Index.vue'
-import Service from '@/views/more/service/Index.vue'
-import History from '@/views/more/history/Index.vue'
-import MyComment from '@/views/more/myComment/Index.vue'
-import EditProfile from '@/views/more/editProfile/Index.vue'
-import Profile from '@/views/more/profile/Index.vue'
-// import Message from '@/views/more/message/index.vue'
-// import News from '@/views/more/news/index.vue'
-// import Problems from '@/views/more/problems/index.vue'
 
 Vue.use(VueRouter)
         
 const routes: Array<RouteConfig> = [
-  {path: '/login', name: 'Login', component: Login}, //登入
-  {path: '/forget-pwd', name: 'ForgetPwd', component: ForgetPwd}, //忘記密碼
-
+  {path: '/login', name: 'Login', component: () => import(/* webpackChunkName: "Login" */ "@/views/auth/Login.vue")}, //登入
+  {path: '/forget-pwd', name: 'ForgetPwd', component: () => import(/* webpackChunkName: "ForgetPwd" */ "@/views/auth/ForgetPwd.vue")}, //忘記密碼
   {
-    // path: '*',
     path: '/',
     component: MainPage,
     children: [
-        { path: 'home', name: 'Home', component: Home, meta: { title: '首頁' } },
-        { path: 'gift', name: 'Gift', component: Gift, meta: { title: '禮物盒' } },
-        { path: 'scan', name: 'Scan', component: Scan, meta: { title: '掃碼' } },
-        { path: 'store', name: 'store', component: Store, meta: { title: '店家' } },
-        { path: 'more', name: 'More', component: More, meta: { title: '個人中心' } },
+        { path: 'home', name: 'Home', component: () => import(/* webpackChunkName: "Home" */ "@/views/home/Index.vue"), meta: { title: '首頁' } },
+        { path: 'gift', name: 'Gift', component: () => import(/* webpackChunkName: "Gift" */ "@/views/gift/Index.vue"), meta: { title: '禮物盒' } },
+        { path: 'scan', name: 'Scan', component: () => import(/* webpackChunkName: "Scan" */ "@/views/scan/Index.vue"), meta: { title: '掃碼' } },
+        { path: 'store', name: 'Store', component: () => import(/* webpackChunkName: "Store" */ "@/views/store/Index.vue"), meta: { title: '店家' } },
+        { path: 'more', name: 'More', component: () => import(/* webpackChunkName: "More" */ "@/views/more/Index.vue"), meta: { title: '個人中心' } },
     ]
   },
   {
     path: '/more',
-    component: EmptyLayout,
+    name: 'more',
+    component: () => import(/* webpackChunkName: "More" */ "@/views/more/Index.vue"),
     children: [
-        { path: 'business-card', name: 'BusinessCard', component: BusinessCard, meta: { title: '我的名片' } },
-        { path: 'privacy-policy', name: 'PrivacyPolicy', component: PrivacyPolicy, meta: { title: '隱私權條款' } },
-        { path: 'setting', name: 'Setting', component: Setting, meta: { title: 'APP設定' } },
-        { path: 'qr-code', name: 'QrCode', component: QrCode, meta: { title: 'QR通訊錄' } },
-        { path: 'reset-password', name: 'ResetPassword', component: ResetPassword, meta: { title: '變更密碼' } },
-        { path: 'service', name: 'Service', component: Service, meta: { title: '客服中心' } },
-        { path: 'history', name: 'History', component: History, meta: { title: '紀錄類' } },
-        { path: 'my-comment', name: 'MyComment', component: MyComment, meta: { title: '我的評論' } },
-        { path: 'edit-profile', name: 'EditProfile', component: EditProfile, meta: { title: '編輯個人資料' } },
-        { path: 'profile', name: 'Profile', component: Profile, meta: { title: '編輯個人資料' } }
-        // { path: 'problems', name: 'Problems', component: Problems, meta: { title: '常見問題' } },
-        // { path: 'message', name: 'Message', component: Message, meta: { title: '我要留言' } },
-        // { path: 'news', name: 'News', component: News, meta: { title: '最新消息' } },
+        { path: 'business-card', name: 'BusinessCard', component: () => import(/* webpackChunkName: "BusinessCard" */ "@/views/more/businessCard/Index.vue"), meta: { title: '我的名片' } },
+        { path: 'privacy-policy', name: 'PrivacyPolicy', component: () => import(/* webpackChunkName: "PrivacyPolicy" */ "@/views/more/privacyPolicy/Index.vue"), meta: { title: '隱私權條款' } },
+        { path: 'setting', name: 'Setting', component: () => import(/* webpackChunkName: "Setting" */ "@/views/more/setting/Index.vue"), meta: { title: 'APP設定' } },
+        { path: 'qr-code', name: 'QrCode', component: () => import(/* webpackChunkName: "QrCode" */ "@/views/more/qrCode/Index.vue"), meta: { title: 'QR通訊錄' } },
+        { path: 'reset-password', name: 'ResetPassword', component: () => import(/* webpackChunkName: "ResetPassword" */ "@/views/more/resetPassword/Index.vue"), meta: { title: '變更密碼' } },
+        { path: 'service', name: 'Service', component: () => import(/* webpackChunkName: "Service" */ "@/views/more/service/Index.vue"), meta: { title: '客服中心' } },
+        { path: 'history', name: 'History', component: () => import(/* webpackChunkName: "History" */ "@/views/more/history/Index.vue"), meta: { title: '紀錄類' } },
+        { path: 'my-comment', name: 'MyComment', component: () => import(/* webpackChunkName: "MyComment" */ "@/views/more/myComment/Index.vue"), meta: { title: '我的評論' } },
+        { path: 'edit-profile', name: 'EditProfile', component: () => import(/* webpackChunkName: "EditProfile" */ "@/views/more/editProfile/Index.vue"), meta: { title: '編輯個人資料' } },
+        { path: 'profile', name: 'Profile', component: () => import(/* webpackChunkName: "Profile" */ "@/views/more/profile/Index.vue"), meta: { title: '編輯個人資料' } }
+        // { path: 'problems', name: 'Problems', component: () => import(/* webpackChunkName: "Problems" */ "./views/more/problems/Index.vue"), meta: { title: '常見問題' } },
+        // { path: 'message', name: 'Message', component: () => import(/* webpackChunkName: "Message" */ "./views/more/message/Index.vue"), meta: { title: '我要留言' } },
+        // { path: 'news', name: 'News', component: () => import(/* webpackChunkName: "News" */ "./views/more/news/Index.vue"), meta: { title: '最新消息' } },
     ]
   }
 ]

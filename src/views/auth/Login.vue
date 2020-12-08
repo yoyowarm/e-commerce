@@ -34,6 +34,7 @@
               </div>
             </div>
         </div>
+        <toast/>
         <div class="error-message" v-if="error.phone">手機號碼必須是10位數</div>
         <div class="error-message" v-if="error.password">密碼必須為6-12英文數字混合</div>
         <div class="brand">
@@ -44,11 +45,14 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { checkPhone, checkPassword } from '@/util/Validators'
+import { checkPhone, checkPassword } from '@/util/Validators';
+import Toast from '@/components/Toast.vue';
+import {MutationTypes} from '@/store/MutationTypes';
 
-@Component
+@Component({components:{ Toast }})
 export default class Login extends Vue {
   selected = 'login';
+
   loginform = {
     tel: '',
     password: ''
@@ -63,16 +67,23 @@ export default class Login extends Vue {
     password: false,
     timer: 0
   };
-
+  
   login() {
-    clearTimeout(this.error.timer)
-    if(!checkPhone(this.loginform.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
-    if(!checkPassword(this.loginform.password)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
+    this.$store.commit(MutationTypes.SHOW_TOAST, '手機號碼必須是10位數');
+    // clearTimeout(this.error.timer)
+    // if(!checkPhone(this.loginform.tel)) { 
+    //   this.error.phone = true; 
+    //   return this.error.timer = setTimeout(() => {this.error.phone = false}, 4000) 
+    // }
+
+    // if(!checkPassword(this.loginform.password)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
   }
 
   registered() {
-    clearTimeout(this.error.timer)
-    if(!checkPassword(this.registeredForm.tel)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
+    // this.errorMessage = '1232';
+    // this.errorMessage = '手機號碼必須是10位數2';
+    // clearTimeout(this.error.timer)
+    // if(!checkPassword(this.registeredForm.tel)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
   }
 }
 
@@ -139,23 +150,7 @@ p {
     }
   }
 }
-.error-message {
-  position: fixed;
-  background: #666;
-  color: #fff;
-  border-radius: 50px;
-  height: 48px;
-  width: 210px;
-  text-align: center;
-  line-height: 48px;
-  left: 0px;
-  right: 0px;
-  bottom: 120px;
-  margin: 0 auto;
-  animation-name:oxxo;
-  animation-delay:2s;
-  animation-duration:2s;
-}
+
 @keyframes oxxo {
   form {
     opacity: 1;
