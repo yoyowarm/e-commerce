@@ -52,6 +52,7 @@ export class Http {
             headers: new Headers({
                 'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json',
+                'Auth-Token': authPath === '/auth' ? auth.Instance.user.getToken() : '',
                 'Csrf-Token': this.csrfToken === '' || typeof this.csrfToken === 'undefined' ? process.env.VUE_APP_CSRF_TOKEN : this.csrfToken,
                 'appName': 'com.lifelink.oin'
             }),
