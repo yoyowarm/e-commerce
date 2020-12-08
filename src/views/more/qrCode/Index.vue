@@ -26,12 +26,18 @@
         <el-button class="rule" type="text" @click="openedPrivacy = true">使用QR通訊錄功能暨使用條款</el-button>
       </p>
       <div class="footer">
-        <el-button class="confirm" round>分享</el-button>
-        <el-button type="primary" round>保存</el-button>
+        <el-button class="confirm" @click="openedPopup = true" round>分享</el-button>
+        <el-button type="primary" @click="openedPopup = true" round>保存</el-button>
       </div>
     </div>
     <transition name="slide" mode="out-in">
       <privacy v-show="openedPrivacy" :opened.sync="openedPrivacy"/>
+    </transition>
+    <transition name="slide" mode="out-in">
+      <popup-model v-show="openedPopup" :opened.sync="openedPopup" />
+    </transition>
+    <transition name="slide" mode="out-in">
+      <popup-model v-show="openedPopup" :opened.sync="openedPopup" />
     </transition>
   </el-container>
 </template>
@@ -39,11 +45,13 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import Privacy from './components/privacy.vue'
+import PopupModel from './components/popupModel.vue'
 
-@Component({ components: { Privacy }})
+@Component({ components: { Privacy, PopupModel }})
 export default class QrCode extends Vue {
   agree = true
   openedPrivacy = false
+  openedPopup = false
 }
 </script>
 
