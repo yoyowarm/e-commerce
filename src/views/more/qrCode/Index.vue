@@ -26,19 +26,52 @@
         <el-button class="rule" type="text" @click="openedPrivacy = true">使用QR通訊錄功能暨使用條款</el-button>
       </p>
       <div class="footer">
-        <el-button class="confirm" @click="openedPopup = true" round>分享</el-button>
-        <el-button type="primary" @click="openedPopup = true" round>保存</el-button>
+        <el-button class="confirm" @click="openedShare = true" round>分享</el-button>
+        <el-button type="primary" @click="openedSave = true" round>保存</el-button>
       </div>
     </div>
     <transition name="slide" mode="out-in">
       <privacy v-show="openedPrivacy" :opened.sync="openedPrivacy"/>
     </transition>
-    <transition name="slide" mode="out-in">
-      <popup-model v-show="openedPopup" :opened.sync="openedPopup" />
-    </transition>
-    <transition name="slide" mode="out-in">
-      <popup-model v-show="openedPopup" :opened.sync="openedPopup" />
-    </transition>
+    <popup-model
+      :opened.sync="openedShare"
+    >
+      <div class="popup">
+        <img src="@/assets/images/qrcode/qrCode-share-icon.png" alt="">
+        <p class="description">QR通訊錄讓好友直接<br>將您的通訊加入手機連絡簿</p>
+        <p class="text">請注意，此分享會讓他人獲得您設置的個人聯絡資訊，請謹慎使用。</p>
+        <el-row type="flex" justify="start" class="icon-group">
+          <el-col :span="6">
+            <div class="icon-block">
+              <img src="@/assets/images/qrcode/app-logo.png" alt="">
+            </div>
+            <span>OIN好友</span>
+          </el-col>
+          <el-col :span="6">
+            <div class="icon-block">
+              <img src="@/assets/images/qrcode/line-logo.png" alt="">
+            </div>
+            <span>Line</span>
+          </el-col>
+          <el-col :span="6">
+            <div class="icon-block">
+              <img src="@/assets/images/qrcode/message-logo.png" alt="">
+            </div>
+            <span>Message</span>
+          </el-col>
+        </el-row>
+      </div>
+    </popup-model>
+    <popup-model
+      :opened.sync="openedSave"
+    >
+      <div class="popup">
+        <img src="@/assets/images/qrcode/qrCode-download-icon.png" alt="">
+        <p class="description">將QR通訊錄QRCODE另存成圖檔</p>
+        <img style="width: 144px" src="@/assets/images/qrcode/mock-img.png" alt="">
+        <p class="text text-center">下載條碼 JPG│PNG│SVG</p>
+      </div>
+    </popup-model>
   </el-container>
 </template>
 
@@ -51,7 +84,8 @@ import PopupModel from './components/popupModel.vue'
 export default class QrCode extends Vue {
   agree = true
   openedPrivacy = false
-  openedPopup = false
+  openedSave = false
+  openedShare = false
 }
 </script>
 
@@ -177,7 +211,47 @@ export default class QrCode extends Vue {
         font-size: 14px!important;
       }
     }
+  .popup {
+    text-align: center;
+    img {
+      width: 65px;
+    }
+    p {
+      margin-top: auto;
+    }
+    .description{
+      color: #F0D870;
+      font-size: 18px;
+      text-align: center;
+      margin-top: 20px
+    }
+    .text{
+      color: #F6F5F4;
+      font-size: 16px;
+      text-align: left;
+      margin-top: 20px
+    }
+    .icon-group {
+      margin-top: 30px;
+      text-align: center;
+      .icon-block {
+        background: #000;
+        width: 57px;
+        height: 57px;
+        border-radius: 57px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      img {
+        width: 40px;
+      }
+    }
+    
+  }
 }
+
 .slidIn {
   width: 100%;
   height: 100vh;
@@ -204,8 +278,5 @@ export default class QrCode extends Vue {
   to{
       top: 0%;
   }
-}
-.back {
-  width: 20px
 }
 </style>
