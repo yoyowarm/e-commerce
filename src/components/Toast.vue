@@ -17,7 +17,6 @@ export default class Toast extends Vue {
     created(){
         this.$store.subscribe((mutation, state) => {
             if(mutation.type === MutationTypes.SHOW_TOAST){
-                console.log(state);
                 this.message = state.toast.message;
                 this.show();
             }
