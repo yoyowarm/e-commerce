@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component} from 'vue-property-decorator';
-import {MutationTypes} from '@/store/MutationTypes';
+import { Vue, Component } from 'vue-property-decorator';
+import { MutationTypes } from '@/store/MutationTypes';
 
 @Component
 export default class Toast extends Vue {
