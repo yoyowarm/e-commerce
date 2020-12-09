@@ -115,7 +115,7 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import BorderInput from '@/components/border-input.vue'
+import BorderInput from '@/components/BorderInput.vue'
 import AddLine from './components/addLine.vue'
 @Component({ components: {BorderInput, AddLine}})
 export default class EditQrCode extends Vue {

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import MainPage from '@/views/MainPage.vue'
+import EmptyLayout from '@/components/EmptyLayout.vue'
 
 
 Vue.use(VueRouter)
@@ -9,10 +10,16 @@ const routes: Array<RouteConfig> = [
   {path: 'login', name: 'Login', component: () => import(/* webpackChunkName: "Login" */ "@/views/auth/Login.vue")}, //登入
   {path: 'forget-pwd', name: 'ForgetPwd', component: () => import(/* webpackChunkName: "ForgetPwd" */ "@/views/auth/ForgetPwd.vue")}, //忘記密碼
   {
+    path: '/home',
+    component: EmptyLayout,
+    children: [
+      { path: '', name: 'Home', component: () => import(/* webpackChunkName: "Home" */ "@/views/home/Index.vue"), meta: { title: '首頁' }}
+    ]
+  },
+  {
     path: '/',
     component: MainPage,
     children: [
-        { path: 'home', name: 'Home', component: () => import(/* webpackChunkName: "Home" */ "@/views/home/Index.vue"), meta: { title: '首頁' } },
         { path: 'gift', name: 'Gift', component: () => import(/* webpackChunkName: "Gift" */ "@/views/gift/Index.vue"), meta: { title: '禮物盒' } },
         { path: 'scan', name: 'Scan', component: () => import(/* webpackChunkName: "Scan" */ "@/views/scan/Index.vue"), meta: { title: '掃碼' } },
         { path: 'store', name: 'Store', component: () => import(/* webpackChunkName: "Store" */ "@/views/store/Index.vue"), meta: { title: '店家' } },
@@ -22,7 +29,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/more',
     name: 'more',
-    component: () => import(/* webpackChunkName: "More" */ "@/views/EmptyLayout.vue"),
+    component: () => import(/* webpackChunkName: "More" */ "@/views/MyUserLayout.vue"),
     children: [
         { path: 'business-card', name: 'BusinessCard', component: () => import(/* webpackChunkName: "BusinessCard" */ "@/views/more/businessCard/Index.vue"), meta: { title: '我的名片' } },
         { path: 'privacy-policy', name: 'PrivacyPolicy', component: () => import(/* webpackChunkName: "PrivacyPolicy" */ "@/views/more/privacyPolicy/Index.vue"), meta: { title: '隱私權條款' } },

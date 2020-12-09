@@ -73,7 +73,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import CustomCard from '@/components/CustomCard.vue';
-import BorderInput from '@/components/border-input.vue'
+import BorderInput from '@/components/BorderInput.vue'
 
 @Component({components:{ CustomCard, BorderInput }})
 export default class EditProfile extends Vue {
