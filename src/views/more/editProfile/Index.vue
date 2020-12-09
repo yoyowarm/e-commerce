@@ -15,50 +15,55 @@
       <border-input labelText="姓名">
         <img slot="icon" style="width: 20px" src="@/assets/images/profile/name.svg" alt="">
         <div slot="input">
-          <span v-if="form.name">{{form.name}}</span>
-          <span v-else class="empty">尚未輸入</span>
+          <input v-model="form.name" placeholder="請輸入姓名">
         </div>
       </border-input>
       <border-input labelText="暱稱">
         <img slot="icon" style="width: 20px" src="@/assets/images/profile/nickname.svg" alt="">
         <div slot="input">
-          <span v-if="form.nickname">{{form.nickname}}</span>
-          <span v-else class="empty">尚未輸入</span>
+          <input v-model="form.nickname" placeholder="請輸入暱稱">
         </div>
       </border-input>
       <border-input labelText="手機"  >
         <img slot="icon" style="width: 20px" src="@/assets/images/profile/phone.svg" alt="">
         <div slot="input">
-          <span v-if="form.phone">{{form.phone}}</span>
-          <span v-else class="empty">尚未輸入</span>
+          <input v-model="form.phone" placeholder="請輸入手機">
         </div>
       </border-input>
       <border-input labelText="生日"  >
         <img slot="icon" style="width: 20px" src="@/assets/images/profile/birth.svg" alt="">
         <div slot="input">
-          <span v-if="form.birth">{{form.birth}}</span>
-          <span v-else class="empty">尚未輸入</span>
+          <input v-model="form.birth" placeholder="請輸入生日">
         </div>
       </border-input>
-      <border-input labelText="性別"  >
+      <border-input labelText="性別"  noBorder>
         <img slot="icon" style="width: 20px" src="@/assets/images/profile/name.svg" alt="">
         <div slot="input">
-          <span v-if="form.gender">{{form.gender}}</span>
-          <span v-else class="empty">尚未輸入</span>
+          <el-radio v-model="form.gender" label="男">男</el-radio>
+          <el-radio v-model="form.gender" label="女">女</el-radio>
+          <el-radio v-model="form.gender" label="？">？</el-radio>
         </div>
       </border-input>
       <border-input labelText="信箱"  >
         <img slot="icon" style="width: 20px" src="@/assets/images/profile/email.svg" alt="">
         <div slot="input">
-          <span v-if="form.email">{{form.email}}</span>
-          <span v-else class="empty">尚未輸入</span>
+          <input v-model="form.email" placeholder="請輸入電子信箱">
         </div>
       </border-input>
-      <border-input labelText="聯絡地址"  >
+      <border-input labelText="城市"  >
         <img slot="icon" style="width: 20px" src="@/assets/images/profile/house.svg" alt="">
         <div slot="input">
-          <span v-if="form.address">{{form.address}}</span>
-          <span v-else class="empty">尚未輸入</span>
+          <input v-model="form.city" placeholder="請輸入縣市">
+        </div>
+      </border-input>
+      <border-input labelText="鄉鎮市區"  >
+        <div slot="input">
+          <input v-model="form.town" placeholder="請輸入鄉鎮市區">
+        </div>
+      </border-input>
+      <border-input labelText="地址"  >
+        <div slot="input">
+          <input v-model="form.address" placeholder="請輸入地址">
         </div>
       </border-input>
     </custom-card>
@@ -79,7 +84,9 @@ export default class EditProfile extends Vue {
     birth: '1990-10-22',
     gender: '男',
     email: '',
-    address: '台南市安平區光州路52號'
+    city: '台南市',
+    town: '安平區',
+    address: '光州路52號'
   }
 }
 </script>
@@ -118,5 +125,9 @@ export default class EditProfile extends Vue {
   img {
     width: 20px
   }
+}
+input {
+  border: 0;
+  outline: 0;
 }
 </style>
