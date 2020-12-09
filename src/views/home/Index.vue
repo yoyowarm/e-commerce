@@ -1,7 +1,7 @@
 <template>
   <el-container class="Home BigPage is-vertical">
     <navigation-bar>
-      <el-input slot="center" placeholder="请输入内容" v-model="search" class="input-with-select">
+      <el-input slot="center" placeholder="請输入内容" v-model="search" class="input-with-select">
         <el-button slot="append" icon="el-icon-search" type="text"></el-button>
       </el-input>
       <el-col slot="right" :span="7" class="text-right">

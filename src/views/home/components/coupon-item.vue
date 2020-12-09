@@ -31,7 +31,9 @@ export default class CouponItem extends Vue {
   .cover {
     width: 130px;
     height: 130px;
+    border-radius: 10px;
     position: relative;
+    background: #F6F5F4;
     .icon {
       position: absolute;
       width: 37px;
