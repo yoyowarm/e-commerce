@@ -48,14 +48,15 @@ export class Http {
             'action': action,
             'parameters': parameterStr,
         });
-
+        const token = localStorage.getItem('token') || '';
         await fetch(process.env.VUE_APP_API_HOST  + authPath, {
             body: paramJsonStr,
             headers: new Headers({
                 'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json',
                 'Csrf-Token': this.csrfToken === '' || typeof this.csrfToken === 'undefined' ? process.env.VUE_APP_CSRF_TOKEN : this.csrfToken,
-                'appName': 'com.lifelink.oin'
+                'appName': 'com.lifelink.oin',
+                'Auth-Token': token
             }),
             method: 'POST'
         }).then(response => {
@@ -68,7 +69,7 @@ export class Http {
             if(text){
                 const jsonStr = text.replace('while(1);', '');
                 const json = JSON.parse(jsonStr);
-   
+                console.log(json);
                 if (!json.status && json.message === "logout") {
                     auth.Instance.clearToken();
                     router.push({path: '/'});

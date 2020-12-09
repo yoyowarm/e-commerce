@@ -1,7 +1,7 @@
 import {ApiResponse, Http, Responses} from '../util/Http';
 
 export default class User extends Http {
-    private token = "";
+    token = "";
     private nickName = "";
     private userCode = "";
 

@@ -34,8 +34,7 @@
               </div>
             </div>
         </div>
-        <div class="error-message" v-if="error.phone">手機號碼必須是10位數</div>
-        <div class="error-message" v-if="error.password">密碼必須為6-12英文數字混合</div>
+        <toast/>
         <div class="brand">
           <span>LIFE LINK 品牌服務系統</span>
         </div>
@@ -44,13 +43,18 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { checkPhone, checkPassword } from '@/util/Validators'
 import User from '@/model/User';
 import Register from '@/model/Register';
+import UserData from '@/model/UserInfo';
+import { checkPhone, checkPassword } from '@/util/Validators';
+import Toast from '@/components/Toast.vue';
+import {MutationTypes} from '@/store/MutationTypes';
+import router from '../../router/Index';
 
-@Component
+@Component({components:{ Toast }})
 export default class Login extends Vue {
   selected = 'login';
+  user = new User();
   loginform = {
     tel: '',
     password: ''
@@ -59,34 +63,50 @@ export default class Login extends Vue {
   registeredForm = {
     tel: ''
   };
-
-  error = {
-    phone: false,
-    password: false,
-    timer: 0
-  };
-
+  
   login() {
-    clearTimeout(this.error.timer)
-    if(!checkPhone(this.loginform.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
-    if(!checkPassword(this.loginform.password)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
-    (new User()).signIn({
+    if(!checkPhone(this.loginform.tel)) { 
+      this.$store.commit(MutationTypes.SHOW_TOAST, '手機號碼必須是10位數');
+      return
+    }
+    if(!checkPassword(this.loginform.password)) { 
+      this.$store.commit(MutationTypes.SHOW_TOAST, '密碼必須為6-12英文數字混合');
+      return
+    }
+    this.user.signIn({
         countryCode: '+886',
         phone: this.loginform.tel,
         password: this.loginform.password
     }, (success: boolean, message: string, user: User) => {
       if (success) {
-        console.log(user.getToken);
-        this.$router.back();
+        localStorage.setItem('token', user.getToken());
+        localStorage.setItem('nickName', user.getNickName());
+        localStorage.setItem('userCode', user.getUserCode());
+        this.$auth.setup();
+        this.getUserInfo();
       }else {
-        console.log('fail to login')
+        this.$store.commit(MutationTypes.SHOW_TOAST, message);
       }
     });
   }
 
+  getUserInfo() {
+    new UserData().getUserInfo({
+    }, (success: boolean, message: string, userInfo: UserData) => {
+      this.saveUserData(userInfo);
+      router.back();
+    });
+  }
+
+  saveUserData(userInfo: UserData) {
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+  }
+
   registered() {
-    clearTimeout(this.error.timer)
-    if(!checkPhone(this.registeredForm.tel)) { this.error.phone = true; return  this.error.timer = setTimeout(() => {this.error.phone = false},4000)}
+    if(!checkPhone(this.loginform.tel)) { 
+      this.$store.commit(MutationTypes.SHOW_TOAST, '手機號碼必須是10位數');
+      return
+    }
     (new Register()).checkRegister({
         countryCode: '+886',
         phone: this.registeredForm.tel,
@@ -94,7 +114,7 @@ export default class Login extends Vue {
       if (success) {
         console.log(register.getRegisterState());
       }else {
-        console.log(message)
+        this.$store.commit(MutationTypes.SHOW_TOAST, message);
       }
     });
   }
@@ -163,23 +183,7 @@ p {
     }
   }
 }
-.error-message {
-  position: fixed;
-  background: #666;
-  color: #fff;
-  border-radius: 50px;
-  height: 48px;
-  width: 210px;
-  text-align: center;
-  line-height: 48px;
-  left: 0px;
-  right: 0px;
-  bottom: 120px;
-  margin: 0 auto;
-  animation-name:oxxo;
-  animation-delay:2s;
-  animation-duration:2s;
-}
+
 @keyframes oxxo {
   form {
     opacity: 1;

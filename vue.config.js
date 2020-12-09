@@ -3,10 +3,8 @@ const webpack = require('webpack');
 const fs = require('fs');
 
 module.exports = {
-    // publicPath: './',
-    publicPath: prod ? "./" : "/",
+    publicPath: prod ? "/" : "/",
     productionSourceMap:  !prod,
-    outputDir: 'app/www',
     // configureWebpack:{
     //     performance: {
     //         hints: 'error',
@@ -25,9 +23,3 @@ module.exports = {
     // publicPath: './',
     // outputDir: 'app/www',
 };
-
-// module.exports = {
-//     publicPath: './',
-//     outputDir: 'app/www',
-//     productionSourceMap: false,
-// };

@@ -14,7 +14,6 @@ export default class App extends Vue {
   public detail = "";
 
   created(){
-    
     // (new User()).signIn({
     //     countryCode: '+886',
     //     phone: '0900000001',

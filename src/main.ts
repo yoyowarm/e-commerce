@@ -10,11 +10,8 @@ import '@/less/style_admin.less'
 import 'bootstrap/dist/css/bootstrap.css'
 
 Vue.config.productionTip = false
-
 Vue.use(ElementUI);
-
 Vue.prototype.$auth = Auth.Instance;
-
 declare module 'vue/types/vue' {
   interface Vue {
     $auth: Auth;

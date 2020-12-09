@@ -2,12 +2,12 @@
   <div class="user-info ">
     <el-row type="flex" justify="center" class="h-100 w-100">
       <el-col :span="7">
-        <img src="@/assets/images/avatar.svg" alt="">
+        <img v-bind:src="`${userModel.userImage}`">
       </el-col>
       <el-col :span="17">
         <ul class="account">
-          <li>User name</li>
-          <li><span>會員：user1234</span></li>
+          <li>{{userModel.nickName}}</li>
+          <li><span>會員：{{userModel.userCode}}</span></li>
           <li><el-button @click="$router.push({ name: 'Profile'})" class="edit" round>編輯我的資料 <img src="@/assets/images/edit.svg" alt=""></el-button></li>
         </ul>
       </el-col>
@@ -17,10 +17,38 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import UserData from '../../../model/UserInfo';
 
 @Component
 export default class UserInfo extends Vue {
+  userModel = {
+    nickName: "",
+    userCode: "",
+    userImage: "",
+  }
+  // <img v-bind:src="`${userModel.userImage}`">
+  created() {
+    this.getLoginState();
+    this.$root.$on('isLogout', (isLogout: boolean) => {
+      if (isLogout) {
+        this.getLoginState();
+      }
+    });
+  }
 
+  getLoginState() {
+   if (this.$auth.isSignIn()) {
+     const userData: UserData = JSON.parse(localStorage.getItem('userInfo') || "");
+     this.userModel.userImage = userData.picture;
+     this.userModel.nickName = this.$auth.user.getNickName();
+     this.userModel.userCode = this.$auth.user.getUserCode();
+   }else {
+     this.userModel.nickName = "";
+     this.userModel.userCode = "";
+     this.userModel.userImage = "@/assets/images/avatar.svg";
+     console.log('no user login');
+   }
+  }
 }
 </script>
 
