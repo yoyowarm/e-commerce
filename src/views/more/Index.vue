@@ -1,7 +1,7 @@
 <template>
   <el-main>
     <user-info />
-    <div class="menu">
+    <div class="menu" v-if="isLogout == true">
       <el-row type="flex" justify="space-between">
         <el-col :span="8">
           <router-link :to="{ name: 'BusinessCard' }">
@@ -48,6 +48,20 @@
         </el-col>
       </el-row>
     </div>
+    <div class="menu" v-else>
+      <el-row type="flex" justify="flex-star">
+        <el-col :span="8">
+          <router-link :to="{ name: 'PrivacyPolicy' }">
+            <img src="@/assets/images/privacy_policy.svg" alt="">
+          </router-link>
+        </el-col>
+        <el-col :span="8">
+          <router-link :to="{ name: 'Settings' }">
+            <img src="@/assets/images/settings.svg" alt="">
+          </router-link>
+        </el-col>
+      </el-row>
+    </div>
     <logout :value="logoutDialog" @close="(value) => { logoutDialog = value }" />
   </el-main>
 </template>
@@ -60,6 +74,17 @@ import Logout from './components/Logout.vue';
 @Component({components:{ UserInfo, Logout }})
 export default class More extends Vue {
   logoutDialog = false;
+  isLogout = this.$auth.isSignIn();
+  created() {
+    this.$root.$on('isLogout', (isLogout: boolean) => {
+      if (isLogout) {
+        this.isLogout = !isLogout;
+      }
+    });
+  }
+  beforeDestroy() {
+    this.$root.$off('isLogout');
+  }
 }
 </script>
 
