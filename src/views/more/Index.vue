@@ -31,7 +31,7 @@
           </router-link>
         </el-col>
         <el-col :span="8">
-          <router-link :to="{ name: 'Login' }">
+          <router-link :to="{ name: 'ResetPassword' }">
             <img src="@/assets/images/change_password.svg" alt="">
           </router-link>
         </el-col>

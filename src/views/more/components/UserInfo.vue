@@ -26,7 +26,6 @@ export default class UserInfo extends Vue {
     userCode: "",
     userImage: "",
   }
-  // <img v-bind:src="`${userModel.userImage}`">
   created() {
     this.getLoginState();
     this.$root.$on('isLogout', (isLogout: boolean) => {
@@ -45,7 +44,7 @@ export default class UserInfo extends Vue {
    }else {
      this.userModel.nickName = "";
      this.userModel.userCode = "";
-     this.userModel.userImage = "@/assets/images/avatar.svg";
+     this.userModel.userImage = "";
      console.log('no user login');
    }
   }
