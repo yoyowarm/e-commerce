@@ -96,6 +96,7 @@
         <add-line
           v-for="(item, index) in form.socialName"
           :key="`socialName-${index}`"
+          @deleteItem="(index) => deleteItem('socialName', index)"
         >
           <input slot="left" type="text" placeholder="Line" v-model="item.key">
           <input slot="right" type="text" placeholder="即時訊息名稱" v-model="item.value">

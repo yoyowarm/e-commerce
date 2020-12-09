@@ -13,18 +13,53 @@
           </el-col>
       </el-row>
       <border-input labelText="姓名">
+        <img slot="icon" style="width: 20px" src="@/assets/images/profile/name.svg" alt="">
+        <div slot="input">
+          <span v-if="form.name">{{form.name}}</span>
+          <span v-else class="empty">尚未輸入</span>
+        </div>
       </border-input>
       <border-input labelText="暱稱">
+        <img slot="icon" style="width: 20px" src="@/assets/images/profile/nickname.svg" alt="">
+        <div slot="input">
+          <span v-if="form.nickname">{{form.nickname}}</span>
+          <span v-else class="empty">尚未輸入</span>
+        </div>
       </border-input>
-      <border-input labelText="手機" >
+      <border-input labelText="手機"  >
+        <img slot="icon" style="width: 20px" src="@/assets/images/profile/phone.svg" alt="">
+        <div slot="input">
+          <span v-if="form.phone">{{form.phone}}</span>
+          <span v-else class="empty">尚未輸入</span>
+        </div>
       </border-input>
-      <border-input labelText="生日" >
+      <border-input labelText="生日"  >
+        <img slot="icon" style="width: 20px" src="@/assets/images/profile/birth.svg" alt="">
+        <div slot="input">
+          <span v-if="form.birth">{{form.birth}}</span>
+          <span v-else class="empty">尚未輸入</span>
+        </div>
       </border-input>
-      <border-input labelText="性別" >
+      <border-input labelText="性別"  >
+        <img slot="icon" style="width: 20px" src="@/assets/images/profile/name.svg" alt="">
+        <div slot="input">
+          <span v-if="form.gender">{{form.gender}}</span>
+          <span v-else class="empty">尚未輸入</span>
+        </div>
       </border-input>
-      <border-input labelText="信箱" >
+      <border-input labelText="信箱"  >
+        <img slot="icon" style="width: 20px" src="@/assets/images/profile/email.svg" alt="">
+        <div slot="input">
+          <span v-if="form.email">{{form.email}}</span>
+          <span v-else class="empty">尚未輸入</span>
+        </div>
       </border-input>
-      <border-input labelText="聯絡地址">
+      <border-input labelText="聯絡地址"  >
+        <img slot="icon" style="width: 20px" src="@/assets/images/profile/house.svg" alt="">
+        <div slot="input">
+          <span v-if="form.address">{{form.address}}</span>
+          <span v-else class="empty">尚未輸入</span>
+        </div>
       </border-input>
     </custom-card>
   </div>
@@ -37,7 +72,15 @@ import BorderInput from '@/components/border-input.vue'
 
 @Component({components:{ CustomCard, BorderInput }})
 export default class EditProfile extends Vue {
-
+  form = {
+    name: '熊麻吉',
+    nickname: 'bearly',
+    phone: '+886 11234567',
+    birth: '1990-10-22',
+    gender: '男',
+    email: '',
+    address: '台南市安平區光州路52號'
+  }
 }
 </script>
 

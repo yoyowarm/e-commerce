@@ -1,7 +1,7 @@
 <template>
   <div class="border-input" :class="{'no-border': noBorder, 'vertical-center': noInput, 'multi-line': $slots.default }">
     <el-row type="flex">
-      <el-col :span="4">
+      <el-col :span="4" class="vertical-center">
         <slot name="icon" />
       </el-col>
       <el-col v-if="!noInput" :span="flexSpan">
@@ -75,6 +75,7 @@ export default class BorderInput extends Vue {
 .vertical-center {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 ul {
   margin-bottom: 0px;

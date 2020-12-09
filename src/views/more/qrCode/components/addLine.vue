@@ -49,6 +49,7 @@ export default class AddLine extends Vue {
 .el-col {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .flexStart {
   align-items: flex-start
