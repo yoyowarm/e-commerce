@@ -15,8 +15,7 @@ export default class Content extends Vue {
 
 <style lang="less" scoped>
 .content {
-    padding: 10px 0px;
-    padding-bottom: 20px;
+    padding: 30px 0px;
     border-bottom: 2px solid #F6F5F4
 }
 </style>

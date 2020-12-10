@@ -24,17 +24,14 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class Logout extends Vue {
- @Prop({required: false, type: Boolean, default: false}) value = false;
-
+ @Prop({required: false, type: Boolean, default: false}) value!: false;
+  
   cancel () {
     this.$emit('close', false)
-    this.$root.$emit('isLogout', false)
   }
 
   confirm () {
-    this.$auth.clearToken();
     this.$emit('close', false)
-    this.$root.$emit('isLogout', true)
   }
 }
 </script>
