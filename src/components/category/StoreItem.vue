@@ -1,11 +1,15 @@
 <template>
   <div class="store">
+    <slot name="avatar">
     <div class="avatar" @click="() => { if(to) $router.push(to)}">
       <img src="@/assets/images/comment/store-avatar.png" alt="">
     </div>
+    </slot>
+    <slot name="info">
     <div class="info">
       店家名稱可兩行店家名稱可兩行
     </div>
+    </slot>
   </div>
 </template>
 
@@ -15,6 +19,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 @Component
 export default class StoreItem extends Vue {
    @Prop({required: false, type: Object, default: null}) to!: null;
+   @Prop({ type: String}) name !: ''
 }
 </script>
 

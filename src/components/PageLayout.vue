@@ -22,7 +22,7 @@ import { Vue, Component } from 'vue-property-decorator';
 import NavigationBar from '@/components/NavigationBar.vue';
 
 @Component({components:{ NavigationBar }})
-export default class MyUserLayout extends Vue {
+export default class PageLayout extends Vue {
   get title () {
     return this.$route.meta.title
   }

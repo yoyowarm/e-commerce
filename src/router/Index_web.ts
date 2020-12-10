@@ -17,19 +17,29 @@ const routes: Array<RouteConfig> = [
     ]
   },
   {
+    path: '/home',
+    component: () => import(/* webpackChunkName: "More" */ "@/views/PageLayout.vue"),
+    children: [
+      { path: 'brand-wall', name: 'BrandWall', component: () => import(/* webpackChunkName: "BrandWall" */ "@/views/home/BrandWall.vue"), meta: { title: '品牌牆'}},
+      { path: 'visit', name: 'Visit', component: () => import(/* webpackChunkName: "Visit" */ "@/views/home/Visit.vue"), meta: { title: '快來串門子'}},
+      { path: 'my-store', name: 'MyStore', component: () => import(/* webpackChunkName: "MyStore" */ "@/views/home/MyStore.vue"), meta: { title: '我的店家'}},
+      { path: 'comment-page/:id', name: 'CommentPage', component: () => import(/* webpackChunkName: "CommentPage" */ "@/views/home/CommentPage.vue"), meta: { title: '評論頁'}}
+    ]
+  },
+  {
     path: '/',
     component: MainPage,
     children: [
         { path: 'gift', name: 'Gift', component: () => import(/* webpackChunkName: "Gift" */ "@/views/gift/Index.vue"), meta: { title: '禮物盒' } },
         { path: 'scan', name: 'Scan', component: () => import(/* webpackChunkName: "Scan" */ "@/views/scan/Index.vue"), meta: { title: '掃碼' } },
         { path: 'store', name: 'Store', component: () => import(/* webpackChunkName: "Store" */ "@/views/store/Index.vue"), meta: { title: '店家' } },
-        { path: 'more', name: 'More', component: () => import(/* webpackChunkName: "More" */ "@/views/more/Index.vue"), meta: { title: '個人中心' } },
+        { path: 'more', name: 'More', component: () => import(/* webpackChunkName: "More" */ "@/views/more/Index.vue"), meta: { title: '個人中心' } }
     ]
   },
   {
     path: '/more',
     name: 'more',
-    component: () => import(/* webpackChunkName: "More" */ "@/views/MyUserLayout.vue"),
+    component: () => import(/* webpackChunkName: "More" */ "@/views/PageLayout.vue"),
     children: [
         { path: 'business-card', name: 'BusinessCard', component: () => import(/* webpackChunkName: "BusinessCard" */ "@/views/more/businessCard/Index.vue"), meta: { title: '我的名片' } },
         { path: 'privacy-policy', name: 'PrivacyPolicy', component: () => import(/* webpackChunkName: "PrivacyPolicy" */ "@/views/more/privacyPolicy/Index.vue"), meta: { title: '隱私權條款' } },

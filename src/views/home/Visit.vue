@@ -1,12 +1,6 @@
 <template>
-  <div class="store">
-    <div class="tabs">
-      <div :class="{active: activeName === 'first'}" @click="activeName = 'first'"><span>熱門推薦</span></div>
-      <div :class="{active: activeName === 'second'}" @click="activeName = 'second'"><span>最新店家</span></div>
-      <div :class="{active: activeName === 'third'}" @click="activeName = 'third'"><span>最近店家</span></div>
-      <div :class="{active: activeName === 'fourth'}" @click="activeName = 'fourth'"><span>高度評價</span></div>
-    </div>
-    <custom-card v-if="activeName === 'first'">
+  <div>
+    <custom-card>
       <quick-menu/>
       <el-row>
         <el-button type="text" class="tag-btn">#速食</el-button>
@@ -46,7 +40,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue, Component } from 'vue-property-decorator';
 import CategoryContent from '@/components/category/Content.vue';
 import QuickMenu from '@/components/QuickMenu.vue'
 import CustomCard from '@/components/CustomCard.vue';
@@ -59,58 +53,20 @@ import TagList from '@/components/TagList.vue'
   ArticleCover,
   TagList
 }})
-export default class Store extends Vue {
-activeName = 'first'
+export default class Visit extends Vue{
+
 }
 </script>
 
 <style lang="less" scoped>
-.store {
-  width: 100%;
-  .tabs {
-    margin-top: 10px;
-    display: flex;
-    justify-content: start;
-    position: relative;
-    width: 100%;
-    overflow: auto;
-    >div {
-      padding: 5px 0px;
-      min-width: 28%;
-      text-align: center;
-      &::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 4px;
-        bottom: 0px;
-        left: 0px;
-        background: #F6F5F4
-      }
-    }
-    .active {
-      position: relative;
-      &::after {
-        background: #F0D870;
-        z-index: 2;
-        width: 70%;
-        left: 15%;
-        border-radius: 5px;
-      }
-    }
-  }
-  .tab-body {
-    padding: 20px
-  }
-  .tag-btn {
-    color: #7EABD6;
-  }
-  .drop-down {
-    border: 1px solid #D4D5D5;
-    border-radius: 30px;
-  }
-  button { padding: 0px }
+.tag-btn {
+  color: #7EABD6;
 }
+.drop-down {
+  border: 1px solid #D4D5D5;
+  border-radius: 30px;
+}
+button { padding: 0px }
 .info-line {
   img {
     width: 20px;

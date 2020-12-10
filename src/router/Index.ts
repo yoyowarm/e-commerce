@@ -8,6 +8,10 @@ import Gift from '@/views/gift/Index.vue'
 import Scan from '@/views/scan/Index.vue'
 import Store from '@/views/store/Index.vue'
 import More from '@/views/more/Index.vue'
+import BrandWall from '@/views/home/BrandWall.vue'
+import Visit from '@/views/home/Visit.vue'
+import MyStore from '@/views/home/MyStore.vue'
+import CommentPage from '@/views/home/CommentPage.vue'
 
 /*主題活動*/
 // import EventsList from '@/views/EventsList'
@@ -17,7 +21,7 @@ import Login from '@/views/auth/Login.vue'
 import ForgetPwd from '@/views/auth/ForgetPwd.vue'
 
 /* 個人中心相關頁面 */
-import MyUserLayout from '@/components/MyUserLayout.vue'
+import PageLayout from '@/components/PageLayout.vue'
 import BusinessCard from '@/views/more/businessCard/Index.vue'
 import PrivacyPolicy from '@/views/more/privacyPolicy/Index.vue'
 import Setting from '@/views/more/setting/Index.vue'
@@ -46,6 +50,16 @@ const routes: Array<RouteConfig> = [
     ]
   },
   {
+    path: '/home',
+    component: PageLayout,
+    children: [
+      { path: 'brand-wall', name: 'BrandWall', component: BrandWall, meta: { title: '品牌牆'} },
+      { path: 'visit', name: 'Visit', component: Visit, meta: { title: '快來串門子' }},
+      { path: 'my-store', name: 'MyStore', component: MyStore, meta: { title: '我的店家'}},
+      { path: 'comment-page/:id', name: 'CommentPage', component: CommentPage, meta: { title: '評論頁'}}
+    ]
+  },
+  {
     // path: '*',
     path: '/',
     component: MainPage,
@@ -53,12 +67,12 @@ const routes: Array<RouteConfig> = [
         { path: 'gift', name: 'Gift', component: Gift, meta: { title: '禮物盒' } },
         { path: 'scan', name: 'Scan', component: Scan, meta: { title: '掃碼' } },
         { path: 'store', name: 'Store', component: Store, meta: { title: '店家' } },
-        { path: 'more', name: 'More', component: More, meta: { title: '個人中心' } },
+        { path: 'more', name: 'More', component: More, meta: { title: '個人中心' } }
     ]
   },
   {
     path: '/more',
-    component: MyUserLayout,
+    component: PageLayout,
     children: [
         { path: 'business-card', name: 'BusinessCard', component: BusinessCard, meta: { title: '我的名片' } },
         { path: 'privacy-policy', name: 'PrivacyPolicy', component: PrivacyPolicy, meta: { title: '隱私權條款' } },
