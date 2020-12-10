@@ -57,7 +57,7 @@ export default class UserInfo extends Vue {
   width: 100%;
   padding: 35px 30px;
   display: flex;
-  align-items: center;;
+  align-items: center;
   background: url("../../../assets/images/user-info-bg.svg")no-repeat;
   img {
     width: 100px;

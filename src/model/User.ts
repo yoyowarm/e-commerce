@@ -37,4 +37,14 @@ export default class User extends Http {
             funcSuccess(success, message, this);
         });
     }
+
+    /** 取得個人資訊 */
+    public getPersonalInfoApi(parameters: {},  funcSuccess: (user: User) => void) {
+        this.fetchWithAuth('GetUserInfoWithId', parameters, (success, message, json: Responses) => {
+            if(json.status){
+                funcSuccess(this);
+            }
+
+        });
+    }
 }

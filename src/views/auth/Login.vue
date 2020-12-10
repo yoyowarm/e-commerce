@@ -65,7 +65,7 @@ export default class Login extends Vue {
   };
   
   login() {
-    if(!checkPhone(this.loginform.tel)) { 
+    if(!checkPhone(this.loginform.tel)) {
       this.$store.commit(MutationTypes.SHOW_TOAST, '手機號碼必須是10位數');
       return
     }
