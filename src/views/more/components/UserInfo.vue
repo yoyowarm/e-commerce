@@ -1,5 +1,5 @@
 <template>
-  <div class="user-info ">
+  <div class="user-info " v-if="isLogout == true">
     <el-row type="flex" justify="center" class="h-100 w-100">
       <el-col :span="7">
         <img v-bind:src="`${userModel.userImage}`">
@@ -9,6 +9,15 @@
           <li>{{userModel.nickName}}</li>
           <li><span>會員：{{userModel.userCode}}</span></li>
           <li><el-button @click="$router.push({ name: 'Profile'})" class="edit" round>編輯我的資料 <img src="@/assets/images/edit.svg" alt=""></el-button></li>
+        </ul>
+      </el-col>
+    </el-row>
+  </div>
+  <div class="user-info " v-else>
+    <el-row type="flex" justify="center" >
+      <el-col>
+        <ul class="account">
+          <li><el-button @click="$router.push({ name: 'Login'})" class="edit" round>登入</el-button></li>
         </ul>
       </el-col>
     </el-row>
@@ -26,7 +35,8 @@ export default class UserInfo extends Vue {
     userCode: "",
     userImage: "",
   }
-  created() {
+  isLogout = this.$auth.isSignIn();
+  mounted() {
     this.getLoginState();
     this.$root.$on('isLogout', (isLogout: boolean) => {
       if (isLogout) {
@@ -36,6 +46,7 @@ export default class UserInfo extends Vue {
   }
 
   getLoginState() {
+   this.isLogout = this.$auth.isSignIn();
    if (this.$auth.isSignIn()) {
      const userData: UserData = JSON.parse(localStorage.getItem('userInfo') || "");
      this.userModel.userImage = userData.picture;
@@ -60,6 +71,7 @@ export default class UserInfo extends Vue {
   align-items: center;
   background: url("../../../assets/images/user-info-bg.svg")no-repeat;
   img {
+    border-radius:50px;
     width: 100px;
   };
   .account {

@@ -1,7 +1,7 @@
 <template>
   <el-main>
-    <user-info id="userInfoPanel"/>
-    <div class="menu" v-if="login">
+    <user-info />
+    <div class="menu" v-if="isLogout == true">
       <el-row type="flex" justify="space-between">
         <el-col :span="8">
           <router-link :to="{ name: 'BusinessCard' }">
@@ -48,10 +48,8 @@
         </el-col>
       </el-row>
     </div>
-
-    <!-- 未登入時的選單 -->
-    <div v-else>
-      <el-row type="flex" justify="space-between">
+    <div class="menu" v-else>
+      <el-row type="flex" justify="flex-star">
         <el-col :span="8">
           <router-link :to="{ name: 'PrivacyPolicy' }">
             <img src="@/assets/images/privacy_policy.svg" alt="">
@@ -62,11 +60,8 @@
             <img src="@/assets/images/settings.svg" alt="">
           </router-link>
         </el-col>
-        <el-col :span="8">
-        </el-col>
       </el-row>
     </div>
-
     <logout :value="logoutDialog" @close="(value) => { logoutDialog = value }" />
   </el-main>
 </template>
@@ -75,37 +70,20 @@
 import { Vue, Component } from 'vue-property-decorator';
 import UserInfo from './components/UserInfo.vue';
 import Logout from './components/Logout.vue';
-import UserData from "@/model/UserInfo";
-import router from "@/router";
-import {MutationTypes} from "@/store/MutationTypes";
 
 @Component({components:{ UserInfo, Logout }})
 export default class More extends Vue {
-  login = false;
   logoutDialog = false;
-
+  isLogout = this.$auth.isSignIn();
   created() {
-    if (this.$auth.isSignIn()) {
-      this.callGetUserInfoApi();
-    }
-  }
-
-  /** 取得個人資料 */
-  callGetUserInfoApi() {
-    new UserData().getUserInfo({
-    }, (success: boolean, message: string, userInfo: UserData) => {
-      if(success) {
-
-
-
-        //儲存個人資料物件
-        localStorage.setItem('userInfo', JSON.stringify(userInfo));
-
-        this.$store.commit(MutationTypes.SHOW_TOAST, message + userInfo.nickName);
-      } else {
-        this.$store.commit(MutationTypes.SHOW_TOAST, message);
+    this.$root.$on('isLogout', (isLogout: boolean) => {
+      if (isLogout) {
+        this.isLogout = !isLogout;
       }
     });
+  }
+  beforeDestroy() {
+    this.$root.$off('isLogout');
   }
 }
 </script>

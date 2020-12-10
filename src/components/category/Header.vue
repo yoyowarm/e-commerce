@@ -19,8 +19,8 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class Head extends Vue {
-   @Prop({required: false, type: String, default: ''}) title = '';
-   @Prop({required: false, type: Object, default: null}) to = null;
+   @Prop({required: false, type: String, default: ''}) title!: string | '';
+   @Prop({required: false, type: Object, default: null}) to!: null
 }
 </script>
 
@@ -28,7 +28,7 @@ export default class Head extends Vue {
 .list-header {
   display: flex;
   align-items: center;
-  justify-content: start-flex;
+  justify-content: flex-start;
   margin: 0 20px;
   &.between {
     justify-content: space-between

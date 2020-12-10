@@ -7,13 +7,14 @@
         </el-col>
       </slot>
       <slot name="center">
-        <el-col v-if="!noLeft" :span="14" class="text-center">
+        <el-col v-if="!noLeft" :span="12" class="text-center">
           <span>{{ title }}</span>
         </el-col>
       </slot>
       <slot name="right">
-        <el-col v-if="!noRight" :span="5" class="text-right">
-          <img  class="ball" src="@/assets/images/balls.svg" alt="">
+        <el-col v-if="!noRight" :span="7" class="text-right">
+          <img v-if="!noSearch" class="icon" src="@/assets/images/search.svg" alt="">
+          <img  class="icon ball" src="@/assets/images/balls.svg" alt="">
         </el-col>
       </slot>
     </el-row>
@@ -25,16 +26,22 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 
 @Component
 export default class NavigationBar extends Vue {
- @Prop({required: false, type: String, default: ''}) title = '';
- @Prop({required: false, type: Boolean, default: false}) noLeft = false;
- @Prop({required: false, type: Boolean, default: false}) noRight = false;
+ @Prop({required: false, type: Boolean, default: false}) noLeft!: boolean;
+ @Prop({required: false, type: Boolean, default: false}) noRight!: boolean;
+ @Prop({type: Boolean, default: false}) noSearch !: boolean
 
+  get title () {
+    return this.$route.meta.title
+  }
  get flexType () {
+   if (this.noRight && this.noLeft) {
+      return 'center'
+    }
     if (this.noLeft) {
       return 'end'
     }
-    if (this.noRight && this.noLeft) {
-      return 'center'
+    if (this.noRight) {
+      return 'start'
     }
     return 'space-between'
   }
@@ -46,9 +53,13 @@ export default class NavigationBar extends Vue {
   width: 39px;
   height: 39px
 }
-.ball {
+.icon {
   width: 20px;
   height: 20px;
+  
+}
+.ball {
+  margin-left: 15px
 }
 .items-center {
   align-items: center;

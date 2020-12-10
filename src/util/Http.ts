@@ -48,7 +48,6 @@ export class Http {
             'action': action,
             'parameters': parameterStr,
         });
-        const token = localStorage.getItem('token') || '';
         await fetch(process.env.VUE_APP_API_HOST  + authPath, {
             body: paramJsonStr,
             headers: new Headers({
