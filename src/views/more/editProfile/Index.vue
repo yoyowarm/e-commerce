@@ -66,6 +66,10 @@
           <input v-model="form.address" placeholder="請輸入地址">
         </div>
       </border-input>
+      <div class="footer">
+        <el-button class="cancel" round>取消</el-button>
+        <el-button class="confirm" round>送出</el-button>
+      </div>
     </custom-card>
   </div>
 </template>
@@ -129,5 +133,22 @@ export default class EditProfile extends Vue {
 input {
   border: 0;
   outline: 0;
+}
+.footer {
+  margin-top: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  button {
+    width: 125px;
+    border: 0px;
+    color: #302D2C;
+  }
+  .confirm {
+    background: #E4DFDD
+  }
+  .cancel {
+    background: #F0F0ED
+  }
 }
 </style>
