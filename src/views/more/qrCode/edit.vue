@@ -134,6 +134,7 @@ export default class EditQrCode extends Vue {
     showBirth: false,
     note: ''
   }
+
   template = {
     key: '',
     value: ''
@@ -148,11 +149,12 @@ export default class EditQrCode extends Vue {
   }
 
   addItem (type: string) {
-    if (type === 'address') this.form[type].push(this.addressTemplate)
-    this.form[type].push(this.template)
+    // if (type === 'address') this.form[type].push(this.addressTemplate)
+    // this.form[type].push(this.template)
   }
+
   deleteItem (type: string, index: number) {
-    this.form[type].splice(index, 1)
+  //   this.form[type].splice(index, 1)
   }
 }
 </script>

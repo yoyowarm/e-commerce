@@ -66,7 +66,7 @@ export default class ArticleCard extends Vue {
   .store {
     display: flex;
     align-items: center;
-    align-items: start;
+    align-items: flex-start;
     font-size: 18px;
     margin-top: 4px;
     li { line-height: 22px }

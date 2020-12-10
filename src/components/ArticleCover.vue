@@ -20,13 +20,13 @@
 import { Vue, Component } from 'vue-property-decorator';
 @Component
 export default class ArticleCover extends Vue {
-get flexType () {
-  if (this.$slots.left && this.$slots.right) {
-    return 'between'
-  } else if (this.$slots.right) {
-    return 'end'
-  } else return 'start'
-}
+  get flexType () {
+    if (this.$slots.left && this.$slots.right) {
+      return 'between'
+    } else if (this.$slots.right) {
+      return 'end'
+    } else return 'flex-start'
+  }
 }
 </script>
 

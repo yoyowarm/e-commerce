@@ -60,7 +60,7 @@ import TagList from '@/components/TagList.vue'
   TagList
 }})
 export default class Store extends Vue {
-activeName = 'first'
+  activeName = 'first'
 }
 </script>
 
@@ -70,7 +70,7 @@ activeName = 'first'
   .tabs {
     margin-top: 10px;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     position: relative;
     width: 100%;
     overflow: auto;
