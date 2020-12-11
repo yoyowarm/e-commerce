@@ -74,7 +74,9 @@ import Logout from './components/Logout.vue';
 @Component({components:{ UserInfo, Logout }})
 export default class More extends Vue {
   logoutDialog = false;
+  
   isLogout = this.$auth.isSignIn();
+
   created() {
     this.$root.$on('isLogout', (isLogout: boolean) => {
       if (isLogout) {

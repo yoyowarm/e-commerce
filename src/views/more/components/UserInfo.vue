@@ -1,21 +1,17 @@
 <template>
-  <div class="user-info " v-if="isLogout == true">
-    <el-row type="flex" justify="center" class="h-100 w-100">
-      <el-col :span="7">
+  <div class="user-info ">
+    <el-row type="flex" justify="center" :class="isLogout? 'h-100 w-100' : ''">
+      <el-col :span="7" v-if="isLogout">
         <img v-bind:src="`${userModel.userImage}`">
       </el-col>
-      <el-col :span="17">
+      <el-col :span="17" v-if="isLogout">
         <ul class="account">
           <li>{{userModel.nickName}}</li>
           <li><span>會員：{{userModel.userCode}}</span></li>
           <li><el-button @click="$router.push({ name: 'Profile'})" class="edit" round>編輯我的資料 <img src="@/assets/images/edit.svg" alt=""></el-button></li>
         </ul>
       </el-col>
-    </el-row>
-  </div>
-  <div class="user-info " v-else>
-    <el-row type="flex" justify="center" >
-      <el-col>
+      <el-col v-else>>
         <ul class="account">
           <li><el-button @click="$router.push({ name: 'Login'})" class="edit" round>登入</el-button></li>
         </ul>
