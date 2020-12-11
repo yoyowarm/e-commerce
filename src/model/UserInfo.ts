@@ -1,4 +1,4 @@
-import {Http, Responses} from '../util/Http';
+import {ApiResponse, Http, Responses} from '../util/Http';
 
 export default class UserData extends Http {
 
@@ -17,6 +17,12 @@ export default class UserData extends Http {
 
     public getUserInfo(parameters: {},  funcSuccess: (success: boolean, message: string, userInfo: UserData) => void) {
         this.fetchWithAuth('GetUserInfoWithId', parameters, (success, message, json) => {
+            funcSuccess(success, message, this);
+        });
+    }
+
+    public updateUserInfo(parameters: {},  funcSuccess: (success: boolean, message: string, userInfo: UserData) => void) {
+        this.fetchWithAuth('UpdateUserInfo', parameters, (success, message, json) => {
             funcSuccess(success, message, this);
         });
     }

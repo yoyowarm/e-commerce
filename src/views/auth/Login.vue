@@ -79,6 +79,7 @@ export default class Login extends Vue {
         password: this.loginform.password
     }, (success: boolean, message: string, user: User) => {
       if (success) {
+        localStorage.setItem('phone', this.loginform.tel);
         localStorage.setItem('token', user.getToken());
         localStorage.setItem('nickName', user.getNickName());
         localStorage.setItem('userCode', user.getUserCode());

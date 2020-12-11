@@ -2,7 +2,7 @@
   <div>
     <custom-card class="user-block">
       <div class="avatar">
-        <img src="@/assets/images/avatar.svg" alt="" @click="switchImage">
+        <img v-bind:src="`${form.avatar}`" alt="" @click="switchImage">
         <img class="camera" src="@/assets/images/camera.svg" alt="">
       </div>
     </custom-card>
@@ -77,10 +77,12 @@
 import { Vue, Component } from 'vue-property-decorator';
 import CustomCard from '@/components/CustomCard.vue';
 import BorderInput from '@/components/BorderInput.vue'
+import UserData from '@/model/UserInfo';
 
 @Component({components:{ CustomCard, BorderInput }})
 export default class Profile extends Vue {
   form = {
+    avatar: '',
     name: '熊麻吉',
     nickname: 'bearly',
     phone: '+886 11234567',
@@ -88,6 +90,28 @@ export default class Profile extends Vue {
     gender: '男',
     email: '',
     address: '台南市安平區光州路52號'
+  }
+
+  mounted() {
+    const userData: UserData = JSON.parse(localStorage.getItem('userInfo') || "");
+    this.form.avatar = userData.picture
+    this.form.name = userData.name
+    this.form.nickname = userData.nickName
+    this.form.phone = localStorage.getItem('phone') || ""
+    this.form.birth = userData.birthdayAt
+    switch (userData.gender) {
+      case 0:
+        this.form.gender = '?'
+        break
+      case 1:
+        this.form.gender = '男'
+        break
+      case 2:
+        this.form.gender = '女'
+        break
+    }
+    this.form.email = userData.email
+    this.form.address = userData.address
   }
 
   switchImage() {
@@ -116,6 +140,7 @@ export default class Profile extends Vue {
       right: -6px
     }
     img {
+      border-radius:50px;
       width: 100%;
       object-fit: cover;
     }
