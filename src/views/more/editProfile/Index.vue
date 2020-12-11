@@ -2,7 +2,7 @@
   <div>
     <custom-card class="user-block">
       <div class="avatar">
-        <img src="@/assets/images/avatar.svg" alt="">
+        <img src="@/assets/images/avatar.svg" alt="" @click="switchImage">
         <img class="camera" src="@/assets/images/camera.svg" alt="">
       </div>
     </custom-card>
@@ -91,6 +91,10 @@ export default class EditProfile extends Vue {
     city: '台南市',
     town: '安平區',
     address: '光州路52號'
+  }
+  
+  switchImage() {
+    //
   }
 }
 </script>

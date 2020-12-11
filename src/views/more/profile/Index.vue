@@ -2,7 +2,7 @@
   <div>
     <custom-card class="user-block">
       <div class="avatar">
-        <img src="@/assets/images/avatar.svg" alt="">
+        <img src="@/assets/images/avatar.svg" alt="" @click="switchImage">
         <img class="camera" src="@/assets/images/camera.svg" alt="">
       </div>
     </custom-card>
@@ -88,6 +88,10 @@ export default class Profile extends Vue {
     gender: '男',
     email: '',
     address: '台南市安平區光州路52號'
+  }
+
+  switchImage() {
+    //
   }
 }
 </script>
