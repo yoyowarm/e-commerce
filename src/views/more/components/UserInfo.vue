@@ -8,7 +8,7 @@
         <ul class="account">
           <li>{{userModel.nickName}}</li>
           <li><span>會員：{{userModel.userCode}}</span></li>
-          <li><el-button @click="$router.push({ name: 'Profile'})" class="edit" round>編輯我的資料 <img src="@/assets/images/edit.svg" alt=""></el-button></li>
+          <li><el-button @click="$router.push({ name: 'EditProfile'})" class="edit" round>編輯我的資料 <img src="@/assets/images/edit.svg" alt=""></el-button></li>
         </ul>
       </el-col>
       <el-col v-else>>
