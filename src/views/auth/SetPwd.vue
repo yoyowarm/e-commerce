@@ -1,14 +1,14 @@
 <template>
   <div class="login">
+    <div class="back">
+    <img @click="$router.back()" src="@/assets//images/close.svg" alt="">
+    </div>
     <div class="main-content">
         <div class="logo"><img :src="require('@/assets/images/login_logo.svg')"></div>
         <div class="tab">
-          <button class="tablinks selected">更改密碼</button>
+          <button class="tablinks selected">設定密碼</button>
         </div>
         <el-form class="textBox" :model="form" ref="loginForm" >
-        <el-form-item>
-            <el-input placeholder="請輸入舊密碼" v-model="form.oldPassword" type="password" show-password></el-input>
-        </el-form-item>
         <el-form-item>
             <el-input placeholder="請輸入 6-12 碼英數混合" v-model="form.password" type="password" show-password>
             </el-input>
@@ -18,8 +18,7 @@
         </el-form-item>
         </el-form>
         <div class="btn_box">
-        <p><router-link :to="{ name: 'ForgetPwd'}" class="forget"><a>忘記密碼?</a></router-link></p>
-        <p><el-button round>送出</el-button></p>
+        <p><el-button :class="{hasValue: form.password || form.reconfirm }" round>下一步</el-button></p>
         </div>
     </div>
     <div class="brand">
@@ -35,9 +34,8 @@ import { Vue, Component } from 'vue-property-decorator';
   components: {
   }
 })
-export default class ForgetPwd extends Vue {
+export default class SetPwd extends Vue {
   form = {
-    oldPassword: '',
     password: '',
     reconfirm: ''
   };

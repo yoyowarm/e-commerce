@@ -6,20 +6,18 @@
         <div class="main-content">
             <div class="logo"><img :src="require('@/assets/images/login_logo.svg')"></div>
             <div class="tab">
-              <button class="tablinks selected">忘記密碼</button>
+              <button class="tablinks selected">手機驗證</button>
             </div>
             <el-form class="textBox" :model="passwordForm" ref="loginForm" >
             <el-form-item>
-                <el-input type="tel" placeholder="輸入手機" v-model="passwordForm.tel" autocomplete="off"/>
-            </el-form-item>
-            <el-form-item>
-                <el-input placeholder="輸入驗證碼" v-model="passwordForm.verificationCode" autocomplete="off">
-                    <el-button slot="append" class="send-btn">發送驗證碼</el-button>
+                <el-input placeholder="請輸入驗證碼" v-model="passwordForm.verificationCode" autocomplete="off">
+                    <el-button slot="append" class="send-btn">重新發送</el-button>
                 </el-input>
+                <p class="notice">驗證碼已發送到你的手機<span>0911***111</span></p>
             </el-form-item>
             </el-form>
             <div class="btn_box">
-            <p><el-button round @click="$router.replace({ name: 'SetPwd'})">下一步</el-button></p>
+            <p><el-button  :class="{hasValue: passwordForm.verificationCode}" round @click="$router.push({name: 'Registered'})">下一步</el-button></p>
             </div>
         </div>
         <div class="brand">
@@ -30,25 +28,23 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-// import { checkPhone } from '@/util/Validators'
 
 @Component
 export default class ForgetPwd extends Vue {
   passwordForm = {
-    tel: '',
     verificationCode: '',
   };
 
-  // error = {
-  //   phone: false,
-  //   verificationCode: false,
-  //   timer: 0
-  // };
+  error = {
+    phone: false,
+    verificationCode: false,
+    timer: 0
+  };
 
-  // submit () {
-  //   clearTimeout(this.error.timer)
-  //   if(!checkPhone(this.passwordForm.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
-  // }
+  submit () {
+    // clearTimeout(this.error.timer)
+    // if(!checkPhone(this.passwordForm.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
+  }
 }
 </script>
 
@@ -60,13 +56,19 @@ export default class ForgetPwd extends Vue {
   border-radius: 50px!important;
   height: 48px
 }
-
+.notice {
+  font-size: 14px;
+  text-align: center;
+  span {
+    color: #F0D870
+  }
+}
 /deep/ .el-input-group__append {
     height: 35px;
     display: inline;
     padding: 3px 0px;
     position: absolute;
-    width: 90px;
+    width: 75px;
     right: 0px;
     top: 0px;
     bottom: 0px;

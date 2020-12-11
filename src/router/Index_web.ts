@@ -9,6 +9,9 @@ Vue.use(VueRouter)
 const routes: Array<RouteConfig> = [
   {path: 'login', name: 'Login', component: () => import(/* webpackChunkName: "Login" */ "@/views/auth/Login.vue")}, //登入
   {path: 'forget-pwd', name: 'ForgetPwd', component: () => import(/* webpackChunkName: "ForgetPwd" */ "@/views/auth/ForgetPwd.vue")}, //忘記密碼
+  { path: '/phone-verify', name: 'PhoneVerify', component: () => import(/* webpackChunkName: "PhoneVerify" */ "@/views/auth/PhoneVerify.vue")}, //手機驗證
+  {path: '/registered', name: 'Registered', component:() => import(/* webpackChunkName: "PhoneVerify" */ "@/views/auth/Registered.vue")}, //註冊頁
+  {path: '/set-pwd', name: 'SetPwd', component: () => import(/* webpackChunkName: "SetPwd" */ "@/views/auth/SetPwd.vue")}, //設定密碼頁
   {
     path: '/home',
     component: EmptyLayout,

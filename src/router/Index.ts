@@ -19,6 +19,9 @@ import CommentPage from '@/views/home/CommentPage.vue'
 /*會員登入相關*/
 import Login from '@/views/auth/Login.vue'
 import ForgetPwd from '@/views/auth/ForgetPwd.vue'
+import PhoneVerify from '@/views/auth/PhoneVerify.vue'
+import Registered from '@/views/auth/Registered.vue'
+import SetPwd from '@/views/auth/SetPwd.vue'
 
 /* 個人中心相關頁面 */
 import PageLayout from '@/components/PageLayout.vue'
@@ -42,6 +45,9 @@ Vue.use(VueRouter)
 const routes: Array<RouteConfig> = [
   {path: '/login', name: 'Login', component: Login}, //登入
   {path: '/forget-pwd', name: 'ForgetPwd', component: ForgetPwd}, //忘記密碼
+  {path: '/phone-verify', name: 'PhoneVerify', component: PhoneVerify}, //手機驗證
+  {path: '/registered', name: 'Registered', component: Registered}, //註冊頁
+  {path: '/set-pwd', name: 'SetPwd', component: SetPwd}, //設定密碼
   {
     path: '/home',
     component: EmptyLayout,
