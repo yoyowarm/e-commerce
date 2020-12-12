@@ -2,7 +2,7 @@
   <el-card :body-style="{ padding: '0px' }" class="article">
     <img src="@/assets/images/comment/card-cover.png" class="image">
     <div style="padding: 8px;">
-      <el-row type="flex" justify="between">
+      <el-row type="flex" justify="space-between">
         <el-col :span="16" class="comment-text">
           評論內容評論容評容評論內容評論評論內容評論容評容評論內容評論
         </el-col>
@@ -10,7 +10,7 @@
           <img src="@/assets/images/comment/start.png" alt=""><span style="margin-left: 4px">5</span>
         </el-col>
       </el-row>
-      <el-row type="flex" justify="between" class="store">
+      <el-row type="flex" justify="space-between" class="store">
         <el-col :span="6">
           <div class="avatar">
             <img src="@/assets/images/comment/store-avatar.png" alt="">

@@ -12,6 +12,7 @@ import BrandWall from '@/views/home/BrandWall.vue'
 import Visit from '@/views/home/Visit.vue'
 import MyStore from '@/views/home/MyStore.vue'
 import CommentPage from '@/views/home/CommentPage.vue'
+import ArticlePage from '@/views/home/Article.vue'
 
 /*主題活動*/
 // import EventsList from '@/views/EventsList'
@@ -62,7 +63,8 @@ const routes: Array<RouteConfig> = [
       { path: 'brand-wall', name: 'BrandWall', component: BrandWall, meta: { title: '品牌牆'} },
       { path: 'visit', name: 'Visit', component: Visit, meta: { title: '快來串門子' }},
       { path: 'my-store', name: 'MyStore', component: MyStore, meta: { title: '我的店家'}},
-      { path: 'comment-page/:id', name: 'CommentPage', component: CommentPage, meta: { title: '評論頁'}}
+      { path: 'comment-page/:id', name: 'CommentPage', component: CommentPage, meta: { title: '評論頁'}},
+      { path: 'article', name: 'ArticlePage', component: ArticlePage, meta: { title: ''}}
     ]
   },
   {

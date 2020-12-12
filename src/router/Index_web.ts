@@ -26,7 +26,8 @@ const routes: Array<RouteConfig> = [
       { path: 'brand-wall', name: 'BrandWall', component: () => import(/* webpackChunkName: "BrandWall" */ "@/views/home/BrandWall.vue"), meta: { title: '品牌牆'}},
       { path: 'visit', name: 'Visit', component: () => import(/* webpackChunkName: "Visit" */ "@/views/home/Visit.vue"), meta: { title: '快來串門子'}},
       { path: 'my-store', name: 'MyStore', component: () => import(/* webpackChunkName: "MyStore" */ "@/views/home/MyStore.vue"), meta: { title: '我的店家'}},
-      { path: 'comment-page/:id', name: 'CommentPage', component: () => import(/* webpackChunkName: "CommentPage" */ "@/views/home/CommentPage.vue"), meta: { title: '評論頁'}}
+      { path: 'comment-page/:id', name: 'CommentPage', component: () => import(/* webpackChunkName: "CommentPage" */ "@/views/home/CommentPage.vue"), meta: { title: '評論頁'}},
+      { path: 'article', name: 'ArticlePage', component: () => import(/* webpackChunkName: "ArticlePage" */ "@/views/home/Article.vue"), meta: { title: ''}}
     ]
   },
   {

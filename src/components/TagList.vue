@@ -16,7 +16,7 @@
       <img src="@/assets/images/homepage/bath.png" alt="">
       <span>候位</span>
     </el-button>
-    <el-button type="text" class="button">
+    <el-button type="text" class="button" @click="$router.push({name: 'CommentPage', params: {id: 1}})">
       <img src="@/assets/images/homepage/cup.png" alt="">
       <span>評論</span>
     </el-button>

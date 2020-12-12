@@ -19,7 +19,7 @@
     <category-content style="margin-bottom: 20px">
       <article-cover v-for="a in 4" :key="a">
         <span slot="address">台南市 中西區 500m</span>
-        <el-row slot="right" type="flex" justify="between" class="info-line">
+        <el-row slot="right" type="flex" justify="space-between" class="info-line">
           <el-col :span="18">
             <img src="@/assets/images/store/coin.svg" alt="">
             <span>$100~$300</span>

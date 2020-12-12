@@ -1,7 +1,7 @@
 <template>
   <div>
     <custom-card class="user-block">
-      <el-row type="flex" justify="between" class="button-list">
+      <el-row type="flex" justify="space-between" class="button-list">
         <el-col>
           <el-button type="text">分享 <img class="share-icon" src="@/assets/images/share.svg" alt=""></el-button>
         </el-col>
