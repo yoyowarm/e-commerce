@@ -1,11 +1,15 @@
 <template>
   <div class="store">
+    <slot name="avatar">
     <div class="avatar" @click="() => { if(to) $router.push(to)}">
       <img src="@/assets/images/comment/store-avatar.png" alt="">
     </div>
+    </slot>
+    <slot name="info">
     <div class="info">
       店家名稱可兩行店家名稱可兩行
     </div>
+    </slot>
   </div>
 </template>
 
@@ -18,6 +22,7 @@ export default {
       type: Object, 
       default: null
     },
+    name: String
   },
   data() {
     return {

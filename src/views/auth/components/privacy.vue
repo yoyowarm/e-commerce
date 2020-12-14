@@ -12,52 +12,20 @@
     </navigation-bar>
     <div class="main">
       <p>本公司，LIFELINK串門子雲盟事業股份有限公司（下稱「LIFELINK」、「OIN」、「本公司」或「我們」），認為保護用戶個人資料至關重要。<br>本公司只會在取得用戶同意後，開放通訊入掃碼功能。您可隨時至「個人中心」>「QR通訊錄」>隨時變更「使用移動通訊錄功能暨使用條款」，若不同意此使用條款，則無法使用此功能。<br>業經同意後，本公司將會把您欲揭露之個人資料生成條碼，由您自主分享、提供給他人掃描取得您的個資。<br>請注意，您與他人分享的「QR通訊錄」由於具數位資料的性質，因而可以被接收人複製、儲存或散布，並且可能被其他非意想中的第三方接收人看到。我們希望您在建立以及與他人分享您的個人資訊或內容時對此注意警惕。</p>
-      <div class="agree-block">
-        <label class="agree">
-          <span>我不同意使用 </span>
-          <input type="radio" name="agree" value="unagree" v-model="agree" >
-          <span class="checkmark"></span>
-        </label>
-        <label class="agree">
-          <span>我同意使用 </span>
-          <input type="radio" name="agree" value="agree" v-model="agree">
-          <span class="checkmark"></span>
-        </label>
-      </div>
-      <div class="text">使用移動通訊錄功能暨使用條款</div>
     </div>
   </el-container>
 </template>
 
-<script>
+<script lang="ts">
+import { Vue, Component, PropSync } from 'vue-property-decorator';
 import NavigationBar from '@/components/NavigationBar.vue';
 
-export default {
-  name: "Privacy",
-  omponents:{ NavigationBar },
-  props: {
-    openedPrivacy: Boolean,
-  },
-  data() {
-    return {
-      agree: 'unagree'
-    }
-  },
-  computed() {
-    title: {
-      get: function(){
-        return this.$route.meta.title;
-      }
-    }
-  },
-  created() {
-
-  },
-  mounted() {
-    
-  },
-  methods: {
-    
+@Component({components:{ NavigationBar }})
+export default class Privacy extends Vue {
+  @PropSync('opened',{ type:Boolean }) openedPrivacy!: false;
+  agree = 'unagree'
+  get title () {
+    return this.$route.meta.title
   }
 }
 </script>
@@ -68,7 +36,7 @@ export default {
   position: absolute;
   left: 0px;
   top: 20px;
-  padding: 0px
+  padding: 0px!important
 }
 .main {
   padding: 0px 0px 10px 0px;

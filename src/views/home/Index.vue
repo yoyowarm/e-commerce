@@ -5,7 +5,7 @@
         <el-button slot="append" icon="el-icon-search" type="text"></el-button>
       </el-input>
       <el-col slot="right" :span="7" class="text-right">
-        <img class="icon" src="@/assets/images/homepage/pro.svg" alt="">
+        <img @click="$router.push({ name: 'BrandWall'})" class="icon" src="@/assets/images/homepage/pro.svg" alt="">
         <img  class="icon ball" src="@/assets/images/balls.svg" alt="">
       </el-col>
     </navigation-bar>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <custom-card class="user-block">
-      <el-row type="flex" justify="between" class="button-list">
+      <el-row type="flex" justify="space-between" class="button-list">
         <el-col>
           <el-button type="text">分享 <img class="share-icon" src="@/assets/images/share.svg" alt=""></el-button>
         </el-col>
@@ -46,7 +46,7 @@
         </div>
       </category-header>
       <item-grid height="136px">
-        <store-item v-for="s in 6" :key="s"/>
+        <store-item :to="{name: 'BrandPage'}" v-for="s in 6" :key="s"/>
       </item-grid>
     </category-content>
     <category-content>
@@ -56,7 +56,7 @@
         </div>
       </category-header>
       <item-grid height="136px">
-        <store-item v-for="s in 6" :key="s"/>
+        <store-item :to="{name: 'BrandPage'}" v-for="s in 6" :key="s"/>
       </item-grid>
     </category-content>
   </div>

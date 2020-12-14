@@ -88,6 +88,7 @@ li {
   padding: 0;
   margin: 0;
   list-style: none;
+  margin-bottom: 0px !important;
 }
 img {
   width: 100%;
@@ -1093,7 +1094,8 @@ button:focus {
     &.router-link-exact-active {
       background-size: 26px, 55px;
       background-position: center 15px, center;
-      background-image: url("../assets/images/footer/active-home.png"), url("../assets/images/footer/active.png");
+      background-image: url("../assets/images/footer/active-home.png"),
+        url("../assets/images/footer/active.png");
     }
   }
   .user {
@@ -1101,7 +1103,8 @@ button:focus {
     &.router-link-exact-active {
       background-size: 26px, 55px;
       background-position: center 15px, center;
-      background-image: url("../assets/images/footer/active-user.png"), url("../assets/images/footer/active.png");;
+      background-image: url("../assets/images/footer/active-user.png"),
+        url("../assets/images/footer/active.png");
     }
   }
   .gift {
@@ -1109,7 +1112,8 @@ button:focus {
     &.router-link-exact-active {
       background-size: 26px, 55px;
       background-position: center 15px, center;
-      background-image: url("../assets/images/footer/active-gifts.png"), url("../assets/images/footer/active.png");;
+      background-image: url("../assets/images/footer/active-gifts.png"),
+        url("../assets/images/footer/active.png");
     }
   }
   .landmark {
@@ -1117,7 +1121,8 @@ button:focus {
     &.router-link-exact-active {
       background-size: 26px, 55px;
       background-position: center 15px, center;
-      background-image: url("../assets/images/footer/active-landmark.png"), url("../assets/images/footer/active.png");;
+      background-image: url("../assets/images/footer/active-landmark.png"),
+        url("../assets/images/footer/active.png");
     }
   }
   .scanner {
@@ -1125,7 +1130,8 @@ button:focus {
     &.router-link-exact-active {
       background-size: 26px, 55px;
       background-position: center 15px, center;
-      background-image: url("../assets/images/footer/active-scan-code.png"), url("../assets/images/footer/active.png");;
+      background-image: url("../assets/images/footer/active-scan-code.png"),
+        url("../assets/images/footer/active.png");
     }
   }
   span {
@@ -1153,6 +1159,7 @@ button:focus {
     max-width: 400px;
     height: calc(100vh - 52px);
     margin: 0 auto;
+    margin-top: 40px;
     padding: 0px 35px;
     position: relative;
     @media (min-width: 768px) {
@@ -1163,7 +1170,9 @@ button:focus {
     color: var(--color-dark3);
   }
   .logo {
-    width: 100%;
+    width: 96px;
+    height: 96px;
+    margin: 0 auto;
     text-align: center;
     font-size: 1.25rem;
     padding: 2rem 0 1rem;
@@ -1209,4 +1218,59 @@ button:focus {
       margin-top: 40px;
     }
   }
+}
+.slidIn {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 100;
+  top: 0%;
+  right: 0;
+  transition: all 0.5s ease-in-out;
+  animation-name: oxxo;
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.03, 0.98, 0.87, 1);
+  background: #fff;
+}
+
+/* before the element is shown, start off the screen to the right */
+.slide-enter,
+.slide-leave-active {
+  top: 200%;
+}
+
+@keyframes oxxo {
+  from {
+    top: 200%;
+  }
+  to {
+    top: 0%;
+  }
+}
+
+.btn_box {
+  button {
+    color: #474747;
+    width: 210px;
+    height: 48px;
+    font-size: 18px;
+  }
+  .hasValue {
+    background: rgb(247, 222, 109);
+    border: 0px;
+  }
+  .forget {
+    color: rgb(126, 171, 214);
+  }
+}
+
+.brand {
+  color: #595757;
+  font-size: 22px;
+  margin-bottom: 0px;
+}
+.branch-name {
+  color: #a48b78;
+  font-size: 14px;
+  margin-bottom: 0px;
 }

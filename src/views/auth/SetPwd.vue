@@ -1,14 +1,14 @@
 <template>
   <div class="login">
+    <div class="back">
+    <img @click="$router.back()" src="@/assets//images/close.svg" alt="">
+    </div>
     <div class="main-content">
         <div class="logo"><img :src="require('@/assets/images/login_logo.svg')"></div>
         <div class="tab">
-          <button class="tablinks selected">更改密碼</button>
+          <button class="tablinks selected">設定密碼</button>
         </div>
         <el-form class="textBox" :model="form" ref="loginForm" >
-        <el-form-item>
-            <el-input placeholder="請輸入舊密碼" v-model="form.oldPassword" type="password" show-password></el-input>
-        </el-form-item>
         <el-form-item>
             <el-input placeholder="請輸入 6-12 碼英數混合" v-model="form.password" type="password" show-password>
             </el-input>
@@ -18,8 +18,7 @@
         </el-form-item>
         </el-form>
         <div class="btn_box">
-        <p><router-link :to="{ name: 'ForgetPwd'}" class="forget"><a>忘記密碼?</a></router-link></p>
-        <p><el-button round>送出</el-button></p>
+        <p><el-button :class="{hasValue: form.password || form.reconfirm }" round>下一步</el-button></p>
         </div>
     </div>
     <div class="brand">
@@ -28,51 +27,22 @@
   </div>
 </template>
 
-<script>
-import { checkPhone, checkPassword } from '@/util/Validators';
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator';
 
-export default {
-  name: "ResetPassword",
-  data() {
-    return {
-      loginform: {
-          tel: '',
-          password: '',
-      },
-      registeredForm: {
-        tel: ''
-      },
-      error: {
-        phone: false,
-        password: false,
-        timer: 0
-      },
-      form: {
-        oldPassword: '',
-        password: '',
-        reconfirm: ''
-      }
-    }
-  },
-  created() {
+@Component({
+  components: {
+  }
+})
+export default class SetPwd extends Vue {
+  form = {
+    password: '',
+    reconfirm: ''
+  };
 
-  },
-  mounted() {
-    
-  },
-  methods: {
-    login: function() {
-      clearTimeout(this.error.timer)
-      if(!checkPhone(this.loginform.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
-      if(!checkPassword(this.loginform.password)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
-    },
-    registered: function() {
-      clearTimeout(this.error.timer)
-      if(!checkPassword(this.registeredForm.tel)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
-    },
-    submit () {
-    // clearTimeout(this.error
-    }
+  submit () {
+    // clearTimeout(this.error.timer)
+    // if(!checkPhone(this.passwordForm.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
   }
 }
 </script>

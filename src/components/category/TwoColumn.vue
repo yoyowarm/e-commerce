@@ -1,5 +1,5 @@
 <template>
-  <el-row type="flex" justify="between" class="two-column">
+  <el-row type="flex" justify="space-between" class="two-column">
     <el-col :span="10" class="cover">
       <img src="@/assets/images/homepage/cover-3.png" alt="">
     </el-col>

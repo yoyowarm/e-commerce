@@ -1,78 +1,70 @@
 <template>
   <div class="login">
+    <div class="back">
+      <img @click="$router.back()" src="@/assets//images/close.svg" alt="">
+    </div>
     <div class="main-content">
         <div class="logo"><img :src="require('@/assets/images/login_logo.svg')"></div>
         <div class="tab">
-          <button class="tablinks selected">更改密碼</button>
+          <button class="tablinks selected">會員註冊</button>
         </div>
         <el-form class="textBox" :model="form" ref="loginForm" >
         <el-form-item>
-            <el-input placeholder="請輸入舊密碼" v-model="form.oldPassword" type="password" show-password></el-input>
+            <el-input placeholder="請輸入姓名" v-model="form.name"></el-input>
         </el-form-item>
         <el-form-item>
-            <el-input placeholder="請輸入 6-12 碼英數混合" v-model="form.password" type="password" show-password>
+            <el-input placeholder="輸入格式20021010" v-model="form.date" autocomplete="off">
+                <el-button slot="append" class="send-btn">重新發送</el-button>
             </el-input>
         </el-form-item>
         <el-form-item>
-            <el-input placeholder="請再次確認新密碼" v-model="form.reconfirm" type="password" show-password></el-input>
+            <el-input placeholder="請輸入6-12碼英數混合" v-model="form.password" type="password" show-password></el-input>
+        </el-form-item>
+        <el-form-item class="text-center checked">
+            <el-checkbox v-model="form.checked">我已閱讀並同意</el-checkbox>
+            <span class="terms" @click="openedPrivacy = true">使用者條款</span>
         </el-form-item>
         </el-form>
         <div class="btn_box">
-        <p><router-link :to="{ name: 'ForgetPwd'}" class="forget"><a>忘記密碼?</a></router-link></p>
-        <p><el-button round>送出</el-button></p>
+        <p><el-button round @click="$router.push({name: 'Registered'})">登入</el-button></p>
         </div>
     </div>
+    <transition name="slide" mode="out-in">
+      <privacy v-show="openedPrivacy" :opened.sync="openedPrivacy"/>
+    </transition>
     <div class="brand">
       <span>LIFE LINK 品牌服務系統</span>
     </div>
   </div>
 </template>
 
-<script>
-import { checkPhone, checkPassword } from '@/util/Validators';
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator';
+import Privacy from './components/privacy.vue'
 
-export default {
-  name: "ResetPassword",
-  data() {
-    return {
-      loginform: {
-          tel: '',
-          password: '',
-      },
-      registeredForm: {
-        tel: ''
-      },
-      error: {
-        phone: false,
-        password: false,
-        timer: 0
-      },
-      form: {
-        oldPassword: '',
-        password: '',
-        reconfirm: ''
-      }
-    }
-  },
-  created() {
+@Component({
+  components: {
+    Privacy
+  }
+})
+export default class ForgetPwd extends Vue {
+  form = {
+    name: '',
+    date: '',
+    password: '',
+    checked: false
+  };
+  openedPrivacy = false
 
-  },
-  mounted() {
-    
-  },
-  methods: {
-    login: function() {
-      clearTimeout(this.error.timer)
-      if(!checkPhone(this.loginform.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
-      if(!checkPassword(this.loginform.password)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
-    },
-    registered: function() {
-      clearTimeout(this.error.timer)
-      if(!checkPassword(this.registeredForm.tel)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
-    },
-    submit () {
-    // clearTimeout(this.error
-    }
+  error = {
+    phone: false,
+    verificationCode: false,
+    timer: 0
+  };
+
+  submit () {
+    // clearTimeout(this.error.timer)
+    // if(!checkPhone(this.passwordForm.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
   }
 }
 </script>

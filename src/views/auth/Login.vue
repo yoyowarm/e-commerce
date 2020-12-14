@@ -19,8 +19,8 @@
                 </el-form-item>
               </el-form>
               <div class="btn_box">
-                <p><router-link :to="{ name: 'ForgetPwd'}"><a>忘記密碼?</a></router-link></p>
-                <p><el-button round @click="login">登入</el-button></p>
+                <p><el-button :class="{hasValue: loginForm.tel || loginForm.password}" @click="login" round plain >登入</el-button></p>
+                <p><router-link :to="{ name: 'ForgetPwd'}" class="forget"><a>忘記密碼?</a></router-link></p>
               </div>
             </div>
             <div class="tabs-registered" v-else>
@@ -30,7 +30,7 @@
                 </el-form-item>
               </el-form>
               <div class="btn_box">
-                <p><el-button round @click="registered">註冊</el-button></p>
+                <p><el-button :class="{hasValue: registeredForm.tel}" round @click="$router.push({name: 'PhoneVerify'})">註冊</el-button></p>
               </div>
             </div>
         </div>
@@ -138,15 +138,10 @@ export default {
   border-radius: 50px;
   height: 48px
 }
-.btn_box {
-  button {
-    background: #E4DFDD;
-    color: #474747;
-    width: 210px;
-    height: 48px;
-    font-size: 18px
-  }
+/deep/ .el-form-item {
+  margin-bottom: 35px;
 }
+
 p {
   margin-bottom: 0px
 }
@@ -155,7 +150,7 @@ p {
   bottom: 0px;
   width: 100%;
   text-align: center;
-  color: #F0D870;
+  color: rgb(137,137,137);
   padding-bottom: 8px;
   font-size: 16px;
   &::after {
@@ -172,11 +167,13 @@ p {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 25px;
+  margin-bottom: 40px;
   .tablinks {
     margin: 0px 15px;
     border: 0px;
-    background: 0px;
+    padding: 8px 30px;
+    outline: none;
+    background: none;
     color: #727171;
     font-weight: 600;
     position: relative;
