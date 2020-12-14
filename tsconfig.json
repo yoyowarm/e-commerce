@@ -13,6 +13,7 @@
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
+      "cordova-plugin-camera/types",
       "webpack-env"
     ],
     "paths": {
@@ -36,5 +37,5 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
 }

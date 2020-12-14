@@ -18,4 +18,8 @@ declare module 'vue/types/vue' {
   }
 }
 
+// declare module 'cordova-plugin-camera' {
+//   export class CameraPopoverOptions 
+// }
+
 mountVue(router, store, App);
