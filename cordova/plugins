@@ -15,3 +15,7 @@ cordova-plugin-inappbrowser
 cordova-sqlite-storage
 
 cordova-plugin-camera
+
+cordova-hot-code-push-plugin
+
+cordova-plugin-wkwebview-engine
