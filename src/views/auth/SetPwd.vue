@@ -27,22 +27,28 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
+export default {
+  name: "SetPwd",
+  data() {
+    return {
+      form: {
+        password: '',
+        reconfirm: ''
+      }
+    }
+  },
+  created() {
 
-@Component({
-  components: {
-  }
-})
-export default class SetPwd extends Vue {
-  form = {
-    password: '',
-    reconfirm: ''
-  };
-
-  submit () {
-    // clearTimeout(this.error.timer)
-    // if(!checkPhone(this.passwordForm.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
+  },
+  mounted() {
+    
+  },
+  methods: {
+    submit: function() {
+      // clearTimeout(this.error.timer)
+      // if(!checkPhone(this.passwordForm.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
+    }
   }
 }
 </script>

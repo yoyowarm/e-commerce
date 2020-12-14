@@ -2,11 +2,23 @@
   <div></div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-@Component
-export default class IssueDate extends Vue{
+<script>
+export default {
+  name: "IssueDate",
+  data() {
+    return {
 
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

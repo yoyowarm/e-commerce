@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { checkPhone, checkPassword } from '@/util/Validators';
+import { checkPhone, checkPassword } from '@/util/validators';
 
 export default {
   name: "ResetPassword",

@@ -45,7 +45,7 @@
 // import User from '@/model/User';
 // import Register from '@/model/Register';
 // import UserData from '@/model/UserInfo';
-import { checkPhone, checkPassword } from '@/util/Validators';
+import { checkPhone, checkPassword } from '@/util/validators';
 import Toast from '@/components/Toast.vue';
 import {MutationTypes} from '@/store/mutationTypes';
 

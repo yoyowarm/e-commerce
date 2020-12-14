@@ -39,22 +39,36 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
 import CategoryContent from '@/components/category/Content.vue';
 import QuickMenu from '@/components/QuickMenu.vue'
 import CustomCard from '@/components/CustomCard.vue';
 import ArticleCover from '@/components/article/ArticleCover.vue'
 import TagList from '@/components/TagList.vue'
-@Component({ components: {
-  QuickMenu,
-  CustomCard,
-  CategoryContent,
-  ArticleCover,
-  TagList
-}})
-export default class Visit extends Vue{
 
+export default {
+  name: "Visit",
+  components: {
+    QuickMenu,
+    CustomCard,
+    CategoryContent,
+    ArticleCover,
+    TagList
+  },
+  data() {
+    return {
+
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

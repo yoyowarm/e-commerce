@@ -7,13 +7,27 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
 import DatePicker from './components/datePicker.vue'
 import Store from './components/store.vue'
-@Component({ components: {DatePicker, Store}})
-export default class History extends Vue {
 
+export default {
+  name: "History",
+  components: {DatePicker, Store},
+  data() {
+    return {
+
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

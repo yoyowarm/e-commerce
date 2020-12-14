@@ -31,17 +31,30 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
 import CategoryContent from '@/components/category/Content.vue';
 import TagList from '@/components/TagList.vue'
 
-@Component({ components: {
-  CategoryContent,
-  TagList
-}})
-export default class MyStore extends Vue {
+export default {
+  name: "MyStore",
+  components: {
+    CategoryContent,
+    TagList
+  },
+  data() {
+    return {
 
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

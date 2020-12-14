@@ -2,11 +2,23 @@
   <div></div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-@Component
-export default class Map extends Vue{
+<script>
+export default {
+  name: "StoreMap",
+  data() {
+    return {
 
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

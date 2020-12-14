@@ -59,20 +59,34 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
 import CategoryContent from '@/components/category/Content.vue';
 import CategoryHeader from '@/components/category/Header.vue';
 import ItemGrid from '@/components/category/ItemGrid.vue';
 import StoreItem from '@/components/category/StoreItem.vue';
-@Component({ components: {
-  CategoryHeader,
-  CategoryContent,
-  StoreItem,
-  ItemGrid
-}})
-export default class BrandWall extends Vue{
 
+export default {
+  name: "BrandWall",
+  components: {
+    CategoryHeader,
+    CategoryContent,
+    StoreItem,
+    ItemGrid
+  },
+  data() {
+    return {
+
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

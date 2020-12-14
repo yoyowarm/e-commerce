@@ -13,16 +13,28 @@
   </div>
 </template>
 
-<script lang="ts">
-import authoriztion from './components/Authoriztion.vue'
-import displaySetting from './components/displaySetting.vue'
-import pushSetting from './components/pushSetting.vue'
-import { Vue, Component } from 'vue-property-decorator';
+<script>
+import Authoriztion from '@/components/Authoriztion.vue'
+import DisplaySetting from '@/components/displaySetting.vue'
+import PushSetting from '@/components/pushSetting.vue'
 
-@Component({components:{ authoriztion, displaySetting, pushSetting }})
-export default class Setting extends Vue {
-  activeName = 'first'
+export default {
+  name: "Setting",
+  components:{ Authoriztion, DisplaySetting, PushSetting },
+  data() {
+    return {
+      activeName: 'first'
+    }
+  },
+  created() {
 
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

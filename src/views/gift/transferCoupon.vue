@@ -2,11 +2,23 @@
   <div>優惠券內頁</div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-@Component
-export default class Coupon extends Vue {
+<script>
+export default {
+  name: "Coupon",
+  data() {
+    return {
 
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

@@ -54,16 +54,30 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import ImageGroup from '@/components/ImageGroup.vue'
 import CommnetDetail from '@/components/CommentDetail.vue'
-import { Component, Vue } from 'vue-property-decorator';
-@Component({ components: {
-  ImageGroup,
-  CommnetDetail 
-}})
-export default class CommentPage extends Vue{
-  imgList = [1,2,3,4,5,6]
+
+export default {
+  name: "CommentPage",
+  components: {
+    ImageGroup,
+    CommnetDetail 
+  },
+  data() {
+    return {
+      imgList: [1,2,3,4,5,6]
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 
