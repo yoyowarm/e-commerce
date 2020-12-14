@@ -36,13 +36,11 @@ export default {
 
     }
   },
-  computed() {
-    flexSpan: {
-      get:function(){
-        if (this.$slots['right-icon']) {
-          return 16
-        } else return 20
-      }
+  computed: {
+    flexSpan: function() {
+      if (this.$slots['right-icon']) {
+        return 16
+      } else return 20
     }
   },
   created() {

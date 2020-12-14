@@ -6,7 +6,7 @@
 
 <script>
 
-import MutationTypes from '@/store/MutationTypes';
+import MutationTypes from '@/store/mutationTypes';
 export default {
   name: "Toast",
   data() {

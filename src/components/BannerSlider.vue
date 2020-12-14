@@ -35,14 +35,13 @@ export default {
     return {
       selectedCover: 0,
       slick: 0,
-      startTime: 0
+      startTime: 0,
+      ITEM_WIDTH: 300
     }
   },
-  computed() {
-    translate3d: {
-      get: function(){
-        return `transform: translate3d(${-(ITEM_WIDTH * (this.selectedCover + 0.5))}px, 0px, 0px)`;
-      }
+  computed: {
+    translate3d: function() {
+      return `transform: translate3d(${-(this.ITEM_WIDTH * (this.selectedCover + 0.5))}px, 0px, 0px)`;
     }
   },
   created() {

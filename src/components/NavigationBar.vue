@@ -29,11 +29,9 @@ export default {
     noRight: Boolean,
     noSearch: Boolean,
   },
-  computed() {
-    title: {
-      get: function(){
-        return this.$route.meta.title;
-      }
+  computed: {
+    title: function(){
+      return this.$route.meta.title;
     },
     flexType: {
       get: function(){

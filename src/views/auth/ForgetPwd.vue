@@ -22,22 +22,16 @@
             <p><el-button round @click="$router.replace({ name: 'SetPwd'})">下一步</el-button></p>
             </div>
         </div>
-<<<<<<< HEAD
-<!--        <div class="error-message" v-if="error.phone">手機號碼必須是10位數</div>-->
-<!--        <div class="error-message" v-if="error.password">密碼必須為6-12英文數字混合</div>-->
-=======
->>>>>>> origin/layout/myPage_login
         <div class="brand">
           <span>LIFE LINK 品牌服務系統</span>
         </div>
     </div>
 </template>
 
-<<<<<<< HEAD
 <script>
-import { checkPhone } from '@/util/Validators';
+import { checkPhone } from '@/util/validators';
 import Toast from '@/components/Toast.vue';
-import MutationTypes from "@/store/MutationTypes";
+import MutationTypes from "@/store/mutationTypes";
 
 export default {
   name: "App",
@@ -73,29 +67,6 @@ export default {
       }
     }
   }
-=======
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-// import { checkPhone } from '@/util/Validators'
-
-@Component
-export default class ForgetPwd extends Vue {
-  passwordForm = {
-    tel: '',
-    verificationCode: '',
-  };
-
-  // error = {
-  //   phone: false,
-  //   verificationCode: false,
-  //   timer: 0
-  // };
-
-  // submit () {
-  //   clearTimeout(this.error.timer)
-  //   if(!checkPhone(this.passwordForm.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
-  // }
->>>>>>> origin/layout/myPage_login
 }
 </script>
 

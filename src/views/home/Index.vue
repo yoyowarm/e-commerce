@@ -89,7 +89,7 @@ import TabBar from '@/components/TabBar.vue';
 import Banner from '@/components/BannerSlider.vue'
 import CustomCard from '@/components/CustomCard.vue';
 import QuickMenu from '@/components/QuickMenu.vue'
-import CouponItem from './components/coupon-item.vue'
+import CouponItem from '@/components/CouponItem.vue'
 import ItemGrid from '@/components/category/ItemGrid.vue';
 import ArticleCard from '@/components/category/ArticleCard.vue';
 import TwoColumn from '@/components/category/TwoColumn.vue'

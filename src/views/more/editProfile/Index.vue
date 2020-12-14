@@ -77,7 +77,7 @@
 <script>
 import CustomCard from '@/components/CustomCard.vue';
 import BorderInput from '@/components/BorderInput.vue'
-import UserData from '@/model/UserInfo';
+// import UserData from '@/model/UserInfo';
 
 export default {
   name: "App",
@@ -129,27 +129,27 @@ export default {
       console.log(navigator);
     },
     save: function() {
-      const test = new UserData()
-      test.picture = this.form.avatar
-      test.name = this.form.name
-      test.nickName = this.form.nickname
-      test.birthdayAt = this.form.birth
-      switch (this.form.gender) {
-        case "?":
-          test.gender = 0
-          break
-        case '男':
-          test.gender = 1
-          break
-        case '女':
-          test.gender = 2
-          break
-      }
-      test.email = this.form.email
-      test.city = this.form.city
-      test.township = this.form.town
-      test.address = this.form.address
-      console.log(test);
+      // const test = new UserData()
+      // test.picture = this.form.avatar
+      // test.name = this.form.name
+      // test.nickName = this.form.nickname
+      // test.birthdayAt = this.form.birth
+      // switch (this.form.gender) {
+      //   case "?":
+      //     test.gender = 0
+      //     break
+      //   case '男':
+      //     test.gender = 1
+      //     break
+      //   case '女':
+      //     test.gender = 2
+      //     break
+      // }
+      // test.email = this.form.email
+      // test.city = this.form.city
+      // test.township = this.form.town
+      // test.address = this.form.address
+      // console.log(test);
     }
   }
 }

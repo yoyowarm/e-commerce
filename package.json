@@ -25,7 +25,8 @@
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "vue-template-compiler": "^2.6.11",
-    "element-ui": "^2.14.1"
+    "element-ui": "^2.14.1",
+    "bootstrap": "^4.5.3"
   },
   "eslintConfig": {
     "root": true,

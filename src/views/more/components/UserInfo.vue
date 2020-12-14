@@ -37,7 +37,7 @@ export default {
   },
   mounted() {
     this.getLoginState();
-      this.$root.$on('isLogout', (isLogout: boolean) => {
+      this.$root.$on('isLogout', (isLogout) => {
         if (isLogout) {
           this.getLoginState();
         }

@@ -60,7 +60,7 @@ export default {
     CategoryContent,
     ArticleCover,
     TagList
-  }
+  },
   data() {
     return {
       activeName: 'first'

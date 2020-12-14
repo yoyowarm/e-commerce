@@ -42,12 +42,12 @@
 </template>
 
 <script>
-import User from '@/model/User';
-import Register from '@/model/Register';
-import UserData from '@/model/UserInfo';
+// import User from '@/model/User';
+// import Register from '@/model/Register';
+// import UserData from '@/model/UserInfo';
 import { checkPhone, checkPassword } from '@/util/Validators';
 import Toast from '@/components/Toast.vue';
-import {MutationTypes} from '@/store/MutationTypes';
+import {MutationTypes} from '@/store/mutationTypes';
 
 export default {
   name: "App",
@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       selected: 'login',
-      user: new User(),
+      // user: new User(),
       loginform: {
         tel: '',
         password: ''
@@ -99,11 +99,11 @@ export default {
       });
     },
     getUserInfo: function() {
-      new UserData().getUserInfo({
-      }, (success, message, userInfo) => {
-        this.saveUserData(userInfo);
-        this.$router.back();
-      });
+      // new UserData().getUserInfo({
+      // }, (success, message, userInfo) => {
+      //   this.saveUserData(userInfo);
+      //   this.$router.back();
+      // });
     },
 
     saveUserData: function(userInfo) {
@@ -111,20 +111,20 @@ export default {
     },
 
     registered: function() {
-      if(!checkPhone(this.loginform.tel)) { 
-        this.$store.commit(MutationTypes.SHOW_TOAST, '手機號碼必須是10位數');
-        return
-      }
-      (new Register()).checkRegister({
-          countryCode: '+886',
-          phone: this.registeredForm.tel,
-      }, (success, message, register) => {
-        if (success) {
-          console.log(register.getRegisterState());
-        }else {
-          this.$store.commit(MutationTypes.SHOW_TOAST, message);
-        }
-      });
+      // if(!checkPhone(this.loginform.tel)) { 
+      //   this.$store.commit(MutationTypes.SHOW_TOAST, '手機號碼必須是10位數');
+      //   return
+      // }
+      // (new Register()).checkRegister({
+      //     countryCode: '+886',
+      //     phone: this.registeredForm.tel,
+      // }, (success, message, register) => {
+      //   if (success) {
+      //     console.log(register.getRegisterState());
+      //   }else {
+      //     this.$store.commit(MutationTypes.SHOW_TOAST, message);
+      //   }
+      // });
     }
   }
 }

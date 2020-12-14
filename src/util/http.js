@@ -50,6 +50,7 @@ export default {
         return os;
     },
     post(action, parameter, authPath, funcSuccess){
+        // eslint-disable-next-line no-prototype-builtins
         if(window.hasOwnProperty("cordova")){
             sqlite.query('select json from offline_data where action like ?', [action], function(resultSet){
                 let jsonStr = resultSet.rows.item(0).json;

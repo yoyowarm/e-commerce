@@ -25,11 +25,9 @@ export default {
   components:{
     NavigationBar
   },
-  computed() {
-    title: {
-      get: function(){
-        return this.$route.meta.title;
-      }
+  computed: {
+    title: function(){
+      return this.$route.meta.title;
     }
   },
   data() {
