@@ -26,24 +26,32 @@
     </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
+export default {
+  name: "ForgetPwd",
+  data() {
+    return {
+      passwordForm: {
+        verificationCode: '',
+      },
+      error: {
+        phone: false,
+        verificationCode: false,
+        timer: 0
+      }
+    }
+  },
+  created() {
 
-@Component
-export default class ForgetPwd extends Vue {
-  passwordForm = {
-    verificationCode: '',
-  };
-
-  error = {
-    phone: false,
-    verificationCode: false,
-    timer: 0
-  };
-
-  submit () {
-    // clearTimeout(this.error.timer)
-    // if(!checkPhone(this.passwordForm.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
+  },
+  mounted() {
+    
+  },
+  methods: {
+    submit: function() {
+      // clearTimeout(this.error.timer)
+      // if(!checkPhone(this.passwordForm.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
+    }
   }
 }
 </script>

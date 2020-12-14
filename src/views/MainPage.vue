@@ -10,18 +10,30 @@
 	</el-container>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+<script>
 import NavigationBar from '@/components/NavigationBar.vue';
 import TabBar from '@/components/TabBar.vue';
 
-@Component({components:{ NavigationBar, TabBar }})
-export default class App extends Vue {
+export default {
+  name: "MainPage",
+  components:{ NavigationBar, TabBar },
+  data() {
+    return {
 
-	scrollToTop() {
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    scrollToTop: function() {
 		//跳轉頁面時捲動至最上
 		window.scrollTo(0, 0);
 	}
+  }
 }
 </script>
 

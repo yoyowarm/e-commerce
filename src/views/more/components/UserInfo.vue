@@ -1,26 +1,64 @@
 <template>
   <div class="user-info ">
-    <el-row type="flex" justify="center" class="h-100 w-100">
-      <el-col :span="7">
-        <img src="@/assets/images/avatar.svg" alt="">
+    <el-row type="flex" justify="center" :class="isLogout? 'h-100 w-100' : ''">
+      <el-col :span="7" v-if="isLogout">
+        <img v-bind:src="`${userModel.userImage}`">
       </el-col>
-      <el-col :span="17">
+      <el-col :span="17" v-if="isLogout">
         <ul class="account">
-          <li>User name</li>
-          <li><span>會員：user1234</span></li>
+          <li>{{userModel.nickName}}</li>
+          <li><span>會員：{{userModel.userCode}}</span></li>
           <li><el-button @click="$router.push({ name: 'Profile'})" class="edit" round>編輯我的資料 <img src="@/assets/images/edit.svg" alt=""></el-button></li>
+        </ul>
+      </el-col>
+      <el-col v-else>>
+        <ul class="account">
+          <li><el-button @click="$router.push({ name: 'Login'})" class="edit" round>登入</el-button></li>
         </ul>
       </el-col>
     </el-row>
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
+export default {
+  name: "App",
+  data() {
+    return {
+      userModel: {
+        nickName: "",
+        userCode: "",
+        userImage: "",
+      }
+    }
+  },
+  created() {
 
-@Component
-export default class UserInfo extends Vue {
-
+  },
+  mounted() {
+    this.getLoginState();
+      this.$root.$on('isLogout', (isLogout) => {
+        if (isLogout) {
+          this.getLoginState();
+        }
+      });
+  },
+  methods: {
+    getLoginState: function() {
+      this.isLogout = this.$auth.isSignIn();
+      if (this.$auth.isSignIn()) {
+        const userData = JSON.parse(localStorage.getItem('userInfo') || "");
+        this.userModel.userImage = userData.picture;
+        this.userModel.nickName = this.$auth.user.getNickName();
+        this.userModel.userCode = this.$auth.user.getUserCode();
+      }else {
+        this.userModel.nickName = "";
+        this.userModel.userCode = "";
+        this.userModel.userImage = "";
+        console.log('no user login');
+      }
+    }
+  }
 }
 </script>
 
@@ -30,9 +68,10 @@ export default class UserInfo extends Vue {
   width: 100%;
   padding: 35px 30px;
   display: flex;
-  align-items: center;;
+  align-items: center;
   background: url("../../../assets/images/user-info-bg.svg")no-repeat;
   img {
+    border-radius:50px;
     width: 100px;
   };
   .account {

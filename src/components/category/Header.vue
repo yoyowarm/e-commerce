@@ -14,13 +14,27 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+<script>
+export default {
+  name: "Head",
+  props: {
+    title: String,
+    to: Object,
+  },
+  data() {
+    return {
 
-@Component
-export default class Head extends Vue {
-   @Prop({required: false, type: String, default: ''}) title!: string | '';
-   @Prop({required: false, type: Object, default: null}) to!: null
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

@@ -62,8 +62,7 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
 import CategoryContent from '@/components/category/Content.vue';
 import CategoryHeader from '@/components/category/Header.vue';
 import CustomCard from '@/components/CustomCard.vue';
@@ -71,15 +70,30 @@ import ItemGrid from '@/components/category/ItemGrid.vue';
 import StoreItem from '@/components/category/StoreItem.vue';
 import ArticleCard from '@/components/category/ArticleCard.vue';
 
-@Component({components:{ 
-  CategoryHeader,
-  CategoryContent,
-  CustomCard,
-  StoreItem,
-  ItemGrid,
-  ArticleCard }})
-export default class BusinessCard extends Vue {
+export default {
+  name: "BusinessCard",
+  components:{ 
+    CategoryHeader,
+    CategoryContent,
+    CustomCard,
+    StoreItem,
+    ItemGrid,
+    ArticleCard 
+  },
+  data() {
+    return {
 
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

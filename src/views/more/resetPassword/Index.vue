@@ -28,23 +28,51 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
+import { checkPhone, checkPassword } from '@/util/validators';
 
-@Component({
-  components: {
-  }
-})
-export default class ForgetPwd extends Vue {
-  form = {
-    oldPassword: '',
-    password: '',
-    reconfirm: ''
-  };
+export default {
+  name: "ResetPassword",
+  data() {
+    return {
+      loginform: {
+          tel: '',
+          password: '',
+      },
+      registeredForm: {
+        tel: ''
+      },
+      error: {
+        phone: false,
+        password: false,
+        timer: 0
+      },
+      form: {
+        oldPassword: '',
+        password: '',
+        reconfirm: ''
+      }
+    }
+  },
+  created() {
 
-  submit () {
-    // clearTimeout(this.error.timer)
-    // if(!checkPhone(this.passwordForm.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
+  },
+  mounted() {
+    
+  },
+  methods: {
+    login: function() {
+      clearTimeout(this.error.timer)
+      if(!checkPhone(this.loginform.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
+      if(!checkPassword(this.loginform.password)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
+    },
+    registered: function() {
+      clearTimeout(this.error.timer)
+      if(!checkPassword(this.registeredForm.tel)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
+    },
+    submit () {
+    // clearTimeout(this.error
+    }
   }
 }
 </script>

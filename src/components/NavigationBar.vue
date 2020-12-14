@@ -21,29 +21,46 @@
   </el-header>
 </template>
 
-<script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator';
+<script>
+export default {
+  name: "NavigationBar",
+  props: {
+    noLeft: Boolean,
+    noRight: Boolean,
+    noSearch: Boolean,
+  },
+  computed: {
+    title: function(){
+      return this.$route.meta.title;
+    },
+    flexType: {
+      get: function(){
+        if (this.noRight && this.noLeft) {
+          return 'center'
+        }
+        if (this.noLeft) {
+          return 'end'
+        }
+        if (this.noRight) {
+          return 'start'
+        }
+        return 'space-between'
+      }
+    }
+  },
+  data() {
+    return {
 
-@Component
-export default class NavigationBar extends Vue {
- @Prop({required: false, type: Boolean, default: false}) noLeft!: boolean;
- @Prop({required: false, type: Boolean, default: false}) noRight!: boolean;
- @Prop({type: Boolean, default: false}) noSearch !: boolean
+    }
+  },
+  created() {
 
-  get title () {
-    return this.$route.meta.title
-  }
- get flexType () {
-   if (this.noRight && this.noLeft) {
-      return 'center'
-    }
-    if (this.noLeft) {
-      return 'end'
-    }
-    if (this.noRight) {
-      return 'start'
-    }
-    return 'space-between'
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
   }
 }
 </script>

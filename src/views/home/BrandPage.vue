@@ -142,21 +142,34 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
 import CategoryContent from '@/components/category/Content.vue';
 import CategoryHeader from '@/components/category/Header.vue';
 import ItemGrid from '@/components/category/ItemGrid.vue';
 import CustomCard from '@/components/CustomCard.vue';
 
-@Component({ components: {
-  CategoryContent,
-  CategoryHeader,
-  ItemGrid,
-  CustomCard
-}})
-export default class BrandPage extends Vue{
+export default {
+  name: "BrandPage",
+  components: {
+    CategoryContent,
+    CategoryHeader,
+    ItemGrid,
+    CustomCard
+  },
+  data() {
+    return {
 
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

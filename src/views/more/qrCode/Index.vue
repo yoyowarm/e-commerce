@@ -75,17 +75,30 @@
   </el-container>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-import Privacy from './components/privacy.vue'
-import PopupModel from './components/popupModel.vue'
+<script>
+import Privacy from '@/views/more/qrCode/components/privacy.vue'
+import PopupModel from '@/views/more/qrCode/components/popupModel.vue'
 
-@Component({ components: { Privacy, PopupModel }})
-export default class QrCode extends Vue {
-  agree = true
-  openedPrivacy = false
-  openedSave = false
-  openedShare = false
+export default {
+  name: "QrCode",
+  components: { Privacy, PopupModel },
+  data() {
+    return {
+      agree: true,
+      openedPrivacy: false,
+      openedSave: false,
+      openedShare: false
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

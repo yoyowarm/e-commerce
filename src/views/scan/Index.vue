@@ -52,15 +52,26 @@
   </el-container>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
+export default {
+  name: "Scan",
+  data() {
+    return {
+      agree: true,
+      openedPrivacy: false,
+      openedSave: false,
+      openedShare: false
+    }
+  },
+  created() {
 
-@Component({ components: { }})
-export default class QrCode extends Vue {
-  agree = true
-  openedPrivacy = false
-  openedSave = false
-  openedShare = false
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

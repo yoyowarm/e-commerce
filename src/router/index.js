@@ -1,5 +1,6 @@
 import Vue from 'vue'
-import VueRouter, { RouteConfig } from 'vue-router'
+import VueRouter from 'vue-router'
+
 import MainPage from '@/views/MainPage.vue'
 import EmptyLayout from '@/components/EmptyLayout.vue'
 
@@ -50,8 +51,8 @@ import EditQrCode from '@/views/more/qrCode/edit.vue'
 // import Problems from '@/views/more/problems/index.vue'
 
 Vue.use(VueRouter)
-        
-const routes: Array<RouteConfig> = [
+
+const routes = [
   {path: '/login', name: 'Login', component: Login}, //登入
   {path: '/forget-pwd', name: 'ForgetPwd', component: ForgetPwd}, //忘記密碼
   { path: '/phone-verify', name: 'PhoneVerify', component: PhoneVerify}, //手機驗證

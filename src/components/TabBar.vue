@@ -13,12 +13,23 @@
     </el-footer>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+<script>
+export default {
+  name: "TabBar",
+  data() {
+    return {
 
-@Component
-export default class TabBar extends Vue {
+    }
+  },
+  created() {
 
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

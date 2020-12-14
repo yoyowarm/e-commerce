@@ -25,49 +25,57 @@
   </div>
 </template>
 
-<script lang="ts">
-const ITEM_WIDTH = 300
-import { Vue, Component, Prop } from 'vue-property-decorator';
-@Component
-export default class Banner extends Vue {
-  @Prop({type: Array}) list!: []
-
-  selectedCover = 0
-  slick = 0
-  startTime = 0
-
-  get translate3d () {
-    return `transform: translate3d(${-(ITEM_WIDTH * (this.selectedCover + 0.5))}px, 0px, 0px)`
-  }
-  animate () {
-    const duration = 3500
-    const currentTime = new Date().getTime()
-    const progress = currentTime - this.startTime
-    if (progress > duration) {
-      this.startTime = currentTime
-      if (this.selectedCover < this.list.length - 1) {
-        this.selectedCover++
-      } else {
-        this.selectedCover = 0
-      }
-    } else {
-      cancelAnimationFrame(this.slick)
+<script>
+export default {
+  name: "BannerSlider",
+  props: {
+    list: Array,
+  },
+  data() {
+    return {
+      selectedCover: 0,
+      slick: 0,
+      startTime: 0,
+      ITEM_WIDTH: 300
     }
-    this.slick = requestAnimationFrame(this.animate)
-  }
-  handleClick (index: number) {
+  },
+  computed: {
+    translate3d: function() {
+      return `transform: translate3d(${-(this.ITEM_WIDTH * (this.selectedCover + 0.5))}px, 0px, 0px)`;
+    }
+  },
+  created() {
+    this.animate = this.animate.bind(this);
+
+  },
+  mounted() {
+    this.startTime = new Date().getTime();
+    this.animate();
+  },
+  beforeDestroy () {
+    cancelAnimationFrame(this.slick);
+  },
+  methods: {
+    animate: function() {
+      const duration = 3500;
+      const currentTime = new Date().getTime();
+      const progress = currentTime - this.startTime;
+      if (progress > duration) {
+        this.startTime = currentTime
+        if (this.selectedCover < this.list.length - 1) {
+          this.selectedCover++;
+        } else {
+          this.selectedCover = 0;
+        }
+      } else {
+        cancelAnimationFrame(this.slick);
+      }
+      this.slick = requestAnimationFrame(this.animate);
+    }
+  },
+  handleClick (index) {
     this.selectedCover = index
     this.startTime = new Date().getTime()
-  }
-  created () {
-    this.animate = this.animate.bind(this)
-  }
-  mounted () {
-    this.startTime = new Date().getTime()
-    this.animate()
-  }
-  beforeDestroy () {
-    cancelAnimationFrame(this.slick)
   }
 }
 </script>

@@ -27,12 +27,23 @@
     </el-card>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
+export default {
+  name: "ArticleCard",
+  data() {
+    return {
 
-@Component
-export default class ArticleCard extends Vue {
+    }
+  },
+  created() {
 
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 
@@ -66,7 +77,7 @@ export default class ArticleCard extends Vue {
   .store {
     display: flex;
     align-items: center;
-    align-items: start;
+    align-items: flex-start;
     font-size: 18px;
     margin-top: 4px;
     li { line-height: 22px }

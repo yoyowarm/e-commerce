@@ -4,12 +4,23 @@
   </el-card>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
+export default {
+  name: "CustomCard",
+  data() {
+    return {
 
-@Component
-export default class CustomCard extends Vue {
+    }
+  },
+  created() {
 
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

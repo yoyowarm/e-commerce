@@ -19,17 +19,34 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-@Component
-export default class ImageGroup extends Vue {
-@Prop({type: Array}) imgList!: []
-get firstLine () {
-  return this.imgList.slice(0,3)
-}
-get secondLine () {
-  return this.imgList.slice(3,6)
-}
+<script>
+export default {
+  name: "ImageGroup",
+  props: {
+    imgList: Array,
+  },
+  computed: {
+    firstLine: function() {
+      return this.imgList.slice(0,3);
+    },
+    secondLine: function() {
+      return this.imgList.slice(3,6);
+    }
+  },
+  data() {
+    return {
+
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

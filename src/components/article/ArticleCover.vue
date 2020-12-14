@@ -16,17 +16,18 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-@Component
-export default class ArticleCover extends Vue {
-get flexType () {
-  if (this.$slots.left && this.$slots.right) {
-    return 'between'
-  } else if (this.$slots.right) {
-    return 'end'
-  } else return 'start'
-}
+<script>
+export default {
+  name: "ArticleCover",
+  computed: {
+    flexType() {
+      if (this.$slots.left && this.$slots.right) {
+        return 'between'
+      } else if (this.$slots.right) {
+        return 'end'
+      } else return 'flex-start'
+    }
+  }
 }
 </script>
 

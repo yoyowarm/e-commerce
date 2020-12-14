@@ -19,19 +19,33 @@
 </el-dialog>
 </template>
 
-<script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+<script>
+export default {
+  name: "Logout",
+  props: {
+    value: {required: false, type: Boolean, default: false},
+  },
+  data() {
+    return {
 
-@Component
-export default class Logout extends Vue {
- @Prop({required: false, type: Boolean, default: false}) value!: false;
-  
-  cancel () {
-    this.$emit('close', false)
-  }
+    }
+  },
+  created() {
 
-  confirm () {
-    this.$emit('close', false)
+  },
+  mounted() {
+    
+  },
+  methods: {
+    cancel: function() {
+      this.$emit('close', false)
+      this.$root.$emit('isLogout', false)
+    },
+    confirm: function () {
+      this.$auth.clearToken();
+      this.$emit('close', false)
+      this.$root.$emit('isLogout', true)
+    }
   }
 }
 </script>

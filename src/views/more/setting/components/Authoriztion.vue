@@ -35,7 +35,21 @@
 
 <script>
 export default {
+  name: "Authoriztion",
+  data() {
+    return {
 
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

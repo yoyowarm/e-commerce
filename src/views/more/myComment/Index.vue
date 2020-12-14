@@ -27,19 +27,32 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import ImageGroup from '@/components/ImageGroup.vue'
 import CommnetDetail from '@/components/CommentDetail.vue'
 import CategoryContent from '@/components/category/Content.vue'
-import { Vue, Component } from 'vue-property-decorator';
 
-@Component({ components: {
-  ImageGroup,
-  CategoryContent,
-  CommnetDetail
-}})
-export default class MyComment extends Vue {
-  imgList = [1,2,3,4,5,6]
+export default {
+  name: "MyComment",
+  components: {
+    ImageGroup,
+    CategoryContent,
+    CommnetDetail
+  },
+  data() {
+    return {
+      imgList: [1,2,3,4,5,6]
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

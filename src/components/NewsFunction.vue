@@ -64,15 +64,27 @@
 </template>
 
 <script>
-    export default {
-        name: "NewsFunction",
-        props: ['viewCount', 'messageCount'],
-        data() {
-            return {
-                ShareModal: false,//分享文章彈框
-            }
-        },
+export default {
+  name: "NewsFunction",
+  props: {
+    viewCount: Number,
+    messageCount: Number,
+  },
+  data() {
+    return {
+        ShareModal: false,//分享文章彈框
     }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
+}
 </script>
 
 <style scoped>

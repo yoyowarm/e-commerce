@@ -2,10 +2,23 @@
   <router-view :key="$route.fullPath"/>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-@Component
-export default class EmptyLayout extends Vue {
+<script>
+export default {
+  name: "EmptyLayout",
+  data() {
+    return {
+
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

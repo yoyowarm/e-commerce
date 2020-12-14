@@ -113,46 +113,56 @@
   </el-container>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
 import BorderInput from '@/components/BorderInput.vue'
-import AddLine from './components/addLine.vue'
-@Component({ components: {BorderInput, AddLine}})
-export default class EditQrCode extends Vue {
+import AddLine from '@/views/more/qrCode/components/addLine.vue'
 
-  form = {
-    lastName: '串',
-    firstName: '門子',
-    company: 'xxxx',
-    birth: '2020-09-10',
-    phone: [],
-    email: [],
-    address: [],
-    url: [],
-    socialUrl: [],
-    socialName: [],
-    showBirth: false,
-    note: ''
-  }
-  template = {
-    key: '',
-    value: ''
-  }
-  
-  addressTemplate = {
-    key: '',
-    country: '',
-    county: '',
-    town: '',
-    road: ''
-  }
+export default {
+  name: "Edit",
+  components: {BorderInput, AddLine},
+  data() {
+    return {
+      form: {
+        lastName: '串',
+        firstName: '門子',
+        company: 'xxxx',
+        birth: '2020-09-10',
+        phone: [],
+        email: [],
+        address: [],
+        url: [],
+        socialUrl: [],
+        socialName: [],
+        showBirth: false,
+        note: ''
+      },
+      template: {
+        key: '',
+        value: ''
+      },
+      addressTemplate: {
+        key: '',
+        country: '',
+        county: '',
+        town: '',
+        road: ''
+      }
+    }
+  },
+  created() {
 
-  addItem (type: string) {
-    if (type === 'address') this.form[type].push(this.addressTemplate)
-    this.form[type].push(this.template)
-  }
-  deleteItem (type: string, index: number) {
-    this.form[type].splice(index, 1)
+  },
+  mounted() {
+    
+  },
+  methods: {
+    addItem: function(type) {
+      // if (type === 'address') this.form[type].push(this.addressTemplate)
+      // this.form[type].push(this.template)
+    },
+    deleteItem: function(type, index) {
+    //   this.form[type].splice(index, 1)
+    }
   }
 }
 </script>

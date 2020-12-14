@@ -2,7 +2,7 @@
   <div>
     <custom-card class="user-block">
       <div class="avatar">
-        <img src="@/assets/images/avatar.svg" alt="">
+        <img v-bind:src="`${form.avatar}`" alt="" @click="switchImage">
         <img class="camera" src="@/assets/images/camera.svg" alt="">
       </div>
     </custom-card>
@@ -67,30 +67,90 @@
         </div>
       </border-input>
       <div class="footer">
-        <el-button class="cancel" round>取消</el-button>
-        <el-button class="confirm" round>送出</el-button>
+        <el-button @click="$router.back()" class="cancel" round>取消</el-button>
+        <el-button @click="save" class="confirm" round>送出</el-button>
       </div>
     </custom-card>
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
 import CustomCard from '@/components/CustomCard.vue';
 import BorderInput from '@/components/BorderInput.vue'
+// import UserData from '@/model/UserInfo';
 
-@Component({components:{ CustomCard, BorderInput }})
-export default class EditProfile extends Vue {
-  form = {
-    name: '熊麻吉',
-    nickname: 'bearly',
-    phone: '+886 11234567',
-    birth: '1990-10-22',
-    gender: '男',
-    email: '',
-    city: '台南市',
-    town: '安平區',
-    address: '光州路52號'
+export default {
+  name: "App",
+  components:{ CustomCard, BorderInput },
+  data() {
+    return {
+      form: {
+        avatar: '',
+        name: '熊麻吉',
+        nickname: 'bearly',
+        phone: '+886 11234567',
+        birth: '1990-10-22',
+        gender: '男',
+        email: '',
+        city: '台南市',
+        town: '安平區',
+        address: '光州路52號'
+      }
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    const userData = JSON.parse(localStorage.getItem('userInfo') || "");
+    this.form.avatar = userData.picture
+    this.form.name = userData.name
+    this.form.nickname = userData.nickName
+    this.form.phone = localStorage.getItem('phone') || ""
+    this.form.birth = userData.birthdayAt
+    switch (userData.gender) {
+      case 0:
+        this.form.gender = '?'
+        break
+      case 1:
+        this.form.gender = '男'
+        break
+      case 2:
+        this.form.gender = '女'
+        break
+    }
+    this.form.email = userData.email
+    this.form.city = userData.city
+    this.form.town = userData.township
+    this.form.address = userData.address
+  },
+  methods: {
+    switchImage: function() {
+      console.log(navigator);
+    },
+    save: function() {
+      // const test = new UserData()
+      // test.picture = this.form.avatar
+      // test.name = this.form.name
+      // test.nickName = this.form.nickname
+      // test.birthdayAt = this.form.birth
+      // switch (this.form.gender) {
+      //   case "?":
+      //     test.gender = 0
+      //     break
+      //   case '男':
+      //     test.gender = 1
+      //     break
+      //   case '女':
+      //     test.gender = 2
+      //     break
+      // }
+      // test.email = this.form.email
+      // test.city = this.form.city
+      // test.township = this.form.town
+      // test.address = this.form.address
+      // console.log(test);
+    }
   }
 }
 </script>
@@ -115,6 +175,7 @@ export default class EditProfile extends Vue {
       right: -6px
     }
     img {
+      border-radius:50px;
       width: 100%;
       object-fit: cover;
     }

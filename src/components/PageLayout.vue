@@ -17,14 +17,32 @@
 </transition>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
 import NavigationBar from '@/components/NavigationBar.vue';
 
-@Component({components:{ NavigationBar }})
-export default class PageLayout extends Vue {
-  get title () {
-    return this.$route.meta.title
+export default {
+  name: "MyUserLayout",
+  components:{
+    NavigationBar
+  },
+  computed: {
+    title: function(){
+      return this.$route.meta.title;
+    }
+  },
+  data() {
+    return {
+
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
   }
 }
 </script>

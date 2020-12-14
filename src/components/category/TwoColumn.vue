@@ -14,11 +14,23 @@
   </el-row>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-@Component
-export default class TwoColumn extends Vue{
+<script>
+export default {
+  name: "TwoColumn",
+  data() {
+    return {
 
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

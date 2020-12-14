@@ -16,16 +16,33 @@
   </el-container>
 </template>
 
-<script lang="ts">
-import { Vue, Component, PropSync } from 'vue-property-decorator';
+<script>
 import NavigationBar from '@/components/NavigationBar.vue';
 
-@Component({components:{ NavigationBar }})
-export default class Privacy extends Vue {
-  @PropSync('opened',{ type:Boolean }) openedPrivacy!: false;
-  agree = 'unagree'
-  get title () {
-    return this.$route.meta.title
+export default {
+  name: "Privacy",
+  components: { NavigationBar },
+  props: {
+    openedPrivacy: Boolean,
+  },
+  computed: {
+    title: function() {
+      return this.$route.meta.title;
+    }
+  },
+  data() {
+    return {
+      agree: 'unagree'
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
   }
 }
 </script>

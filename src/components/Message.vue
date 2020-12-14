@@ -87,35 +87,37 @@
 </template>
 
 <script>
-    export default {
-        name: "Message",
-        props: ['messageList'],
-        data() {
-            return {
-                replyBtn: false,//回覆留言開關
-                ReportModal: false,//檢舉留言彈框
-                message: '',
-                input: '',
+export default {
+    name: "Message",
+    props: {
+        messageList: Array,
+    },
+    data() {
+        return {
+            replyBtn: false,//回覆留言開關
+            ReportModal: false,//檢舉留言彈框
+            message: '',
+            input: '',
+        }
+    },
+    methods: {
+        reply: function(replyDate) {
+            if (replyDate.replyBtn === undefined) {//判斷此物件屬性是否存在
+                this.$set(replyDate, 'replyBtn', true)//若否，則新增屬性並給予預設值
+            } else {
+                replyDate.replyBtn = !replyDate.replyBtn
             }
         },
-        methods: {
-            reply(replyDate) {
-                if (replyDate.replyBtn === undefined) {//判斷此物件屬性是否存在
-                    this.$set(replyDate, 'replyBtn', true)//若否，則新增屬性並給予預設值
-                } else {
-                    replyDate.replyBtn = !replyDate.replyBtn
-                }
-            },
-            messageReply(id, message) {
-                this.$emit('message-reply', {id: id, message: message});
-                message = '';
-            },
-            messageConfirm() {
-                this.$emit('message-confirm', this.message)
-                this.message = '';
-            },
+        messageReply: function(id, message) {
+            this.$emit('message-reply', {id: id, message: message});
+            message = '';
         },
-    }
+        messageConfirm: function() {
+            this.$emit('message-confirm', this.message)
+            this.message = '';
+        },
+    },
+}
 </script>
 
 <style scoped>

@@ -12,12 +12,26 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-@Component
-export default class CouponItem extends Vue {
-  @Prop({type: Object}) to!: null
+<script>
+export default {
+  name: "CouponItem",
+  props: {
+    to: Object,
+  },
+  data() {
+    return {
 
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

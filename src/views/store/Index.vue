@@ -45,22 +45,36 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+<script>
 import CategoryContent from '@/components/category/Content.vue';
 import QuickMenu from '@/components/QuickMenu.vue'
 import CustomCard from '@/components/CustomCard.vue';
 import ArticleCover from '@/components/article/ArticleCover.vue'
 import TagList from '@/components/TagList.vue'
-@Component({ components: {
-  QuickMenu,
-  CustomCard,
-  CategoryContent,
-  ArticleCover,
-  TagList
-}})
-export default class Store extends Vue {
-activeName = 'first'
+
+export default {
+  name: "Store",
+  components: {
+    QuickMenu,
+    CustomCard,
+    CategoryContent,
+    ArticleCover,
+    TagList
+  },
+  data() {
+    return {
+      activeName: 'first'
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 
@@ -70,7 +84,7 @@ activeName = 'first'
   .tabs {
     margin-top: 10px;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     position: relative;
     width: 100%;
     overflow: auto;

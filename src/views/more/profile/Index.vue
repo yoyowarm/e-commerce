@@ -2,7 +2,7 @@
   <div>
     <custom-card class="user-block">
       <div class="avatar">
-        <img src="@/assets/images/avatar.svg" alt="">
+        <img v-bind:src="`${form.avatar}`" alt="" @click="switchImage">
         <img class="camera" src="@/assets/images/camera.svg" alt="">
       </div>
     </custom-card>
@@ -73,21 +73,55 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
 import CustomCard from '@/components/CustomCard.vue';
 import BorderInput from '@/components/BorderInput.vue'
 
-@Component({components:{ CustomCard, BorderInput }})
-export default class Profile extends Vue {
-  form = {
-    name: '熊麻吉',
-    nickname: 'bearly',
-    phone: '+886 11234567',
-    birth: '1990-10-22',
-    gender: '男',
-    email: '',
-    address: '台南市安平區光州路52號'
+export default {
+  name: "Profile",
+  components:{ CustomCard, BorderInput },
+  data() {
+    return {
+      form: {
+        avatar: '',
+        name: '熊麻吉',
+        nickname: 'bearly',
+        phone: '+886 11234567',
+        birth: '1990-10-22',
+        gender: '男',
+        email: '',
+        address: '台南市安平區光州路52號'
+      }
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    const userData = JSON.parse(localStorage.getItem('userInfo') || "");
+    this.form.avatar = userData.picture
+    this.form.name = userData.name
+    this.form.nickname = userData.nickName
+    this.form.phone = localStorage.getItem('phone') || ""
+    this.form.birth = userData.birthdayAt
+    switch (userData.gender) {
+      case 0:
+        this.form.gender = '?'
+        break
+      case 1:
+        this.form.gender = '男'
+        break
+      case 2:
+        this.form.gender = '女'
+        break
+    }
+    this.form.email = userData.email
+    this.form.address = userData.address
+  },
+  methods: {
+    switchImage: function() {
+      //
+    }
   }
 }
 </script>
@@ -112,6 +146,7 @@ export default class Profile extends Vue {
       right: -6px
     }
     img {
+      border-radius:50px;
       width: 100%;
       object-fit: cover;
     }

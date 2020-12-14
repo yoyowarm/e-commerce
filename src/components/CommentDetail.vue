@@ -41,11 +41,23 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-@Component
-export default class CommentDetail extends Vue{
+<script>
+export default {
+  name: "CommentDetail",
+  data() {
+    return {
 
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

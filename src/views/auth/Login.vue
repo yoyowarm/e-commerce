@@ -10,12 +10,12 @@
               <button class="tablinks" @click="selected = 'registered'" :class="{selected: selected === 'registered'}">註冊</button>
             </div>
             <div class="tabs-login" v-if="selected === 'login'">
-              <el-form class="textBox" :model="loginForm" ref="loginForm" >
+              <el-form class="textBox" :model="loginform" ref="loginForm" >
                 <el-form-item>
-                  <el-input type="tel" placeholder="輸入手機" v-model="loginForm.tel" autocomplete="off"/>
+                  <el-input type="tel" placeholder="輸入手機" v-model="loginform.tel" autocomplete="off"/>
                 </el-form-item>
                 <el-form-item>
-                  <el-input placeholder="輸入密碼" v-model="loginForm.password" show-password autocomplete="off" />
+                  <el-input placeholder="輸入密碼" v-model="loginform.password" show-password autocomplete="off" />
                 </el-form-item>
               </el-form>
               <div class="btn_box">
@@ -34,48 +34,100 @@
               </div>
             </div>
         </div>
-        <div class="error-message" v-if="error.phone">手機號碼必須是10位數</div>
-        <div class="error-message" v-if="error.password">密碼必須為6-12英文數字混合</div>
+        <toast/>
         <div class="brand">
           <span>LIFE LINK 品牌服務系統</span>
         </div>
     </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-import { checkPhone, checkPassword } from '@/util/Validators'
+<script>
+// import User from '@/model/User';
+// import Register from '@/model/Register';
+// import UserData from '@/model/UserInfo';
+import { checkPhone, checkPassword } from '@/util/validators';
+import Toast from '@/components/Toast.vue';
+import {MutationTypes} from '@/store/mutationTypes';
 
-@Component
-export default class Login extends Vue {
-  selected = 'login';
-  loginForm = {
-    tel: '',
-    password: ''
-  };
+export default {
+  name: "App",
+  components:{ Toast },
+  data() {
+    return {
+      selected: 'login',
+      // user: new User(),
+      loginform: {
+        tel: '',
+        password: ''
+      },
+      registeredForm: {
+        tel: ''
+      }
+    }
+  },
+  created() {
 
-  registeredForm = {
-    tel: ''
-  };
+  },
+  mounted() {
+    
+  },
+  methods: {
+    login: function() {
+      if(!checkPhone(this.loginform.tel)) {
+        this.$store.commit(MutationTypes.SHOW_TOAST, '手機號碼必須是10位數');
+        return
+      }
+      if(!checkPassword(this.loginform.password)) { 
+        this.$store.commit(MutationTypes.SHOW_TOAST, '密碼必須為6-12英文數字混合');
+        return
+      }
+      this.user.signIn({
+          countryCode: '+886',
+          phone: this.loginform.tel,
+          password: this.loginform.password
+      }, (success, message, user) => {
+        if (success) {
+          localStorage.setItem('phone', this.loginform.tel);
+          localStorage.setItem('token', user.getToken());
+          localStorage.setItem('nickName', user.getNickName());
+          localStorage.setItem('userCode', user.getUserCode());
+          this.$auth.setup();
+          this.getUserInfo();
+        }else {
+          this.$store.commit(MutationTypes.SHOW_TOAST, message);
+        }
+      });
+    },
+    getUserInfo: function() {
+      // new UserData().getUserInfo({
+      // }, (success, message, userInfo) => {
+      //   this.saveUserData(userInfo);
+      //   this.$router.back();
+      // });
+    },
 
-  error = {
-    phone: false,
-    password: false,
-    timer: 0
-  };
+    saveUserData: function(userInfo) {
+      localStorage.setItem('userInfo', JSON.stringify(userInfo));
+    },
 
-  login() {
-    clearTimeout(this.error.timer)
-    if(!checkPhone(this.loginForm.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
-    if(!checkPassword(this.loginForm.password)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
-  }
-
-  registered() {
-    clearTimeout(this.error.timer)
-    if(!checkPassword(this.registeredForm.tel)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
+    registered: function() {
+      // if(!checkPhone(this.loginform.tel)) { 
+      //   this.$store.commit(MutationTypes.SHOW_TOAST, '手機號碼必須是10位數');
+      //   return
+      // }
+      // (new Register()).checkRegister({
+      //     countryCode: '+886',
+      //     phone: this.registeredForm.tel,
+      // }, (success, message, register) => {
+      //   if (success) {
+      //     console.log(register.getRegisterState());
+      //   }else {
+      //     this.$store.commit(MutationTypes.SHOW_TOAST, message);
+      //   }
+      // });
+    }
   }
 }
-
 </script>
 
 <style lang="less" scoped>
@@ -136,23 +188,7 @@ p {
     }
   }
 }
-.error-message {
-  position: fixed;
-  background: #666;
-  color: #fff;
-  border-radius: 50px;
-  height: 48px;
-  width: 210px;
-  text-align: center;
-  line-height: 48px;
-  left: 0px;
-  right: 0px;
-  bottom: 120px;
-  margin: 0 auto;
-  animation-name:oxxo;
-  animation-delay:2s;
-  animation-duration:2s;
-}
+
 @keyframes oxxo {
   form {
     opacity: 1;

@@ -11,12 +11,30 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+<script>
+export default {
+  name: "ListItem",
+  props: {
+    title: {
+      required: false, 
+      type: String, 
+      default: '' 
+    },
+  },
+  data() {
+    return {
 
-@Component
-export default class ListItem extends Vue {
-  @Prop({required: false, type: String, default: '' }) title?: ''
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 
