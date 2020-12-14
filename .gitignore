@@ -23,6 +23,6 @@ pnpm-debug.log*
 *.sw?
 /app
 vue.config.js
-src/start.ts
-src/router/Index.ts
+src/start.js
+src/router/index.js
 public/index.html
