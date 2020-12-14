@@ -156,11 +156,11 @@ export default {
     
   },
   methods: {
-    addItem: function(type) {
+    addItem: function() {
       // if (type === 'address') this.form[type].push(this.addressTemplate)
       // this.form[type].push(this.template)
     },
-    deleteItem: function(type, index) {
+    deleteItem: function() {
     //   this.form[type].splice(index, 1)
     }
   }
