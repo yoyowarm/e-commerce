@@ -74,7 +74,7 @@ export default {
   right: 0px;
   display: flex;
   justify-content: flex-end;
-  align-items: start;;
+  align-items: flex-start;
   img {
     width: 20px;
     margin-left: 3px

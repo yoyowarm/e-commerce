@@ -5,8 +5,8 @@
 </template>
 
 <script>
+import {SHOW_TOAST} from '@/store/mutationTypes';
 
-import MutationTypes from '@/store/mutationTypes';
 export default {
   name: "Toast",
   data() {
@@ -18,7 +18,7 @@ export default {
   },
   created() {
     this.$store.subscribe((mutation, state) => {
-        if(mutation.type === MutationTypes.SHOW_TOAST){
+        if(mutation.type === SHOW_TOAST){
             this.message = state.toast.message;
             this.show();
         }

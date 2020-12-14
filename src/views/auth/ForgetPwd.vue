@@ -22,6 +22,7 @@
             <p><el-button round @click="$router.replace({ name: 'SetPwd'})">下一步</el-button></p>
             </div>
         </div>
+        <toast/>
         <div class="brand">
           <span>LIFE LINK 品牌服務系統</span>
         </div>
@@ -31,7 +32,7 @@
 <script>
 import { checkPhone } from '@/util/validators';
 import Toast from '@/components/Toast.vue';
-import MutationTypes from "@/store/mutationTypes";
+import {SHOW_TOAST} from "@/store/mutationTypes";
 
 export default {
   name: "App",
@@ -60,7 +61,7 @@ export default {
       clearTimeout(this.error.timer)
       if(!checkPhone(this.passwordForm.tel)) {
           // this.error.phone = true;
-          this.$store.commit(MutationTypes.SHOW_TOAST, '手機號碼必須是10位數');
+          this.$store.commit(SHOW_TOAST, '手機號碼必須是10位數');
           // return this.error.timer = setTimeout(() => {
           //     this.error.phone = false
           // },4000)

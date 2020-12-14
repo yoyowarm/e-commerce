@@ -47,7 +47,7 @@
 // import UserData from '@/model/UserInfo';
 import { checkPhone, checkPassword } from '@/util/validators';
 import Toast from '@/components/Toast.vue';
-import {MutationTypes} from '@/store/mutationTypes';
+import {SHOW_TOAST} from '@/store/mutationTypes';
 
 export default {
   name: "App",
@@ -74,11 +74,11 @@ export default {
   methods: {
     login: function() {
       if(!checkPhone(this.loginform.tel)) {
-        this.$store.commit(MutationTypes.SHOW_TOAST, '手機號碼必須是10位數');
+        this.$store.commit(SHOW_TOAST, '手機號碼必須是10位數');
         return
       }
       if(!checkPassword(this.loginform.password)) { 
-        this.$store.commit(MutationTypes.SHOW_TOAST, '密碼必須為6-12英文數字混合');
+        this.$store.commit(SHOW_TOAST, '密碼必須為6-12英文數字混合');
         return
       }
       this.user.signIn({
@@ -94,7 +94,7 @@ export default {
           this.$auth.setup();
           this.getUserInfo();
         }else {
-          this.$store.commit(MutationTypes.SHOW_TOAST, message);
+          this.$store.commit(SHOW_TOAST, message);
         }
       });
     },
