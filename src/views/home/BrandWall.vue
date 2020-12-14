@@ -8,7 +8,7 @@
           </div>
       </category-header>
       <item-grid height="136px">
-        <store-item v-for="s in 6" :key="s"/>
+        <store-item :to="{name: 'BrandPage'}" v-for="s in 6" :key="s"/>
       </item-grid>
       <category-header :to="{name: 'MyStore'}" class="marginTop">
         <div slot="title" class="category-header">
@@ -17,7 +17,7 @@
           </div>
       </category-header>
       <item-grid height="136px">
-        <store-item v-for="s in 6" :key="s"/>
+        <store-item :to="{name: 'BrandPage'}" v-for="s in 6" :key="s" />
       </item-grid>
       <category-header class="marginTop">
         <div slot="title" class="category-header">
@@ -27,7 +27,7 @@
       </category-header>
       <el-row class="multiple-column">
         <el-col :span="6" v-for="a in 12" :key="a">
-          <store-item />
+          <store-item :to="{name: 'BrandPage'}" />
         </el-col>
       </el-row>
       <el-row type="flex" justify="center">
@@ -51,7 +51,7 @@
         <p class="description">內容填充文字，可支援emoji這些已經到十。回去走進，攤位文章想吃麼都大家就都，後就，樣的老人的店都可實在。以為喜歡異樣你看⋯是男會有，看完非常那時也沒的類，就可胡...</p>
       </div>
       <item-grid>
-        <store-item v-for="o in 6" :key="o">
+        <store-item :to="{name: 'BrandPage'}" v-for="o in 6" :key="o">
           <div slot="avatar" class="avatar-block"></div>
         </store-item>
       </item-grid>

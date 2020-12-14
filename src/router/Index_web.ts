@@ -27,7 +27,8 @@ const routes: Array<RouteConfig> = [
       { path: 'visit', name: 'Visit', component: () => import(/* webpackChunkName: "Visit" */ "@/views/home/Visit.vue"), meta: { title: '快來串門子'}},
       { path: 'my-store', name: 'MyStore', component: () => import(/* webpackChunkName: "MyStore" */ "@/views/home/MyStore.vue"), meta: { title: '我的店家'}},
       { path: 'comment-page/:id', name: 'CommentPage', component: () => import(/* webpackChunkName: "CommentPage" */ "@/views/home/CommentPage.vue"), meta: { title: '評論頁'}},
-      { path: 'article', name: 'ArticlePage', component: () => import(/* webpackChunkName: "ArticlePage" */ "@/views/home/Article.vue"), meta: { title: ''}}
+      { path: 'article', name: 'ArticlePage', component: () => import(/* webpackChunkName: "ArticlePage" */ "@/views/home/Article.vue"), meta: { title: ''}},
+      { path: 'brand', name: 'BrandPage', component: () => import(/* webpackChunkName: "BrandPage" */ '@/views/home/BrandPage.vue')}
     ]
   },
   {
@@ -59,6 +60,17 @@ const routes: Array<RouteConfig> = [
         // { path: 'problems', name: 'Problems', component: () => import(/* webpackChunkName: "Problems" */ "./views/more/problems/Index.vue"), meta: { title: '常見問題' } },
         // { path: 'message', name: 'Message', component: () => import(/* webpackChunkName: "Message" */ "./views/more/message/Index.vue"), meta: { title: '我要留言' } },
         // { path: 'news', name: 'News', component: () => import(/* webpackChunkName: "News" */ "./views/more/news/Index.vue"), meta: { title: '最新消息' } },
+    ]
+  },
+  {
+    path: '/gift',
+    component: () => import(/* webpackChunkName: "More" */ "@/views/PageLayout.vue"),
+    children: [
+      { path: 'all-branches', name: 'Branches', component: () => import("@/views/gift/Branches.vue")},
+      { path: 'transfer-coupon', name: 'TransferCoupon', component: () => import("@/views/gift/TransferCoupon.vue"), meta: { title: '優惠轉贈'}},
+      { path: 'issue-date', name: 'IssueDate', component: () => import("@/views/gift/IssueDate.vue"), meta: { title: '發放日期'}},
+      { path: 'coupon-page', name: 'CouponPage', component: () => import("@/views/gift/CouponPage.vue"), meta: { title: ''}},
+      { path: 'store-map', name: 'StoreMap', component: () => import("@/views/gift/StoreMap.vue") }
     ]
   }
 ]

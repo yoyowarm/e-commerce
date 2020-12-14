@@ -17,7 +17,7 @@
         <el-col :span="14">
           <ul>
             <li><h2 class="brand">品牌 Brand</h2></li>
-            <li><p class="name">— 門市分店 branch store</p></li>
+            <li><p class="branch-name">— 門市分店 branch store</p></li>
             <li class="business-hours"><span class="status">營業中．</span>結束營業時間14：30<i class="el-icon-caret-bottom"></i></li>
           </ul>
         </el-col>
@@ -86,19 +86,7 @@ export default class MyStore extends Vue {
     width: 100%;
   }
 }
-ul {
-  margin-bottom: 0px;
-}
-.brand {
-  color: #595757;
-  font-size: 22px;
-  margin-bottom: 0px;
-}
-.name {
-  color: #A48B78;
-  font-size: 14px;
-  margin-bottom: 0px;
-}
+
 .business-hours {
   font-size: 13px;
   color: #5F5E5E;

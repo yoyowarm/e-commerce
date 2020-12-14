@@ -37,7 +37,7 @@
         </el-row>
         <div class="title">
           <h2 class="brand">品牌 Brand</h2>
-          <p class="store">— 門市分店 branch store</p>
+          <p class="branch-name">— 門市分店 branch store</p>
           <tag-list />
         </div>
       </article-cover>
@@ -115,18 +115,6 @@ activeName = 'first'
   img {
     width: 20px;
     margin-right: 5px
-  }
-}
-.title {
-  .brand {
-    color: #595757;
-    font-size: 22px;
-    margin-bottom: 0px;
-  }
-  .store {
-    color: #A48B78;
-    font-size: 14px;
-    margin-bottom: 0px;
   }
 }
 </style>

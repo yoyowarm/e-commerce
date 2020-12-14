@@ -13,6 +13,7 @@ import Visit from '@/views/home/Visit.vue'
 import MyStore from '@/views/home/MyStore.vue'
 import CommentPage from '@/views/home/CommentPage.vue'
 import ArticlePage from '@/views/home/Article.vue'
+import BrandPage from '@/views/home/BrandPage.vue'
 
 /*主題活動*/
 // import EventsList from '@/views/EventsList'
@@ -23,6 +24,13 @@ import ForgetPwd from '@/views/auth/ForgetPwd.vue'
 import PhoneVerify from '@/views/auth/PhoneVerify.vue'
 import Registered from '@/views/auth/Registered.vue'
 import SetPwd from '@/views/auth/SetPwd.vue'
+
+/*禮物相關頁面*/
+import Branches from '@/views/gift/Branch.vue'
+import TransferCoupon from '@/views/gift/transferCoupon.vue'
+import CouponPage from '@/views/gift/CouponPage.vue'
+import IssueDate from '@/views/gift/IssueDate.vue'
+import StoreMap from '@/views/gift/StoreMap.vue'
 
 /* 個人中心相關頁面 */
 import PageLayout from '@/components/PageLayout.vue'
@@ -64,7 +72,8 @@ const routes: Array<RouteConfig> = [
       { path: 'visit', name: 'Visit', component: Visit, meta: { title: '快來串門子' }},
       { path: 'my-store', name: 'MyStore', component: MyStore, meta: { title: '我的店家'}},
       { path: 'comment-page/:id', name: 'CommentPage', component: CommentPage, meta: { title: '評論頁'}},
-      { path: 'article', name: 'ArticlePage', component: ArticlePage, meta: { title: ''}}
+      { path: 'article', name: 'ArticlePage', component: ArticlePage, meta: { title: ''}},
+      { path: 'brand', name: 'BrandPage', component: BrandPage}
     ]
   },
   {
@@ -96,6 +105,17 @@ const routes: Array<RouteConfig> = [
         // { path: 'problems', name: 'Problems', component: Problems, meta: { title: '常見問題' } },
         // { path: 'message', name: 'Message', component: Message, meta: { title: '我要留言' } },
         // { path: 'news', name: 'News', component: News, meta: { title: '最新消息' } },
+    ]
+  },
+  {
+    path: '/gift',
+    component: PageLayout,
+    children: [
+      { path: 'all-branches', name: 'Branches', component: Branches},
+      { path: 'transfer-coupon', name: 'TransferCoupon', component: TransferCoupon, meta: { title: '優惠轉贈'}},
+      { path: 'issue-date', name: 'IssueDate', component: IssueDate, meta: { title: '發放日期'}},
+      { path: 'coupon-page', name: 'CouponPage', component: CouponPage, meta: { title: ''}},
+      { path: 'store-map', name: 'StoreMap', component: StoreMap}
     ]
   }
 ]

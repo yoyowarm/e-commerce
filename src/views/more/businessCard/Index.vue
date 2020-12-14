@@ -46,7 +46,7 @@
         </div>
       </category-header>
       <item-grid height="136px">
-        <store-item v-for="s in 6" :key="s"/>
+        <store-item :to="{name: 'BrandPage'}" v-for="s in 6" :key="s"/>
       </item-grid>
     </category-content>
     <category-content>
@@ -56,7 +56,7 @@
         </div>
       </category-header>
       <item-grid height="136px">
-        <store-item v-for="s in 6" :key="s"/>
+        <store-item :to="{name: 'BrandPage'}" v-for="s in 6" :key="s"/>
       </item-grid>
     </category-content>
   </div>
