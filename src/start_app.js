@@ -1,13 +1,13 @@
 import Vue from 'vue'
 
 export default {
-    mountVue(store, router, App){
+    mountVue(store, router, App, Sqlite){
         document.addEventListener("resume", function () {
     
         }, false);
         
         document.addEventListener('deviceready', function () {
-            // Sqlite.init();
+            Sqlite.init();
             new Vue({
                 el: "#app",
                 store,

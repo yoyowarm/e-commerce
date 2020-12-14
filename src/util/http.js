@@ -21,6 +21,7 @@ export default {
         });
     },
     getOS() {
+        // eslint-disable-next-line no-prototype-builtins
         if(window.hasOwnProperty("cordova")){
             // eslint-disable-next-line no-console
             console.log('getOS() => window.hasOwnProperty(cordova) = true');
