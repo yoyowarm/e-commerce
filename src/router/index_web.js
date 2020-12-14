@@ -19,7 +19,7 @@ const routes = [
   },
   {
     path: '/home',
-    component: () => import(/* webpackChunkName: "More" */ "@/views/PageLayout.vue"),
+    component: () => import(/* webpackChunkName: "More" */ "@/components/PageLayout.vue"),
     children: [
       { path: 'brand-wall', name: 'BrandWall', component: () => import(/* webpackChunkName: "BrandWall" */ "@/views/home/BrandWall.vue"), meta: { title: '品牌牆'}},
       { path: 'visit', name: 'Visit', component: () => import(/* webpackChunkName: "Visit" */ "@/views/home/Visit.vue"), meta: { title: '快來串門子'}},
@@ -62,7 +62,7 @@ const routes = [
   },
   {
     path: '/gift',
-    component: () => import(/* webpackChunkName: "More" */ "@/views/PageLayout.vue"),
+    component: () => import(/* webpackChunkName: "More" */ "@/components/PageLayout.vue"),
     children: [
       { path: 'all-branches', name: 'Branches', component: () => import("@/views/gift/Branches.vue")},
       { path: 'transfer-coupon', name: 'TransferCoupon', component: () => import("@/views/gift/TransferCoupon.vue"), meta: { title: '優惠轉贈'}},
