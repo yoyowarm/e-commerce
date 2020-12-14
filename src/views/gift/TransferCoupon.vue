@@ -1,10 +1,10 @@
 <template>
-  <div></div>
+  <div>優惠券內頁</div>
 </template>
 
 <script>
 export default {
-  name: "Branch",
+  name: "Coupon",
   data() {
     return {
 
