@@ -11,7 +11,7 @@
           <li><el-button @click="$router.push({ name: 'Profile'})" class="edit" round>編輯我的資料 <img src="@/assets/images/edit.svg" alt=""></el-button></li>
         </ul>
       </el-col>
-      <el-col v-if="isLogout">>
+      <el-col v-else>>
         <ul class="account">
           <li><el-button @click="$router.push({ name: 'Login'})" class="edit" round>登入</el-button></li>
         </ul>
