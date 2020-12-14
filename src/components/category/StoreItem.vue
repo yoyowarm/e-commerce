@@ -9,12 +9,30 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+<script>
+export default {
+  name: "StoreItem",
+  props: {
+    to: {
+      required: false, 
+      type: Object, 
+      default: null
+    },
+  },
+  data() {
+    return {
 
-@Component
-export default class StoreItem extends Vue {
-   @Prop({required: false, type: Object, default: null}) to!: null;
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

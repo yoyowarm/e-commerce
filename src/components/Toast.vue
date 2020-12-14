@@ -4,33 +4,39 @@
     </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-import { MutationTypes } from '@/store/MutationTypes';
+<script>
 
-@Component
-export default class Toast extends Vue {
-    message = '';
-    isShow = false;
-    timer = 0;
-
-    created(){
-        this.$store.subscribe((mutation, state) => {
-            if(mutation.type === MutationTypes.SHOW_TOAST){
-                this.message = state.toast.message;
-                this.show();
-            }
-        })
+import MutationTypes from '@/store/MutationTypes';
+export default {
+  name: "Toast",
+  data() {
+    return {
+        message: '',
+        isShow: false,
+        timer: 0
     }
-
-    private show() {
+  },
+  created() {
+    this.$store.subscribe((mutation, state) => {
+        if(mutation.type === MutationTypes.SHOW_TOAST){
+            this.message = state.toast.message;
+            this.show();
+        }
+    })
+  },
+  mounted() {
+    
+  },
+  methods: {
+    show() {
         clearTimeout(this.timer);
         this.isShow = true; 
-     
+        
         this.timer = setTimeout(() => {
             this.isShow = false;
         }, 4000) ;
     }
+  }
 }
 </script>
 

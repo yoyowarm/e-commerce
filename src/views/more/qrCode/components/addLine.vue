@@ -17,15 +17,28 @@
   </el-row>
 </template>
 
-<script lang="ts">
-import { Vue, Component, Emit, Prop } from 'vue-property-decorator';
-@Component
-export default class AddLine extends Vue {
-  @Prop({type:Number}) itemIndex !: null
-  @Prop({type: Boolean}) flexStart !: false
-  @Emit('deleteItem')
-  deleteItem() {
-    return this.itemIndex
+<script>
+export default {
+  name: "AddLine",
+  props: {
+    itemIndex: Number,
+    flexStart: Boolean,
+  },
+  data() {
+    return {
+
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    deleteItem: function() {
+      this.$emit('deleteItem', this.itemIndex);
+    }
   }
 }
 </script>

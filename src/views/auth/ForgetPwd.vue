@@ -30,33 +30,43 @@
     </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
 import { checkPhone } from '@/util/Validators';
 import Toast from '@/components/Toast.vue';
-import {MutationTypes} from "@/store/MutationTypes";
+import MutationTypes from "@/store/MutationTypes";
 
-@Component({components:{ Toast }})
-export default class ForgetPwd extends Vue {
-  passwordForm = {
-    tel: '',
-    verificationCode: '',
-  };
+export default {
+  name: "App",
+  components:{ Toast },
+  data() {
+    return {
+      passwordForm: {
+        tel: '',
+        verificationCode: '',
+      },
+      error: {
+        phone: false,
+        verificationCode: false,
+        timer: 0
+      }
+    }
+  },
+  created() {
 
-  error = {
-    phone: false,
-    verificationCode: false,
-    timer: 0
-  };
-
-  submit () {
-    clearTimeout(this.error.timer)
-    if(!checkPhone(this.passwordForm.tel)) {
-        // this.error.phone = true;
-        this.$store.commit(MutationTypes.SHOW_TOAST, '手機號碼必須是10位數');
-        // return this.error.timer = setTimeout(() => {
-        //     this.error.phone = false
-        // },4000)
+  },
+  mounted() {
+    
+  },
+  methods: {
+    submit: function() {
+      clearTimeout(this.error.timer)
+      if(!checkPhone(this.passwordForm.tel)) {
+          // this.error.phone = true;
+          this.$store.commit(MutationTypes.SHOW_TOAST, '手機號碼必須是10位數');
+          // return this.error.timer = setTimeout(() => {
+          //     this.error.phone = false
+          // },4000)
+      }
     }
   }
 }

@@ -4,11 +4,22 @@
     </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+<script>
+export default {
+  name: "Scan",
+  data() {
+    return {
 
-@Component
-export default class Scan extends Vue {
+    }
+  },
+  created() {
 
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>

@@ -11,12 +11,23 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
+export default {
+  name: "PrivacyPolicy",
+  data() {
+    return {
 
-@Component
-export default class PrivacyPolicy extends Vue {
+    }
+  },
+  created() {
 
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

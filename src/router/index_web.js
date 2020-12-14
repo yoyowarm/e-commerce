@@ -1,12 +1,11 @@
 import Vue from 'vue'
-import VueRouter, { RouteConfig } from 'vue-router'
+import VueRouter from 'vue-router'
 import MainPage from '@/views/MainPage.vue'
 import EmptyLayout from '@/components/EmptyLayout.vue'
 
-
 Vue.use(VueRouter)
-        
-const routes: Array<RouteConfig> = [
+
+const routes = [
   {path: '/login', name: 'Login', component: () => import(/* webpackChunkName: "Login" */ "@/views/auth/Login.vue")}, //登入
   {path: '/forget-pwd', name: 'ForgetPwd', component: () => import(/* webpackChunkName: "ForgetPwd" */ "@/views/auth/ForgetPwd.vue")}, //忘記密碼
   {

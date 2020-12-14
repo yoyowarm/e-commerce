@@ -4,12 +4,30 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+<script>
+export default {
+  name: "ItemGrid",
+  props: {
+    height: {
+      required: false, 
+      type: String, 
+      default: 'auto'
+    },
+  },
+  data() {
+    return {
 
-@Component
-export default class ItemGrid extends Vue {
-   @Prop({required: false, type: String, default: 'auto'}) height!: string;
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

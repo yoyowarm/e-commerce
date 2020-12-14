@@ -31,12 +31,23 @@
   </el-row>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
+export default {
+  name: "Store",
+  data() {
+    return {
 
-@Component
-export default class Store extends Vue {
+    }
+  },
+  created() {
 
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

@@ -50,57 +50,57 @@
 </template>
 
 <script>
-    import auth from '../util/auth'
+import auth from '../util/auth'
 
-    export default {
-        name: 'EventsList',
-        data() {
-            return {
-                remindModel: false,
-                dataList: [],
-            }
-        },
-        created() {
-            this.setupData();
-        },
-        mounted() {
-            window.getUserToken = this.getUserToken
+export default {
+    name: 'EventsList',
+    data() {
+        return {
+            remindModel: false,
+            dataList: [],
+        }
+    },
+    created() {
+        this.setupData();
+    },
+    mounted() {
+        window.getUserToken = this.getUserToken
 
+        let u = navigator.userAgent.toLowerCase();
+        let isApple = /iphone|ipad|ipod|ios/i.test(u);
+        let isAndroid = /android/i.test(u);
+
+        if (isApple) {
+            window.webkit.messageHandlers.ToApp.postMessage("getToken");//呼叫app的function取得登入者token
+        }else if(isAndroid) {
+            window.jsCallAndroid.jsNoToken();//若toke沒有值，沒有則出現登入頁
+        }
+    },
+    methods: {
+        setupData: function () {
+            this.$http.fetch`GetOinActivityList${{
+                'id': this.id,
+                'offset': -1
+            }}
+            ${json => {
+                this.dataList = json;
+            }}`;
+        },
+        goBackApp: function () {
             let u = navigator.userAgent.toLowerCase();
             let isApple = /iphone|ipad|ipod|ios/i.test(u);
             let isAndroid = /android/i.test(u);
 
-            if (isApple) {
-                window.webkit.messageHandlers.ToApp.postMessage("getToken");//呼叫app的function取得登入者token
-            }else if(isAndroid) {
-                window.jsCallAndroid.jsNoToken();//若toke沒有值，沒有則出現登入頁
+            if(isApple){
+                window.webkit.messageHandlers.ToApp.postMessage("back")
+            }else if(isAndroid){
+                window.jsCallAndroid.jsBackPrevious();//若toke沒有值，沒有則出現登入頁
             }
+
         },
-        methods: {
-            setupData: function () {
-                this.$http.fetch`GetOinActivityList${{
-                    'id': this.id,
-                    'offset': -1
-                }}
-                ${json => {
-                    this.dataList = json;
-                }}`;
-            },
-            goBackApp: function () {
-                let u = navigator.userAgent.toLowerCase();
-                let isApple = /iphone|ipad|ipod|ios/i.test(u);
-                let isAndroid = /android/i.test(u);
-
-                if(isApple){
-                    window.webkit.messageHandlers.ToApp.postMessage("back")
-                }else if(isAndroid){
-                    window.jsCallAndroid.jsBackPrevious();//若toke沒有值，沒有則出現登入頁
-                }
-
-            },
-            getUserToken: function (token) {
-                auth.setUserToken(token);
-            },
-        }
+        getUserToken: function (token) {
+            auth.setUserToken(token);
+        },
     }
+}
 </script>

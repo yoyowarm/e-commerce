@@ -9,12 +9,26 @@
   </el-container>
 </template>
 
-<script lang="ts">
-import { Vue, Component, PropSync } from 'vue-property-decorator';
+<script>
+export default {
+  name: "PopupModel",
+  props: {
+    openedPopup: Boolean,
+  },
+  data() {
+    return {
 
-@Component
-export default class PopupModel extends Vue {
-  @PropSync('opened',{ type:Boolean }) openedPopup!: false;
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

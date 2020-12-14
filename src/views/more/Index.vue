@@ -66,26 +66,34 @@
   </el-main>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
 import UserInfo from './components/UserInfo.vue';
 import Logout from './components/Logout.vue';
 
-@Component({components:{ UserInfo, Logout }})
-export default class More extends Vue {
-  logoutDialog = false;
-  
-  isLogout = this.$auth.isSignIn();
-
+export default {
+  name: "More",
+  components:{ UserInfo, Logout},
+  data() {
+    return {
+      logoutDialog: false,
+      isLogout: false
+    }
+  },
   created() {
-    this.$root.$on('isLogout', (isLogout: boolean) => {
+     this.$root.$on('isLogout', (isLogout) => {
       if (isLogout) {
         this.isLogout = !isLogout;
       }
     });
-  }
+  },
   beforeDestroy() {
     this.$root.$off('isLogout');
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
   }
 }
 </script>

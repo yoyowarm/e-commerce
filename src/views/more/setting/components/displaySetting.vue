@@ -21,29 +21,42 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import ListItem from '@/components/lists/ListItem.vue'
-import ListContainer from '@/components/lists/container.vue'
-import { Vue, Component } from 'vue-property-decorator';
+import ListContainer from '@/components/lists/Container.vue'
 
-@Component({components:{ ListItem, ListContainer }})
-export default class DisplaySetting extends Vue {
-listsMenu = [
-  { name: '我的評論',
-    switch: false
+export default {
+  name: "DisplaySetting",
+  components:{ ListItem, ListContainer },
+  data() {
+    return {
+      listsMenu: [
+        { name: '我的評論',
+          switch: false
+        },
+        { name: '喜愛文章',
+          switch: false
+        },
+        { name: '收藏文章',
+          switch: false
+        },
+        { name: '我的店家',
+          switch: false
+        },
+        { name: '喜愛店家',
+          switch: false
+        }]
+    }
   },
-  { name: '喜愛文章',
-    switch: false
+  created() {
+
   },
-  { name: '收藏文章',
-    switch: false
+  mounted() {
+    
   },
-  { name: '我的店家',
-    switch: false
-  },
-  { name: '喜愛店家',
-    switch: false
-  }]
+  methods: {
+    
+  }
 }
 </script>
 

@@ -31,10 +31,23 @@
   </el-row>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-@Component
-export default class QuickMenu extends Vue {
+<script>
+export default {
+  name: "QuickMenu",
+  data() {
+    return {
+
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

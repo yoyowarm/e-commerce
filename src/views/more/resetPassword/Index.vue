@@ -39,37 +39,43 @@
     </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-import { checkPhone, checkPassword } from '@/util/Validators'
+<script>
+import { checkPhone, checkPassword } from '@/util/Validators';
 
-@Component
-export default class ResetPassword extends Vue {
-  selected = 'login';
-  loginform = {
-    tel: '',
-    password: '',
-  };
-  
-  registeredForm = {
-    tel: ''
-  };
+export default {
+  name: "ResetPassword",
+  data() {
+    return {
+      loginform: {
+          tel: '',
+          password: '',
+      },
+      registeredForm: {
+        tel: ''
+      },
+      error: {
+        phone: false,
+        password: false,
+        timer: 0
+      }
+    }
+  },
+  created() {
 
-  error = {
-    phone: false,
-    password: false,
-    timer: 0
-  };
-
-  login () {
-    clearTimeout(this.error.timer)
-    if(!checkPhone(this.loginform.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
-    if(!checkPassword(this.loginform.password)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
-  }
-  
-  registered () {
-    clearTimeout(this.error.timer)
-    if(!checkPassword(this.registeredForm.tel)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
+  },
+  mounted() {
+    
+  },
+  methods: {
+    login: function() {
+      clearTimeout(this.error.timer)
+      if(!checkPhone(this.loginform.tel)) { this.error.phone = true; return this.error.timer =setTimeout(() => {this.error.phone = false},4000) }
+      if(!checkPassword(this.loginform.password)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
+    },
+    registered: function() {
+      clearTimeout(this.error.timer)
+      if(!checkPassword(this.registeredForm.tel)) { this.error.password = true; return  this.error.timer = setTimeout(() => {this.error.password = false},4000)}
+    }
   }
 }
 </script>

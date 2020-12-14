@@ -20,40 +20,44 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
-import UserData from '../../../model/UserInfo';
+<script>
+export default {
+  name: "App",
+  data() {
+    return {
+      userModel: {
+        nickName: "",
+        userCode: "",
+        userImage: "",
+      }
+    }
+  },
+  created() {
 
-@Component
-export default class UserInfo extends Vue {
-  userModel = {
-    nickName: "",
-    userCode: "",
-    userImage: "",
-  }
-  isLogout = this.$auth.isSignIn();
+  },
   mounted() {
     this.getLoginState();
-    this.$root.$on('isLogout', (isLogout: boolean) => {
-      if (isLogout) {
-        this.getLoginState();
+      this.$root.$on('isLogout', (isLogout: boolean) => {
+        if (isLogout) {
+          this.getLoginState();
+        }
+      });
+  },
+  methods: {
+    getLoginState: function() {
+      this.isLogout = this.$auth.isSignIn();
+      if (this.$auth.isSignIn()) {
+        const userData = JSON.parse(localStorage.getItem('userInfo') || "");
+        this.userModel.userImage = userData.picture;
+        this.userModel.nickName = this.$auth.user.getNickName();
+        this.userModel.userCode = this.$auth.user.getUserCode();
+      }else {
+        this.userModel.nickName = "";
+        this.userModel.userCode = "";
+        this.userModel.userImage = "";
+        console.log('no user login');
       }
-    });
-  }
-
-  getLoginState() {
-   this.isLogout = this.$auth.isSignIn();
-   if (this.$auth.isSignIn()) {
-     const userData: UserData = JSON.parse(localStorage.getItem('userInfo') || "");
-     this.userModel.userImage = userData.picture;
-     this.userModel.nickName = this.$auth.user.getNickName();
-     this.userModel.userCode = this.$auth.user.getUserCode();
-   }else {
-     this.userModel.nickName = "";
-     this.userModel.userCode = "";
-     this.userModel.userImage = "";
-     console.log('no user login');
-   }
+    }
   }
 }
 </script>

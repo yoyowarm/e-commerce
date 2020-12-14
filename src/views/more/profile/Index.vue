@@ -73,27 +73,32 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
 import CustomCard from '@/components/CustomCard.vue';
 import BorderInput from '@/components/BorderInput.vue'
-import UserData from '@/model/UserInfo';
 
-@Component({components:{ CustomCard, BorderInput }})
-export default class Profile extends Vue {
-  form = {
-    avatar: '',
-    name: '熊麻吉',
-    nickname: 'bearly',
-    phone: '+886 11234567',
-    birth: '1990-10-22',
-    gender: '男',
-    email: '',
-    address: '台南市安平區光州路52號'
-  }
+export default {
+  name: "Profile",
+  components:{ CustomCard, BorderInput },
+  data() {
+    return {
+      form: {
+        avatar: '',
+        name: '熊麻吉',
+        nickname: 'bearly',
+        phone: '+886 11234567',
+        birth: '1990-10-22',
+        gender: '男',
+        email: '',
+        address: '台南市安平區光州路52號'
+      }
+    }
+  },
+  created() {
 
+  },
   mounted() {
-    const userData: UserData = JSON.parse(localStorage.getItem('userInfo') || "");
+    const userData = JSON.parse(localStorage.getItem('userInfo') || "");
     this.form.avatar = userData.picture
     this.form.name = userData.name
     this.form.nickname = userData.nickName
@@ -112,10 +117,11 @@ export default class Profile extends Vue {
     }
     this.form.email = userData.email
     this.form.address = userData.address
-  }
-
-  switchImage() {
-    //
+  },
+  methods: {
+    switchImage: function() {
+      //
+    }
   }
 }
 </script>

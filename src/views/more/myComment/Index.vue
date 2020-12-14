@@ -2,12 +2,23 @@
   <div>我的評論</div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
+export default {
+  name: "MyComment",
+  data() {
+    return {
 
-@Component
-export default class MyComment extends Vue {
+    }
+  },
+  created() {
 
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

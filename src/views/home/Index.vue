@@ -81,7 +81,7 @@
   </el-container>
 </template>
 
-<script lang="ts">
+<script>
 import NavigationBar from '@/components/NavigationBar.vue';
 import CategoryContent from '@/components/category/Content.vue';
 import CategoryHeader from '@/components/category/Header.vue';
@@ -93,27 +93,39 @@ import CouponItem from './components/coupon-item.vue'
 import ItemGrid from '@/components/category/ItemGrid.vue';
 import ArticleCard from '@/components/category/ArticleCard.vue';
 import TwoColumn from '@/components/category/TwoColumn.vue'
-import { Vue, Component } from 'vue-property-decorator';
 
-@Component({ components: {
-  Banner,
-  NavigationBar,
-  TabBar,
-  CustomCard,
-  QuickMenu,
-  CategoryContent,
-  CategoryHeader,
-  ItemGrid,
-  CouponItem,
-  ArticleCard,
-  TwoColumn
-}})
-export default class Home extends Vue {
-  bannerList = [1,2,3,4,5]
-  search = ''
-  scrollToTop() {
-		window.scrollTo(0, 0);
-	}
+export default {
+  name: "Home",
+  components: {
+    Banner,
+    NavigationBar,
+    TabBar,
+    CustomCard,
+    QuickMenu,
+    CategoryContent,
+    CategoryHeader,
+    ItemGrid,
+    CouponItem,
+    ArticleCard,
+    TwoColumn
+  },
+  data() {
+    return {
+      bannerList: [1,2,3,4,5],
+      search: ''
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    scrollToTop: function() {
+      window.scrollTo(0, 0);
+    }
+  }
 }
 </script>
 

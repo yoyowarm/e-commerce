@@ -27,12 +27,23 @@
     </el-card>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
+export default {
+  name: "ArticleCard",
+  data() {
+    return {
 
-@Component
-export default class ArticleCard extends Vue {
+    }
+  },
+  created() {
 
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
+  }
 }
 </script>
 

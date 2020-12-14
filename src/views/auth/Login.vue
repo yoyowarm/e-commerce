@@ -41,86 +41,93 @@
     </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+<script>
 import User from '@/model/User';
 import Register from '@/model/Register';
 import UserData from '@/model/UserInfo';
 import { checkPhone, checkPassword } from '@/util/Validators';
 import Toast from '@/components/Toast.vue';
 import {MutationTypes} from '@/store/MutationTypes';
-import router from '../../router/Index';
 
-@Component({components:{ Toast }})
-export default class Login extends Vue {
-  selected = 'login';
-  user = new User();
-  loginform = {
-    tel: '',
-    password: ''
-  };
-
-  registeredForm = {
-    tel: ''
-  };
-  
-  login() {
-    if(!checkPhone(this.loginform.tel)) {
-      this.$store.commit(MutationTypes.SHOW_TOAST, '手機號碼必須是10位數');
-      return
-    }
-    if(!checkPassword(this.loginform.password)) { 
-      this.$store.commit(MutationTypes.SHOW_TOAST, '密碼必須為6-12英文數字混合');
-      return
-    }
-    this.user.signIn({
-        countryCode: '+886',
-        phone: this.loginform.tel,
-        password: this.loginform.password
-    }, (success: boolean, message: string, user: User) => {
-      if (success) {
-        localStorage.setItem('phone', this.loginform.tel);
-        localStorage.setItem('token', user.getToken());
-        localStorage.setItem('nickName', user.getNickName());
-        localStorage.setItem('userCode', user.getUserCode());
-        this.$auth.setup();
-        this.getUserInfo();
-      }else {
-        this.$store.commit(MutationTypes.SHOW_TOAST, message);
+export default {
+  name: "App",
+  components:{ Toast },
+  data() {
+    return {
+      selected: 'login',
+      user: new User(),
+      loginform: {
+        tel: '',
+        password: ''
+      },
+      registeredForm: {
+        tel: ''
       }
-    });
-  }
-
-  getUserInfo() {
-    new UserData().getUserInfo({
-    }, (success: boolean, message: string, userInfo: UserData) => {
-      this.saveUserData(userInfo);
-      router.back();
-    });
-  }
-
-  saveUserData(userInfo: UserData) {
-    localStorage.setItem('userInfo', JSON.stringify(userInfo));
-  }
-
-  registered() {
-    if(!checkPhone(this.loginform.tel)) { 
-      this.$store.commit(MutationTypes.SHOW_TOAST, '手機號碼必須是10位數');
-      return
     }
-    (new Register()).checkRegister({
-        countryCode: '+886',
-        phone: this.registeredForm.tel,
-    }, (success, message, register) => {
-      if (success) {
-        console.log(register.getRegisterState());
-      }else {
-        this.$store.commit(MutationTypes.SHOW_TOAST, message);
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  },
+  methods: {
+    login: function() {
+      if(!checkPhone(this.loginform.tel)) {
+        this.$store.commit(MutationTypes.SHOW_TOAST, '手機號碼必須是10位數');
+        return
       }
-    });
+      if(!checkPassword(this.loginform.password)) { 
+        this.$store.commit(MutationTypes.SHOW_TOAST, '密碼必須為6-12英文數字混合');
+        return
+      }
+      this.user.signIn({
+          countryCode: '+886',
+          phone: this.loginform.tel,
+          password: this.loginform.password
+      }, (success, message, user) => {
+        if (success) {
+          localStorage.setItem('phone', this.loginform.tel);
+          localStorage.setItem('token', user.getToken());
+          localStorage.setItem('nickName', user.getNickName());
+          localStorage.setItem('userCode', user.getUserCode());
+          this.$auth.setup();
+          this.getUserInfo();
+        }else {
+          this.$store.commit(MutationTypes.SHOW_TOAST, message);
+        }
+      });
+    },
+    getUserInfo: function() {
+      new UserData().getUserInfo({
+      }, (success, message, userInfo) => {
+        this.saveUserData(userInfo);
+        this.$router.back();
+      });
+    },
+
+    saveUserData: function(userInfo) {
+      localStorage.setItem('userInfo', JSON.stringify(userInfo));
+    },
+
+    registered: function() {
+      if(!checkPhone(this.loginform.tel)) { 
+        this.$store.commit(MutationTypes.SHOW_TOAST, '手機號碼必須是10位數');
+        return
+      }
+      (new Register()).checkRegister({
+          countryCode: '+886',
+          phone: this.registeredForm.tel,
+      }, (success, message, register) => {
+        if (success) {
+          console.log(register.getRegisterState());
+        }else {
+          this.$store.commit(MutationTypes.SHOW_TOAST, message);
+        }
+      });
+    }
   }
 }
-
 </script>
 
 <style lang="less" scoped>

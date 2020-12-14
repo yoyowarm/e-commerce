@@ -23,19 +23,36 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+<script>
+export default {
+  name: "BorderInput",
+  props: {
+    list: String,
+    noBorder: Boolean,
+    noInput: Boolean,
+  },
+  data() {
+    return {
 
-@Component
-export default class BorderInput extends Vue {
-  @Prop({type: String}) labelText!: ''
-  @Prop({type: Boolean}) noBorder !: false
-  @Prop({type: Boolean}) noInput !: false
+    }
+  },
+  computed() {
+    flexSpan: {
+      get:function(){
+        if (this.$slots['right-icon']) {
+          return 16
+        } else return 20
+      }
+    }
+  },
+  created() {
 
-  get flexSpan () {
-    if (this.$slots['right-icon']) {
-      return 16
-    } else return 20
+  },
+  mounted() {
+    
+  },
+  methods: {
+    
   }
 }
 </script>
