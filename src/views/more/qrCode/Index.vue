@@ -76,8 +76,8 @@
 </template>
 
 <script>
-import Privacy from '@/components/privacy.vue'
-import PopupModel from '@/components/popupModel.vue'
+import Privacy from '@/views/more/qrCode/components/privacy.vue'
+import PopupModel from '@/views/more/qrCode/components/popupModel.vue'
 
 export default {
   name: "QrCode",

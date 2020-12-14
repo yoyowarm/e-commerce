@@ -1,6 +1,6 @@
 <template>
   <el-container class="Home BigPage is-vertical">
-    <!-- <navigation-bar>
+    <navigation-bar>
       <el-input slot="center" placeholder="請输入内容" v-model="search" class="input-with-select">
         <el-button slot="append" icon="el-icon-search" type="text"></el-button>
       </el-input>
@@ -77,7 +77,7 @@
         </item-grid>
       </category-content>
       <tab-bar/>
-    </div> -->
+    </div>
   </el-container>
 </template>
 
@@ -89,7 +89,7 @@ import TabBar from '@/components/TabBar.vue';
 import Banner from '@/components/BannerSlider.vue'
 import CustomCard from '@/components/CustomCard.vue';
 import QuickMenu from '@/components/QuickMenu.vue'
-// import CouponItem from '@/components/CouponItem.vue'
+import CouponItem from '@/views/home/components/CouponItem.vue'
 import ItemGrid from '@/components/category/ItemGrid.vue';
 import ArticleCard from '@/components/category/ArticleCard.vue';
 import TwoColumn from '@/components/category/TwoColumn.vue'
@@ -105,7 +105,7 @@ export default {
     CategoryContent,
     CategoryHeader,
     ItemGrid,
-    // CouponItem,
+    CouponItem,
     ArticleCard,
     TwoColumn
   },

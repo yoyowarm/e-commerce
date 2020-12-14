@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import Privacy from '@/components/privacy.vue';
+import Privacy from '@/views/auth/components/privacy.vue';
 
 export default {
   name: "ForgetPwd",

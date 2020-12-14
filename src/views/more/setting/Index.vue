@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import Authoriztion from '@/components/Authoriztion.vue'
-import DisplaySetting from '@/components/displaySetting.vue'
-import PushSetting from '@/components/pushSetting.vue'
+import Authoriztion from '@/views/more/setting/components/Authoriztion.vue'
+import DisplaySetting from '@/views/more/setting/components/DisplaySetting.vue'
+import PushSetting from '@/views/more/setting/components/PushSetting.vue'
 
 export default {
   name: "Setting",

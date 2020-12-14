@@ -115,10 +115,11 @@
 
 <script>
 import BorderInput from '@/components/BorderInput.vue'
-import AddLine from '@/components/addLine.vue'
+import AddLine from '@/views/more/qrCode/components/addLine.vue'
 
 export default {
   name: "Edit",
+  components: {BorderInput, AddLine},
   data() {
     return {
       form: {
