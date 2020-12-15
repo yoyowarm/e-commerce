@@ -22,8 +22,8 @@
           </ul>
         </el-col>
         <el-col :span="3" class="icons">
-          <el-button icon="el-icon-phone-outline" class="phone" circle></el-button><br>
-          <el-button icon="el-icon-location" class="location" circle></el-button>
+          <el-button icon="el-icon-phone-outline" class="store-phone-btn" circle></el-button><br>
+          <el-button icon="el-icon-location" class="store-location-btn" circle></el-button>
         </el-col>
       </el-row>
       <tag-list />
@@ -114,14 +114,6 @@ export default {
   }
   /deep/ [class^=el-icon-] {
     font-size: 20px;
-  }
-  .phone {
-    color: #2FB092;
-    border-color: #2FB092
-  }
-  .location {
-    color: #7EABD6;
-    border-color: #7EABD6
   }
 }
 </style>

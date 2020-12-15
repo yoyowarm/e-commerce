@@ -1,14 +1,13 @@
 <template>
-  <div class="list-header" :class="{ 'between':to }">
+  <div class="list-header" :class="{ 'between':$slots.more }">
     <slot name="title">
       <span>{{ title }}</span>
     </slot>
     <span
-      v-if="to"
-      @click="$router.push(to)"
+      @click="() => { if(to) $router.push(to)}"
     >
       <slot name="more">
-        <img src="@/assets/images/more.svg" alt="">
+        <img v-if="to" src="@/assets/images/more.svg" alt="">
       </slot>
     </span>
   </div>

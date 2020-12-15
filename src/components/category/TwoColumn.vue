@@ -1,15 +1,19 @@
 <template>
   <el-row type="flex" justify="space-between" class="two-column">
     <el-col :span="10" class="cover">
+      <slot name="left">
       <img src="@/assets/images/homepage/cover-3.png" alt="">
+      </slot>
     </el-col>
     <el-col :span="14" class="right">
+      <slot name="right">
       <el-row class="title">
         <el-col :span="10"><span class="tag">縣市名稱</span></el-col>
         <el-col :span="14" class="text">標題標題標題標題標題標題標題標題</el-col>
       </el-row>
       <p class="date">2020.07.07~2020.10.10</p>
       <p class="description">活動內容文字活動內容文字活動內容文字活動內容文字活動文活動內容文字活動內容文字活動內容文字活動內容文字活動文</p>
+      </slot>
     </el-col>
   </el-row>
 </template>
