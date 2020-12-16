@@ -12,7 +12,7 @@
         <div slot="title" class="title">
           轉贈對象
         </div>
-        <div slot="more">
+        <div slot="more" class="buttons">
           <el-button type="text">
             <img src="@/assets/images/gift/qrcode.svg" alt="">
           </el-button>
@@ -21,21 +21,35 @@
           </el-button>
         </div>
       </category-header>
+      <el-input class="border-input" placeholder="請輸入對方會員ID或電話號碼" v-model="phone"></el-input>
       <category-header>
         <div slot="title" class="title">
           轉贈數量
         </div>
+        <span slot="more"></span>
       </category-header>
       <category-header>
         <div slot="title" class="title">
           備註欄
         </div>
       </category-header>
+      <el-input
+        class="border-input"
+        placeholder="此備註欄位僅您本人可以查看"
+        type="textarea"
+        :rows="4"
+        v-model="remarks"></el-input>
       <category-header>
         <div slot="title" class="title">
           留言給對方
         </div>
       </category-header>
+      <el-input
+        class="border-input"
+        placeholder="請輸入文字內容"
+        type="textarea"
+        :rows="4"
+        v-model="message"></el-input>
     </div>
   </div>
 </template>
@@ -51,7 +65,9 @@ export default {
   },
   data() {
     return {
-
+      phone: '',
+      remarks: '',
+      message: ''
     }
   },
   created() {
@@ -71,7 +87,7 @@ export default {
   padding: 10px 0px
 }
 /deep/ .list-header {
-  margin-left: 0px;
+  margin: 0px;
   font-weight: 600;
 }
 .transfer {
@@ -87,7 +103,7 @@ export default {
   font-size: 20px;
   padding-left: 15px;
   position: relative;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   &::after {
     position: absolute;
     content: '';
@@ -96,6 +112,23 @@ export default {
     background: #CBAE97;
     left: 0px;
     top: 8px;
+  }
+}
+.buttons {
+  button {
+    margin-left: 20px
+  }
+}
+.border-input {
+  border: 1px solid #D4D5D5;
+  border-radius: 20px;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  /deep/ .el-input__inner, /deep/ .el-textarea__inner {
+    border: 0px;
+    background-color: inherit
   }
 }
 </style>
