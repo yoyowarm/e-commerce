@@ -22,6 +22,5 @@ pnpm-debug.log*
 *.sln
 *.sw?
 /app
-vue.config.js
 src/start.js
 public/index.html
