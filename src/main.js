@@ -3,7 +3,6 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import ElementUI from 'element-ui'
-import start from './start';
 import '@/assets/element_style/theme/index.css'
 import '@/less/style_admin.less'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -22,4 +21,9 @@ Vue.prototype.$crypto = Crypto;
 Vue.prototype.$socket = Websocket;
 Vue.prototype.$sqlite = Sqlite;
 
-start.mountVue(store, router, App, Sqlite);
+new Vue({
+    el: "#app",
+    store,
+    router,
+    render: h => h(App)
+}).$mount('#app');
