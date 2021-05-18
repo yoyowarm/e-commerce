@@ -1,7 +1,7 @@
 <template>
   <el-main>
     <user-info />
-    <div class="menu" v-if="isLogout == true">
+    <div class="menu" v-if="!isLogout">
       <el-row type="flex" justify="space-between">
         <el-col :span="8">
           <router-link :to="{ name: 'BusinessCard' }">
@@ -26,7 +26,7 @@
           </router-link>
         </el-col>
         <el-col :span="8">
-          <router-link :to="{ name: 'Settings' }">
+          <router-link :to="{ name: 'Setting' }">
             <img src="@/assets/images/settings.svg" alt="">
           </router-link>
         </el-col>

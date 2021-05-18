@@ -98,25 +98,28 @@ export default {
 
   },
   mounted() {
-    const userData = JSON.parse(localStorage.getItem('userInfo') || "");
-    this.form.avatar = userData.picture
-    this.form.name = userData.name
-    this.form.nickname = userData.nickName
-    this.form.phone = localStorage.getItem('phone') || ""
-    this.form.birth = userData.birthdayAt
-    switch (userData.gender) {
-      case 0:
-        this.form.gender = '?'
-        break
-      case 1:
-        this.form.gender = '男'
-        break
-      case 2:
-        this.form.gender = '女'
-        break
+    const userData = JSON.parse(JSON.stringify(localStorage.getItem('userInfo')) || "");
+    if (userData) {
+      this.form.avatar = userData.picture
+      this.form.name = userData.name
+      this.form.nickname = userData.nickName
+      this.form.phone = localStorage.getItem('phone') || ""
+      this.form.birth = userData.birthdayAt
+      switch (userData.gender) {
+        case 0:
+          this.form.gender = '?'
+          break
+        case 1:
+          this.form.gender = '男'
+          break
+        case 2:
+          this.form.gender = '女'
+          break
+      }
+      this.form.email = userData.email
+      this.form.address = userData.address
     }
-    this.form.email = userData.email
-    this.form.address = userData.address
+    
   },
   methods: {
     switchImage: function() {

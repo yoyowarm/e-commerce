@@ -1,5 +1,5 @@
 <template>
-  <div class="list-header" :class="{ 'between':$slots.more }">
+  <div class="list-header" :class="{ 'between': to }">
     <slot name="title">
       <span>{{ title }}</span>
     </slot>
@@ -29,7 +29,7 @@ export default {
 
   },
   mounted() {
-    
+
   },
   methods: {
     

@@ -30,6 +30,10 @@ export default {
     list: String,
     noBorder: Boolean,
     noInput: Boolean,
+    labelText: {
+      type: String,
+      default: ''
+    }
   },
   data() {
     return {

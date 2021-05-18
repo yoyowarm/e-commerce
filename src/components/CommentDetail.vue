@@ -81,6 +81,7 @@ export default {
   }
 }
 .store {
+  text-align: left;
   .brand {
     color:#595757;
     font-size: 22px;

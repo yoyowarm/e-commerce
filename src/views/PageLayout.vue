@@ -3,7 +3,7 @@
     <el-container class="slidIn is-vertical">
       <navigation-bar noSearch>
         <template slot="left">
-          <div class="el-col el-col-5">
+          <div class="el-col el-col-5 text-left">
             <el-button type="text" @click="$router.back()" class="back">
               <img src="@/assets/images/top_bar_back.svg" alt="">
             </el-button>

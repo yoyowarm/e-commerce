@@ -1,21 +1,21 @@
 <template>
   <div class="user-info ">
-    <el-row type="flex" justify="center" :class="isLogout? 'h-100 w-100' : ''">
-      <el-col :span="7" v-if="isLogout">
+    <el-row type="flex" justify="center" class="h-100 w-100'">
+      <el-col :span="7">
         <img v-bind:src="`${userModel.userImage}`">
       </el-col>
-      <el-col :span="17" v-if="isLogout">
+      <el-col :span="17">
         <ul class="account">
           <li>{{userModel.nickName}}</li>
           <li><span>會員：{{userModel.userCode}}</span></li>
           <li><el-button @click="$router.push({ name: 'Profile'})" class="edit" round>編輯我的資料 <img src="@/assets/images/edit.svg" alt=""></el-button></li>
         </ul>
       </el-col>
-      <el-col v-else>>
+      <!-- <el-col v-else>
         <ul class="account">
           <li><el-button @click="$router.push({ name: 'Login'})" class="edit" round>登入</el-button></li>
         </ul>
-      </el-col>
+      </el-col> -->
     </el-row>
   </div>
 </template>
@@ -37,26 +37,26 @@ export default {
   },
   mounted() {
     this.getLoginState();
-      this.$root.$on('isLogout', (isLogout) => {
-        if (isLogout) {
-          this.getLoginState();
-        }
-      });
+      // this.$root.$on('isLogout', (isLogout) => {
+      //   if (isLogout) {
+      //     this.getLoginState();
+      //   }
+      // });
   },
   methods: {
     getLoginState: function() {
-      this.isLogout = this.$auth.isSignIn();
-      if (this.$auth.isSignIn()) {
-        const userData = JSON.parse(localStorage.getItem('userInfo') || "");
-        this.userModel.userImage = userData.picture;
-        this.userModel.nickName = this.$auth.user.getNickName();
-        this.userModel.userCode = this.$auth.user.getUserCode();
-      }else {
-        this.userModel.nickName = "";
-        this.userModel.userCode = "";
-        this.userModel.userImage = "";
-        console.log('no user login');
-      }
+      // this.isLogout = this.$auth.isSignIn();
+      // if (this.$auth.isSignIn()) {
+      //   const userData = JSON.parse(localStorage.getItem('userInfo') || "");
+      //   this.userModel.userImage = userData.picture;
+      //   this.userModel.nickName = this.$auth.user.getNickName();
+      //   this.userModel.userCode = this.$auth.user.getUserCode();
+      // }else {
+      //   this.userModel.nickName = "";
+      //   this.userModel.userCode = "";
+      //   this.userModel.userImage = "";
+      //   console.log('no user login');
+      // }
     }
   }
 }

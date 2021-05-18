@@ -10,12 +10,12 @@
               <button class="tablinks" @click="selected = 'registered'" :class="{selected: selected === 'registered'}">註冊</button>
             </div>
             <div class="tabs-login" v-if="selected === 'login'">
-              <el-form class="textBox" :model="loginform" ref="loginForm" >
+              <el-form class="textBox" :model="loginForm" ref="loginForm" >
                 <el-form-item>
-                  <el-input type="tel" placeholder="輸入手機" v-model="loginform.tel" autocomplete="off"/>
+                  <el-input type="tel" placeholder="輸入手機" v-model="loginForm.tel" autocomplete="off"/>
                 </el-form-item>
                 <el-form-item>
-                  <el-input placeholder="輸入密碼" v-model="loginform.password" show-password autocomplete="off" />
+                  <el-input placeholder="輸入密碼" v-model="this.$auth.isSignIn.password" show-password autocomplete="off" />
                 </el-form-item>
               </el-form>
               <div class="btn_box">
@@ -56,7 +56,7 @@ export default {
     return {
       selected: 'login',
       // user: new User(),
-      loginform: {
+      loginForm: {
         tel: '',
         password: ''
       },
@@ -73,21 +73,21 @@ export default {
   },
   methods: {
     login: function() {
-      if(!checkPhone(this.loginform.tel)) {
+      if(!checkPhone(this.loginForm.tel)) {
         this.$store.commit(SHOW_TOAST, '手機號碼必須是10位數');
         return
       }
-      if(!checkPassword(this.loginform.password)) { 
+      if(!checkPassword(this.loginForm.password)) { 
         this.$store.commit(SHOW_TOAST, '密碼必須為6-12英文數字混合');
         return
       }
       this.user.signIn({
           countryCode: '+886',
-          phone: this.loginform.tel,
-          password: this.loginform.password
+          phone: this.loginForm.tel,
+          password: this.loginForm.password
       }, (success, message, user) => {
         if (success) {
-          localStorage.setItem('phone', this.loginform.tel);
+          localStorage.setItem('phone', this.loginForm.tel);
           localStorage.setItem('token', user.getToken());
           localStorage.setItem('nickName', user.getNickName());
           localStorage.setItem('userCode', user.getUserCode());
@@ -111,7 +111,7 @@ export default {
     },
 
     registered: function() {
-      // if(!checkPhone(this.loginform.tel)) { 
+      // if(!checkPhone(this.loginForm.tel)) { 
       //   this.$store.commit(MutationTypes.SHOW_TOAST, '手機號碼必須是10位數');
       //   return
       // }

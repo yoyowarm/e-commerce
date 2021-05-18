@@ -1,7 +1,7 @@
 <template>
   <el-container class="authoriztion is-vertical">
     <el-row class="block receive" type="flex" justify="space-between">
-      <el-col :span="20">
+      <el-col :span="20" class="text-left">
         <img src="@/assets/images/setting/bell.svg" alt="">
         <span>接收推播</span>
       </el-col>
@@ -10,7 +10,7 @@
       </el-col>
     </el-row>
     <div class="block camera">
-      <div>
+      <div class="text-left">
         <img src="@/assets/images/setting/landmark.svg" alt="">
         <span>取用您的所在位置</span>
       </div>
@@ -22,7 +22,7 @@
       </div>
     </div>
     <el-row class="block receive" type="flex" justify="space-between">
-      <el-col :span="20">
+      <el-col :span="20" class="text-left">
         <img src="@/assets/images/setting/landmark.svg" alt="">
         <span>取用您的所在位置</span>
       </el-col>

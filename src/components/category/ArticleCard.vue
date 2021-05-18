@@ -76,6 +76,7 @@ export default {
   }
   .store {
     display: flex;
+    justify-content: start;
     align-items: center;
     align-items: flex-start;
     font-size: 18px;
