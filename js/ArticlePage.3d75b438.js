@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["ArticlePage"],{f218:function(e,n,t){"use strict";t.r(n);var c=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",[e._v("好友串門子文章")])},a=[],r={name:"Article",data:function(){return{}},created:function(){},mounted:function(){},methods:{}},u=r,i=t("2877"),o=Object(i["a"])(u,c,a,!1,null,"41a00f2e",null);n["default"]=o.exports}}]);
+//# sourceMappingURL=ArticlePage.3d75b438.js.map
