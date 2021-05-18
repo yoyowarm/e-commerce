@@ -2,7 +2,7 @@ import crypto from "../util/crypto"
 import auth from "../util/auth"
 import sqlite from "../util/sqlite"
 import Vue from 'vue'
-import router from '../router/index.js'
+import router from '../router/index'
 
 export default {
     csrfToken: process.env.VUE_APP_CSRF_TOKEN,
